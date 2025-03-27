@@ -1,0 +1,2216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebCars - Seu carro dos sonhos está aqui!</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="img/logosite.png" alt="WebCars Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#comprar">Comprar</a></li>
+                <li><a href="#vender">Vender</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#noticias-wc">Notícias WC</a></li>
+                <li><a href="#ajuda">Ajuda</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <div class="search-container">
+                <input type="text" placeholder="Buscar veículos...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="user-actions">
+                <a href="#" class="login-btn" id="login-trigger"><i class="fas fa-user"></i> Entrar</a>
+                <a href="#favoritos" class="favorites-btn" title="Favoritos"><i class="far fa-heart"></i></a>
+                <a href="#notificacoes" class="notifications-btn has-new" title="Notificações"><i class="fas fa-bell"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="banner-principal">
+            <div class="banner-slider">
+                <div class="banner-item">
+                    <img src="img/banner01.jpg" alt="Encontre o Veículo dos Seus Sonhos">
+                </div>
+            </div>
+        </section>
+
+        <section id="beneficios">
+            <div class="container">
+                <h2>Por que escolher a WebCars?</h2>
+                <div class="grid-beneficios">
+                    <div class="beneficio-item">
+                        <div class="beneficio-icone">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <h3>Maior Variedade</h3>
+                        <p>Milhares de veículos para todos os perfis e orçamentos.</p>
+                    </div>
+                    <div class="beneficio-item">
+                        <div class="beneficio-icone">
+                            <i class="fas fa-hand-holding-usd"></i>
+                        </div>
+                        <h3>Financiamento Facilitado</h3>
+                        <p>Simulações rápidas e condições especiais.</p>
+                    </div>
+                    <div class="beneficio-item">
+                        <div class="beneficio-icone">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Concessionárias Certificadas</h3>
+                        <p>Só trabalhamos com parceiros de confiança.</p>
+                    </div>
+                    <div class="beneficio-item">
+                        <div class="beneficio-icone">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h3>100% Seguro</h3>
+                        <p>Sua compra protegida e sem riscos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="depoimentos">
+            <div class="container">
+                <h2>O que nossos clientes dizem</h2>
+                <div class="slider-depoimentos">
+                    <div class="depoimento-card">
+                        <div class="aspas">"</div>
+                        <p>Encontrei meu carro dos sonhos na WebCars! O processo foi super tranquilo e o atendimento foi excelente.</p>
+                        <div class="cliente-info">
+                            <img src="https://img.freepik.com/fotos-gratis/close-up-mulher-morena-olhando-para-a-camera-sobre-cinza_171337-1000.jpg" alt="Maria Silva">
+                            <div>
+                                <h4>Maria Silva</h4>
+                                <span>Compradora de Hilux Toyota 2019</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="depoimento-card">
+                        <div class="aspas">"</div>
+                        <p>A simulação de financiamento foi rápida e consegui um valor de parcela que cabe no meu bolso.</p>
+                        <div class="cliente-info">
+                            <img src="https://img.freepik.com/fotos-gratis/conceito-de-emocoes-e-pessoas-foto-de-um-homem-bonito-de-aparencia-seria-com-barba-parecendo-confiante-e-determinado_1258-26730.jpg?semt=ais_hybrid" alt="João Santos">
+                            <div>
+                                <h4>João Santos</h4>
+                                <span>Comprador de Honda Civic 2020</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="newsletter">
+            <div class="container">
+                <div class="newsletter-content">
+                    <h2>Não Perca Nossas Melhores Ofertas!</h2>
+                    <p>Receba em primeira mão as promoções mais incríveis e descontos exclusivos diretamente no seu e-mail.</p>
+                    <form class="newsletter-form" id="newsletter-form">
+                        <input 
+                            type="email" 
+                            placeholder="Digite seu melhor e-mail" 
+                            required 
+                            id="newsletter-email"
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                            title="Por favor, insira um e-mail válido"
+                        >
+                        <button type="submit">Cadastrar</button>
+                    </form>
+                    <p class="newsletter-feedback" id="newsletter-feedback" style="display: none; margin-top: 15px; color: rgba(255,255,255,0.8);"></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="solucoes-webcars" class="secao-solucoes-webcars">
+            <div class="container">
+                <div class="solucoes-header">
+                    <h2 class="secao-titulo">Soluções WebCars</h2>
+                    <p class="secao-subtitulo">Transformando sua jornada de compra e venda de veículos</p>
+                </div>
+                
+                <div class="grid-solucoes">
+                    <div class="solucao-card">
+                        <div class="solucao-icone">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="solucao-conteudo">
+                            <h3>Busca Inteligente</h3>
+                            <p>Encontre o veículo perfeito com nossos filtros avançados e recomendações personalizadas.</p>
+                        </div>
+                    </div>
+
+                    <div class="solucao-card">
+                        <div class="solucao-icone">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="solucao-conteudo">
+                            <h3>Análise de Mercado</h3>
+                            <p>Insights em tempo real sobre preços, tendências e valores de mercado para veículos.</p>
+                        </div>
+                    </div>
+
+                    <div class="solucao-card">
+                        <div class="solucao-icone">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="solucao-conteudo">
+                            <h3>Negociação Segura</h3>
+                            <p>Plataforma completa para negociações transparentes e seguras entre compradores e vendedores.</p>
+                        </div>
+                    </div>
+
+                    <div class="solucao-card">
+                        <div class="solucao-icone">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="solucao-conteudo">
+                            <h3>Proteção e Garantia</h3>
+                            <p>Serviços de verificação veicular, histórico de manutenção e opções de garantia estendida.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="secao-categorias-inovadora">
+            <div class="container">
+                <div class="categorias-header">
+                    <h1>Explore Nossas Categorias</h1>
+                    <p>Descubra o veículo perfeito para sua jornada e encontre opções que combinam com seu estilo de vida</p>
+                </div>
+                <div class="grid-categorias-inovadora">
+                    <div class="categoria-card-inovadora" data-categoria="100k-200k">
+                        <div class="categoria-conteudo">
+                            <div class="categoria-icone">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                            <div class="categoria-texto">
+                                <h3>R$100k a R$200k</h3>
+                                <p>Entrada no mundo dos seminovos</p>
+                            </div>
+                        </div>
+                        <span class="categoria-contador">126 veículos</span>
+                        <div class="categoria-hover">
+                            <a href="#" class="btn-explorar">Ver Veículos</a>
+                        </div>
+                    </div>
+
+                    <div class="categoria-card-inovadora" data-categoria="200k-450k">
+                        <div class="categoria-conteudo">
+                            <div class="categoria-icone">
+                                <i class="fas fa-car"></i>
+                            </div>
+                            <div class="categoria-texto">
+                                <h3>R$200k a R$450k</h3>
+                                <p>Premium intermediário</p>
+                            </div>
+                        </div>
+                        <span class="categoria-contador">84 veículos</span>
+                        <div class="categoria-hover">
+                            <a href="#" class="btn-explorar">Ver Veículos</a>
+                        </div>
+                    </div>
+
+                    <div class="categoria-card-inovadora" data-categoria="450k-800k">
+                        <div class="categoria-conteudo">
+                            <div class="categoria-icone">
+                                <i class="fas fa-gem"></i>
+                            </div>
+                            <div class="categoria-texto">
+                                <h3>R$450k a R$800k</h3>
+                                <p>Luxo e sofisticação</p>
+                            </div>
+                        </div>
+                        <span class="categoria-contador">52 veículos</span>
+                        <div class="categoria-hover">
+                            <a href="#" class="btn-explorar">Ver Veículos</a>
+                        </div>
+                    </div>
+
+                    <div class="categoria-card-inovadora" data-categoria="800k-plus">
+                        <div class="categoria-conteudo">
+                            <div class="categoria-icone">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <div class="categoria-texto">
+                                <h3>Acima de R$800k</h3>
+                                <p>Exclusividade total</p>
+                            </div>
+                        </div>
+                        <span class="categoria-contador">31 veículos</span>
+                        <div class="categoria-hover">
+                            <a href="#" class="btn-explorar">Ver Veículos</a>
+                        </div>
+                    </div>
+
+                    <div class="categoria-card-inovadora" data-categoria="eletricos">
+                        <div class="categoria-conteudo">
+                            <div class="categoria-icone">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div class="categoria-texto">
+                                <h3>Elétricos</h3>
+                                <p>Futuro da mobilidade</p>
+                            </div>
+                        </div>
+                        <span class="categoria-contador">47 veículos</span>
+                        <div class="categoria-hover">
+                            <a href="#" class="btn-explorar">Ver Veículos</a>
+                        </div>
+                    </div>
+
+                    <div class="categoria-card-inovadora" data-categoria="picapes">
+                        <div class="categoria-conteudo">
+                            <div class="categoria-icone">
+                                <i class="fas fa-truck"></i>
+                            </div>
+                            <div class="categoria-texto">
+                                <h3>Picapes</h3>
+                                <p>Força e versatilidade</p>
+                            </div>
+                        </div>
+                        <span class="categoria-contador">68 veículos</span>
+                        <div class="categoria-hover">
+                            <a href="#" class="btn-explorar">Ver Veículos</a>
+                        </div>
+                    </div>
+
+                    <div class="categoria-card-inovadora" data-categoria="sedans">
+                        <div class="categoria-conteudo">
+                            <div class="categoria-icone">
+                                <i class="fas fa-car-side"></i>
+                            </div>
+                            <div class="categoria-texto">
+                                <h3>Sedans</h3>
+                                <p>Elegância e conforto</p>
+                            </div>
+                        </div>
+                        <span class="categoria-contador">93 veículos</span>
+                        <div class="categoria-hover">
+                            <a href="#" class="btn-explorar">Ver Veículos</a>
+                        </div>
+                    </div>
+
+                    <div class="categoria-card-inovadora" data-categoria="suvs">
+                        <div class="categoria-conteudo">
+                            <div class="categoria-icone">
+                                <i class="fas fa-road"></i>
+                            </div>
+                            <div class="categoria-texto">
+                                <h3>SUVs</h3>
+                                <p>Robustez e espaço</p>
+                            </div>
+                        </div>
+                        <span class="categoria-contador">105 veículos</span>
+                        <div class="categoria-hover">
+                            <a href="#" class="btn-explorar">Ver Veículos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="lojas-oficiais">
+            <div class="container">
+                <div class="header-lojas">
+                    <h2>Lojas Oficiais</h2>
+                    <p class="subtitulo">Concessionárias e revendedores autorizados com os melhores veículos e condições especiais</p>
+                </div>
+                <div class="banners-container">
+                    <div class="banner loja-animada">
+                        <img src="img/logos/astonmartin.png" alt="Aston Martin">
+                        <div class="loja-info">
+                            <p>23 veículos disponíveis</p>
+                        </div>
+                    </div>
+                    <div class="banner loja-animada">
+                        <img src="img/logos/bmw.jpg" alt="BMW">
+                        <div class="loja-info">
+                            <p>52 veículos disponíveis</p>
+                        </div>
+                    </div>
+                    <div class="banner loja-animada">
+                        <img src="img/logos/ford.png" alt="Ford">
+                        <div class="loja-info">
+                            <p>45 veículos disponíveis</p>
+                        </div>
+                    </div>
+                    <div class="banner loja-animada">
+                        <img src="img/logos/honda.png" alt="Honda">
+                        <div class="loja-info">
+                            <p>54 veículos disponíveis</p>
+                        </div>
+                    </div>
+                    <div class="banner loja-animada">
+                        <img src="img/logos/nissan.png" alt="Nissan">
+                        <div class="loja-info">
+                            <p>38 veículos disponíveis</p>
+                        </div>
+                    </div>
+                    <div class="banner loja-animada">
+                        <img src="img/logos/peugeot.png" alt="Peugeot">
+                        <div class="loja-info">
+                            <p>31 veículos disponíveis</p>
+                        </div>
+                    </div>
+                    <div class="banner loja-animada">
+                        <img src="img/logos/porsche.png" alt="Porsche">
+                        <div class="loja-info">
+                            <p>19 veículos disponíveis</p>
+                        </div>
+                    </div>
+                    <div class="banner loja-animada">
+                        <img src="img/logos/toyota.png" alt="Toyota">
+                        <div class="loja-info">
+                            <p>68 veículos disponíveis</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="#todas-lojas" class="ver-todas-lojas">Ver Todas as Lojas</a>
+            </div>
+        </section>
+
+        <section id="recomendados">
+            <div class="container">
+                <h2>Carros abaixo da FIPE</h2>
+                <p class="secao-subtitulo">Encontre os melhores negócios com descontos incríveis</p>
+                <div class="veiculos-container">
+                    <div class="veiculo link-veiculo destaque" data-id="compass-2023" onclick="window.open('detalhe-veiculo.html?id=compass-2023', '_blank')">
+                        <div class="desconto-badge">-15% ABAIXO DA FIPE</div>
+                        <img src="https://image.webmotors.com.br/_fotos/anunciousados/gigante/2025/202503/20250320/jeep-compass-1-3-t270-turbo-flex-s-at6-wmimagem11110914342.webp?s=fill&w=552&h=414&q=60" alt="JEEP COMPASS 1.3 T270 TURBO FLEX S AT6">
+                        <div class="info-veiculo">
+                            <div class="veiculo-header">
+                                <h3>JEEP COMPASS</h3>
+                                <span class="badge-novo">Semi-Novo</span>
+                            </div>
+                            <p>1.3 T270 TURBO FLEX S AT6</p>
+                            <div class="preco-container">
+                                <p class="preco-original"><s>R$ 195.990</s></p>
+                                <p class="preco-atual">R$ 166.990</p>
+                            </div>
+                            <div class="veiculo-detalhes">
+                                <span>📅 2023/2023</span>
+                                <span>🏎️ 40.000 km</span>
+                                <span>📍 São Paulo</span>
+                            </div>
+                            <div class="veiculo-acoes">
+                                <a href="detalhe-veiculo.html?id=compass-2023" class="btn-detalhes" data-id="compass-2023">Ver Detalhes</a>
+                                <a href="#" class="btn-contato">Contatar Vendedor</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="veiculo link-veiculo" data-id="hilux-2025" onclick="window.open('detalhe-veiculo.html?id=hilux-2025', '_blank')">
+                        <div class="desconto-badge">-10% ABAIXO DA FIPE</div>
+                        <img src="https://image.webmotors.com.br/_fotos/anunciousados/gigante/2025/202503/20250314/toyota-hilux-2-8-d4d-turbo-diesel-cd-srx-plus-4x4-automatico-wmimagem17251698518.webp?s=fill&w=552&h=414&q=60" alt="TOYOTA HILUX 2.8 D-4D TURBO DIESEL CD SRX PLUS 4X4 AUTOMÁTICO">
+                        <div class="info-veiculo">
+                            <div class="veiculo-header">
+                                <h3>TOYOTA HILUX</h3>
+                                <span class="badge-novo">0 km</span>
+                            </div>
+                            <p>2.8 D-4D Turbo Diesel CD SRX Plus 4x4 Automático</p>
+                            <div class="preco-container">
+                                <p class="preco-original"><s>R$ 389.800</s></p>
+                                <p class="preco-atual">R$ 351.800</p>
+                            </div>
+                            <div class="veiculo-detalhes">
+                                <span>📅 2025/2025</span>
+                                <span>🏎️ 0 km</span>
+                                <span>📍 Jundiaí</span>
+                            </div>
+                            <div class="veiculo-acoes">
+                                <a href="detalhe-veiculo.html?id=hilux-2025" class="btn-detalhes" data-id="hilux-2025">Ver Detalhes</a>
+                                <a href="#" class="btn-contato">Contatar Vendedor</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="veiculo link-veiculo" data-id="etron-2022" onclick="window.open('detalhe-veiculo.html?id=etron-2022', '_blank')">
+                        <div class="desconto-badge">-12% ABAIXO DA FIPE</div>
+                        <img src="https://image.webmotors.com.br/_fotos/anunciousados/gigante/2025/202502/20250226/audi-etron-eletrico-sportback-performance-black-quattro-wmimagem16411974193.jpg?s=fill&w=552&h=414&q=60" alt="AUDI E-TRON ELÉTRICO SPORTBACK PERFORMANCE BLACK QUATTRO">
+                        <div class="info-veiculo">
+                            <div class="veiculo-header">
+                                <h3>AUDI E-TRON</h3>
+                                <span class="badge-novo">Semi-Novo</span>
+                            </div>
+                            <p>ELÉTRICO SPORTBACK PERFORMANCE BLACK</p>
+                            <div class="preco-container">
+                                <p class="preco-original"><s>R$ 522.717</s></p>
+                                <p class="preco-atual">R$ 459.990</p>
+                            </div>
+                            <div class="veiculo-detalhes">
+                                <span>📅 2021/2022</span>
+                                <span>🏎️ 15.900 km</span>
+                                <span>📍 São Paulo</span>
+                            </div>
+                            <div class="veiculo-acoes">
+                                <a href="detalhe-veiculo.html?id=etron-2022" class="btn-detalhes">Ver Detalhes</a>
+                                <a href="#" class="btn-contato">Contatar Vendedor</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ver-mais-container">
+                    <a href="#carros-abaixo-fipe" class="btn-ver-mais">Ver Mais Ofertas Abaixo da FIPE</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="dicas-noticias">
+            <h2>Dicas e Notícias</h2>
+            <div class="noticias-container">
+                <div class="noticia-card">
+                    <img src="img/noticia1.jpg" alt="Dicas de Compra">
+                    <h3>Como Escolher o Melhor Carro</h3>
+                    <p>Guia completo para sua próxima compra</p>
+                    <a href="#">Leia Mais</a>
+                </div>
+                <div class="noticia-card">
+                    <img src="img/noticia2.jpg" alt="Financiamento">
+                    <h3>Financiamento: Tudo que Você Precisa Saber</h3>
+                    <p>Dicas para um financiamento inteligente</p>
+                    <a href="#">Leia Mais</a>
+                </div>
+                <div class="noticia-card">
+                    <img src="img/noticia3.jpg" alt="Manutenção">
+                    <h3>Manutenção Preventiva</h3>
+                    <p>Como cuidar bem do seu veículo</p>
+                    <a href="#">Leia Mais</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <div class="footer-col">
+                <h4>Institucional</h4>
+                <ul>
+                    <li><a href="#comprar">Comprar</a></li>
+                    <li><a href="#vender">Vender</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#ajuda">Ajuda</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Redes Sociais</h4>
+                <div class="social-icons">
+                    <a href="#facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Baixe nosso App</h4>
+                <div class="app-links">
+                    <a href="#app-store"><img src="img/app-store.png" alt="App Store"></a>
+                    <a href="#google-play"><img src="img/google-play.png" alt="Google Play"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 WebCars. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-banner-content">
+            <div class="cookie-message">
+                <i class="fas fa-cookie-bite"></i>
+                <p>Nosso site usa cookies, pequenos arquivos para aprimorar e proteger a sua experiência. :)</p>
+            </div>
+            <div class="cookie-actions">
+                <a href="#configuracoes-cookies" class="cookie-link cookie-config">Clique aqui</a>
+                <span class="cookie-separator">|</span>
+                <a href="#termos-uso" class="cookie-link cookie-termos">Termos de Uso</a>
+                <span class="cookie-separator">|</span>
+                <a href="#politica-privacidade" class="cookie-link cookie-privacidade">Política de Privacidade</a>
+                <span class="cookie-separator">|</span>
+                <a href="#politica-cookies" class="cookie-link cookie-politica">Política de Cookies</a>
+            </div>
+            <button class="cookie-close" aria-label="Fechar banner de cookies">&times;</button>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const linksVeiculos = document.querySelectorAll('.link-veiculo');
+            linksVeiculos.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevenir navegação padrão
+                    const idVeiculo = this.getAttribute('data-id');
+                    if (idVeiculo) {
+                        // Abrir em uma nova aba com o ID do veículo
+                        window.open(`detalhe-veiculo.html?id=${idVeiculo}`, '_blank');
+                    } else {
+                        console.error('ID do veículo não encontrado');
+                    }
+                });
+            });
+
+            const newsletterForm = document.getElementById('newsletter-form');
+            const newsletterEmail = document.getElementById('newsletter-email');
+            const newsletterFeedback = document.getElementById('newsletter-feedback');
+
+            newsletterForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                // Validação de e-mail
+                const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
+                if (!emailRegex.test(newsletterEmail.value)) {
+                    showFeedback('Por favor, insira um e-mail válido.', 'error');
+                    return;
+                }
+
+                // Simulação de envio (substitua por chamada real de API)
+                try {
+                    // Aqui você normalmente faria uma chamada AJAX para seu backend
+                    // Exemplo de simulação de sucesso
+                    showFeedback('Inscrição realizada com sucesso! Fique atento às novidades.', 'success');
+                    newsletterEmail.value = ''; // Limpar campo
+                } catch (error) {
+                    showFeedback('Erro ao enviar. Tente novamente mais tarde.', 'error');
+                }
+            });
+
+            function showFeedback(message, type) {
+                newsletterFeedback.textContent = message;
+                newsletterFeedback.style.display = 'block';
+                newsletterFeedback.style.color = type === 'success' ? '#4CAF50' : '#ff6b6b';
+                
+                // Remover mensagem após 5 segundos
+                setTimeout(() => {
+                    newsletterFeedback.style.display = 'none';
+                }, 5000);
+            }
+
+            // Animação para as lojas oficiais
+            const lojasBanners = document.querySelectorAll('#lojas-oficiais .banner');
+            
+            function animateLojas() {
+                lojasBanners.forEach((banner, index) => {
+                    setTimeout(() => {
+                        banner.classList.add('loja-animada');
+                    }, index * 100);
+                });
+            }
+            
+            // Verificar se a seção está visível para iniciar a animação
+            function checkLojasVisibility() {
+                const secaoLojas = document.querySelector('#lojas-oficiais');
+                if (!secaoLojas) return;
+                
+                const rect = secaoLojas.getBoundingClientRect();
+                const isVisible = (rect.top <= window.innerHeight * 0.7);
+                
+                if (isVisible) {
+                    animateLojas();
+                    window.removeEventListener('scroll', checkLojasVisibility);
+                }
+            }
+            
+            // Iniciar verificação de visibilidade
+            window.addEventListener('scroll', checkLojasVisibility);
+            checkLojasVisibility(); // Checar na primeira carga da página
+
+            // Código existente para animação das categorias e newsletter
+            const categoriaCards = document.querySelectorAll('.categoria-card-inovadora');
+            
+            function animateCategorias() {
+                categoriaCards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add('categoria-animada');
+                    }, index * 100);
+                });
+            }
+            
+            // Verificar se a seção está visível para iniciar a animação
+            function checkVisibility() {
+                const secaoCategoria = document.querySelector('.secao-categorias-inovadora');
+                const rect = secaoCategoria.getBoundingClientRect();
+                const isVisible = (rect.top <= window.innerHeight * 0.7);
+                
+                if (isVisible) {
+                    animateCategorias();
+                    window.removeEventListener('scroll', checkVisibility);
+                }
+            }
+            
+            // Iniciar verificação de visibilidade
+            window.addEventListener('scroll', checkVisibility);
+            checkVisibility(); // Checar na primeira carga da página
+        });
+    </script>
+
+    <!-- Modal de Login -->
+    <div class="login-modal-overlay" id="login-modal-overlay">
+        <div class="login-modal">
+            <div class="login-header">
+                <h2>Acessar WebCars</h2>
+                <button class="login-close" id="login-close">&times;</button>
+            </div>
+            <div class="login-tabs">
+                <div class="login-tab active" data-tab="login-form">Acessar Conta</div>
+                <div class="login-tab" data-tab="signup-form">Criar Conta</div>
+            </div>
+            <div class="login-content">
+                <!-- Formulário de Login -->
+                <div class="login-form active">
+                    <div class="success-msg" id="login-success">Login realizado com sucesso!</div>
+                    <div class="error-msg" id="login-error">E-mail ou senha incorretos. Tente novamente.</div>
+                    
+                    <div class="input-group">
+                        <label for="login-email">E-mail</label>
+                        <input type="email" id="login-email" placeholder="Digite seu e-mail">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="login-password">Senha</label>
+                        <div class="password-toggle">
+                            <input type="password" id="login-password" placeholder="Digite sua senha">
+                            <span class="toggle-password" data-target="login-password"><i class="fas fa-eye"></i></span>
+                        </div>
+                    </div>
+                    
+                    <div class="forgot-password">
+                        <a href="#">Esqueci minha senha</a>
+                    </div>
+                    
+                    <button class="login-btn" id="submit-login">Entrar</button>
+                    
+                    <div class="separator">ou entre com</div>
+                    
+                    <div class="social-login-btns">
+                        <button class="google-btn" id="google-login-btn">
+                            <img src="img/social/google.png" alt="Google">
+                            Google
+                        </button>
+                        <button class="facebook-btn" id="facebook-login-btn">
+                            <img src="img/social/facebook.png" alt="Facebook">
+                            Facebook
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Formulário de Cadastro -->
+                <div class="signup-form">
+                    <div class="success-msg" id="signup-success">Conta criada com sucesso! Você já pode fazer login.</div>
+                    <div class="error-msg" id="signup-error">Erro ao criar conta. Verifique os dados e tente novamente.</div>
+                    
+                    <div class="input-group">
+                        <label for="signup-name">Nome completo</label>
+                        <input type="text" id="signup-name" placeholder="Digite seu nome completo">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="signup-email">E-mail</label>
+                        <input type="email" id="signup-email" placeholder="Digite seu melhor e-mail">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="signup-password">Senha</label>
+                        <div class="password-toggle">
+                            <input type="password" id="signup-password" placeholder="Crie uma senha forte" class="password-input">
+                            <span class="toggle-password" data-target="signup-password"><i class="fas fa-eye"></i></span>
+                        </div>
+                        <div class="password-strength">
+                            <div class="strength-meter" id="password-strength-meter"></div>
+                        </div>
+                        <div class="strength-text" id="password-strength-text">Digite uma senha</div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="signup-confirm-password">Confirmar senha</label>
+                        <div class="password-toggle">
+                            <input type="password" id="signup-confirm-password" placeholder="Confirme sua senha">
+                            <span class="toggle-password" data-target="signup-confirm-password"><i class="fas fa-eye"></i></span>
+                        </div>
+                    </div>
+                    
+                    <button class="signup-btn">Criar Conta</button>
+                    
+                    <div class="separator">ou cadastre-se com</div>
+                    
+                    <div class="social-login-btns">
+                        <button class="google-btn" id="google-signup-btn">
+                            <img src="img/social/google.png" alt="Google">
+                            Google
+                        </button>
+                        <button class="facebook-btn" id="facebook-signup-btn">
+                            <img src="img/social/facebook.png" alt="Facebook">
+                            Facebook
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Script do modal de login
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elementos da interface
+            const loginTrigger = document.getElementById('login-trigger');
+            const loginModal = document.getElementById('login-modal-overlay');
+            const loginClose = document.getElementById('login-close');
+            const loginTabs = document.querySelectorAll('.login-tab');
+            
+            // Campos do formulário de cadastro
+            const signupPassword = document.getElementById('signup-password');
+            const confirmPassword = document.getElementById('signup-confirm-password');
+            const strengthMeter = document.getElementById('password-strength-meter');
+            const strengthText = document.getElementById('password-strength-text');
+            const signupBtn = document.querySelector('.signup-btn');
+            const signupError = document.getElementById('signup-error');
+            
+            // Verificar se todos os elementos existem antes de adicionar eventos
+            if (!loginTrigger || !loginModal || !loginClose) {
+                console.error('Elementos do modal de login não encontrados');
+                return;
+            }
+            
+            // Mostrar o modal de login
+            loginTrigger.addEventListener('click', function(e) {
+                e.preventDefault();
+                try {
+                    loginModal.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Impedir rolagem da página
+                    
+                    // Limpar mensagens de erro ao abrir o modal
+                    document.querySelectorAll('.success-msg, .error-msg').forEach(msg => {
+                        msg.classList.remove('show');
+                    });
+                    
+                    // Limpar campos do formulário
+                    const loginForm = document.querySelector('.login-form');
+                    const signupForm = document.querySelector('.signup-form');
+                    
+                    if (loginForm) loginForm.reset();
+                    if (signupForm) signupForm.reset();
+                } catch (error) {
+                    console.error('Erro ao abrir o modal de login:', error);
+                }
+            });
+            
+            // Fechar o modal de login
+            loginClose.addEventListener('click', function() {
+                try {
+                    loginModal.classList.remove('active');
+                    document.body.style.overflow = '';
+                } catch (error) {
+                    console.error('Erro ao fechar o modal de login:', error);
+                }
+            });
+            
+            // Fechar ao clicar fora do modal
+            loginModal.addEventListener('click', function(e) {
+                if (e.target === loginModal) {
+                    try {
+                        loginModal.classList.remove('active');
+                        document.body.style.overflow = '';
+                    } catch (error) {
+                        console.error('Erro ao fechar o modal de login:', error);
+                    }
+                }
+            });
+            
+            // Alternar entre abas (login/cadastro)
+            loginTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    try {
+                        // Remover classe ativa de todas as abas
+                        loginTabs.forEach(t => t.classList.remove('active'));
+                        this.classList.add('active');
+                        
+                        // Mostrar conteúdo da aba selecionada
+                        const tabName = this.getAttribute('data-tab');
+                        document.querySelectorAll('.login-form, .signup-form').forEach(form => {
+                            form.classList.remove('active');
+                        });
+                        
+                        const targetForm = document.querySelector('.' + tabName);
+                        if (targetForm) {
+                            targetForm.classList.add('active');
+                        }
+                        
+                        // Resetar mensagens de erro
+                        document.querySelectorAll('.success-msg, .error-msg').forEach(msg => {
+                            msg.classList.remove('show');
+                        });
+                    } catch (error) {
+                        console.error('Erro ao alternar abas do login:', error);
+                    }
+                });
+            });
+            
+            // Toggle para mostrar/esconder senha
+            const toggleButtons = document.querySelectorAll('.toggle-password');
+            toggleButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    try {
+                        const targetId = this.getAttribute('data-target');
+                        const passwordInput = document.getElementById(targetId);
+                        const icon = this.querySelector('i');
+                        
+                        if (!passwordInput || !icon) return;
+                        
+                        if (passwordInput.type === 'password') {
+                            passwordInput.type = 'text';
+                            icon.classList.remove('fa-eye');
+                            icon.classList.add('fa-eye-slash');
+                        } else {
+                            passwordInput.type = 'password';
+                            icon.classList.remove('fa-eye-slash');
+                            icon.classList.add('fa-eye');
+                        }
+                    } catch (error) {
+                        console.error('Erro ao alternar visibilidade da senha:', error);
+                    }
+                });
+            });
+            
+            // Verificar força da senha
+            if (signupPassword) {
+                signupPassword.addEventListener('input', checkPasswordStrength);
+            }
+            
+            function checkPasswordStrength() {
+                try {
+                    const password = signupPassword.value;
+                    let strength = 0;
+                    
+                    // Verificar comprimento
+                    if (password.length >= 8) {
+                        strength += 25;
+                    }
+                    
+                    // Verificar letras maiúsculas e minúsculas
+                    if (password.match(/[a-z]/) && password.match(/[A-Z]/)) {
+                        strength += 25;
+                    }
+                    
+                    // Verificar números
+                    if (password.match(/\d/)) {
+                        strength += 25;
+                    }
+                    
+                    // Verificar caracteres especiais
+                    if (password.match(/[^a-zA-Z\d]/)) {
+                        strength += 25;
+                    }
+                    
+                    // Atualizar medidor
+                    if (strengthMeter) {
+                        strengthMeter.style.width = strength + '%';
+                        
+                        // Definir cor com base na força
+                        if (strength < 25) {
+                            strengthMeter.style.backgroundColor = '#ff4d4d';
+                            if (strengthText) strengthText.textContent = 'Muito fraca';
+                        } else if (strength < 50) {
+                            strengthMeter.style.backgroundColor = '#ffa64d';
+                            if (strengthText) strengthText.textContent = 'Fraca';
+                        } else if (strength < 75) {
+                            strengthMeter.style.backgroundColor = '#ffff4d';
+                            if (strengthText) strengthText.textContent = 'Média';
+                        } else {
+                            strengthMeter.style.backgroundColor = '#4CAF50';
+                            if (strengthText) strengthText.textContent = 'Forte';
+                        }
+                    }
+                } catch (error) {
+                    console.error('Erro ao verificar força da senha:', error);
+                }
+            }
+            
+            // Verificar se as senhas conferem
+            if (signupBtn) {
+                signupBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    try {
+                        if (!signupPassword || !confirmPassword || !signupError) return;
+                        
+                        if (signupPassword.value !== confirmPassword.value) {
+                            signupError.textContent = 'As senhas não conferem. Por favor, verifique.';
+                            signupError.classList.add('show');
+                            confirmPassword.style.borderColor = '#dc3545';
+                        } else if (signupPassword.value.length < 8) {
+                            signupError.textContent = 'A senha deve ter pelo menos 8 caracteres.';
+                            signupError.classList.add('show');
+                        } else {
+                            // Simulação de cadastro bem-sucedido
+                            const signupSuccess = document.getElementById('signup-success');
+                            if (signupSuccess) signupSuccess.classList.add('show');
+                            signupError.classList.remove('show');
+                            
+                            // Limpar formulário
+                            const signupForm = document.querySelector('.signup-form');
+                            if (signupForm) signupForm.reset();
+                            
+                            if (strengthMeter) strengthMeter.style.width = '0';
+                            if (strengthText) strengthText.textContent = 'Digite uma senha';
+                            
+                            // Alternar para a aba de login após 2 segundos
+                            setTimeout(() => {
+                                const loginFormTab = document.querySelector('[data-tab="login-form"]');
+                                if (loginFormTab) loginFormTab.click();
+                            }, 2000);
+                        }
+                    } catch (error) {
+                        console.error('Erro ao processar o cadastro:', error);
+                    }
+                });
+            }
+            
+            // Simulação de login
+            const submitLoginBtn = document.getElementById('submit-login');
+            if (submitLoginBtn) {
+                submitLoginBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    try {
+                        const email = document.getElementById('login-email');
+                        const password = document.getElementById('login-password');
+                        const loginSuccess = document.getElementById('login-success');
+                        const loginError = document.getElementById('login-error');
+                        
+                        if (!email || !password || !loginSuccess || !loginError) return;
+                        
+                        if (email.value && password.value) {
+                            loginSuccess.classList.add('show');
+                            loginError.classList.remove('show');
+                            
+                            // Limpar formulário
+                            const loginForm = document.querySelector('.login-form');
+                            if (loginForm) loginForm.reset();
+                            
+                            // Fechar modal após 2 segundos
+                            setTimeout(() => {
+                                if (loginModal) {
+                                    loginModal.classList.remove('active');
+                                    document.body.style.overflow = '';
+                                }
+                            }, 2000);
+                        } else {
+                            loginError.textContent = 'Por favor, preencha todos os campos.';
+                            loginError.classList.add('show');
+                        }
+                    } catch (error) {
+                        console.error('Erro ao processar o login:', error);
+                    }
+                });
+            }
+        });
+    </script>
+
+    <!-- Chatbot -->
+    <div class="chatbot-container">
+        <div class="chatbot-balao" id="chatbot-balao">
+            <p>Precisa de ajuda para encontrar seu carro ideal? 😊</p>
+        </div>
+        <div class="chatbot-icon" id="chatbot-icon">
+            <div class="chatbot-notification" id="chatbot-notification">1</div>
+            <img src="img/chat-icon.png" alt="Assistente Virtual" onerror="this.src='https://cdn-icons-png.flaticon.com/512/4712/4712035.png'">
+        </div>
+        <div class="chatbot-window" id="chatbot-window">
+            <div class="chatbot-header">
+                <div class="chatbot-status">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Online</span>
+                </div>
+                <h3>Assistente WebCars</h3>
+                <button class="chatbot-close" id="chatbot-close">&times;</button>
+            </div>
+            <div class="chatbot-messages" id="chatbot-messages">
+                <!-- Mensagens serão adicionadas aqui via JavaScript -->
+            </div>
+            <div class="chatbot-input">
+                <button id="attach-file" class="attach-button"><i class="fas fa-paperclip"></i></button>
+                <input type="text" id="user-input" placeholder="Digite sua mensagem..." autocomplete="off">
+                <button id="send-message" class="send-button"><i class="fas fa-paper-plane"></i></button>
+            </div>
+            <div class="chatbot-footer">
+                <span>Powered by WebCars IA</span>
+                <button id="clear-chat" class="clear-chat-button">Limpar conversa</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Script do Chatbot
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatbotIcon = document.getElementById('chatbot-icon');
+            const chatbotNotification = document.getElementById('chatbot-notification');
+            const chatbotBalao = document.getElementById('chatbot-balao');
+            const chatbotWindow = document.getElementById('chatbot-window');
+            const closeButton = document.getElementById('chatbot-close');
+            const messagesContainer = document.getElementById('chatbot-messages');
+            const userInput = document.getElementById('user-input');
+            const sendButton = document.getElementById('send-message');
+            const attachButton = document.getElementById('attach-file');
+            const clearChatButton = document.getElementById('clear-chat');
+            
+            // Armazenar histórico da conversa
+            let chatHistory = [];
+            let chatbotContext = {
+                expectingName: false,
+                expectingPhone: false,
+                expectingEmail: false,
+                expectingVehicleType: false,
+                expectingBudget: false,
+                expectingCity: false,
+                expectingVehicleTestDrive: false,
+                expectingCustomVehicle: false,
+                expectingTestDriveDate: false,
+                expectingCarValue: false,
+                expectingCarModel: false,
+                expectingCarYear: false,
+                expectingCarMileage: false,
+                expectingSellDecision: false,
+                expectingFinalDecision: false,
+                isTestDriveFlow: false,
+                isSellingFlow: false,
+                formCompleted: false,
+                messageId: 0 // Contador para IDs de mensagens
+            };
+            
+            // Configurações
+            const typingSpeed = 30; // Velocidade de digitação em ms por caractere
+            const initialResponseDelay = 800; // Tempo para começar a responder em ms
+            
+            // Dados de veículos pré-definidos para demonstração
+            const veiculosEmDestaque = [
+                {
+                    id: 'etron-2022',
+                    nome: 'Audi E-tron',
+                    preco: 'R$ 459.990',
+                    img: 'https://image.webmotors.com.br/_fotos/anunciousados/gigante/2025/202502/20250226/audi-etron-eletrico-sportback-performance-black-quattro-wmimagem16411974193.jpg?s=fill&w=552&h=414&q=60'
+                },
+                {
+                    id: 'compass-2023',
+                    nome: 'Jeep Compass',
+                    preco: 'R$ 166.990',
+                    img: 'https://image.webmotors.com.br/_fotos/anunciousados/gigante/2025/202503/20250320/jeep-compass-1-3-t270-turbo-flex-s-at6-wmimagem11110914342.webp?s=fill&w=552&h=414&q=60'
+                },
+                {
+                    id: 'hilux-2025',
+                    nome: 'Toyota Hilux',
+                    preco: 'R$ 351.800',
+                    img: 'https://image.webmotors.com.br/_fotos/anunciousados/gigante/2025/202503/20250314/toyota-hilux-2-8-d4d-turbo-diesel-cd-srx-plus-4x4-automatico-wmimagem17251698518.webp?s=fill&w=552&h=414&q=60'
+                }
+            ];
+                
+            // Respostas de saudação variadas
+            const saudacoes = [
+                "Olá! 👋 Sou o assistente virtual da WebCars. Como posso ajudar você hoje?",
+                "Oi! Bem-vindo à WebCars! Em que posso ser útil?",
+                "Olá! Que bom ter você aqui! Como posso ajudar na sua busca por veículos?",
+                "Olá! Estou aqui para tornar sua experiência WebCars ainda melhor. Como posso ajudar?"
+            ];
+            
+            // Emojis para categorias
+            const emojis = {
+                'carro': '🚗',
+                'financiamento': '💰',
+                'vender': '🏷️',
+                'testar': '🔑',
+                'ajuda': '❓',
+                'saudacao': '👋',
+                'feliz': '😊',
+                'informacao': 'ℹ️',
+                'alerta': '⚠️',
+                'erro': '❌',
+                'sucesso': '✅'
+            };
+            
+            // Mostrar o balão de mensagem após 2 segundos
+            setTimeout(() => {
+                chatbotBalao.classList.add('visible');
+                chatbotNotification.style.display = 'flex';
+                
+                // Animação de pulso para chamar atenção
+                chatbotIcon.classList.add('pulse');
+                
+                // Esconder o balão após 10 segundos se o usuário não interagir
+                setTimeout(() => {
+                    if (chatbotBalao.classList.contains('visible') && !chatbotWindow.classList.contains('open')) {
+                        chatbotBalao.classList.remove('visible');
+                    }
+                }, 10000);
+            }, 2000);
+            
+            // Fechar o balão ao clicar no ícone e abrir a janela de chat
+            chatbotIcon.addEventListener('click', () => {
+                chatbotBalao.classList.remove('visible');
+                chatbotWindow.classList.add('open');
+                chatbotNotification.style.display = 'none';
+                chatbotIcon.classList.remove('pulse');
+                
+                // Adicionar efeito de entrada das mensagens
+                messagesContainer.classList.add('fade-in');
+                
+                // Verificar se é primeira interação
+                if (chatHistory.length === 0) {
+                    showBotTyping();
+                    
+                    // Selecionar aleatoriamente uma saudação
+                    const saudacaoRandom = saudacoes[Math.floor(Math.random() * saudacoes.length)];
+                    
+                    setTimeout(() => {
+                        messagesContainer.innerHTML = ''; // Remover indicador de digitação
+                        addBotMessage(saudacaoRandom);
+                        
+                        // Adicionar opções de ajuda
+                        const options = [
+                            "Buscar veículos",
+                            "Financiamento",
+                            "Vender meu carro",
+                            "Agendar test drive"
+                        ];
+                        
+                        addOptions(options);
+                    }, initialResponseDelay);
+                }
+                
+                // Focar no campo de input para digitação imediata
+                setTimeout(() => {
+                    userInput.focus();
+                }, 300);
+            });
+            
+            // Fechar a janela de chat
+            closeButton.addEventListener('click', () => {
+                chatbotWindow.classList.remove('open');
+                messagesContainer.classList.remove('fade-in');
+            });
+            
+            // Limpar histórico de conversa
+            clearChatButton.addEventListener('click', () => {
+                // Confirmar antes de limpar
+                if (chatHistory.length > 0) {
+                    const confirmClear = document.createElement('div');
+                    confirmClear.classList.add('confirmation-message');
+                    confirmClear.innerHTML = `
+                        <p>Deseja realmente limpar a conversa?</p>
+                        <div class="confirmation-buttons">
+                            <button id="confirm-yes">Sim</button>
+                            <button id="confirm-no">Não</button>
+                        </div>
+                    `;
+                    messagesContainer.appendChild(confirmClear);
+                    scrollToBottom();
+                    
+                    document.getElementById('confirm-yes').addEventListener('click', () => {
+                        messagesContainer.innerHTML = ''; // Limpar todas as mensagens
+                        chatHistory = []; // Resetar histórico
+                        resetChatbotContext(); // Resetar contexto
+                        
+                        // Reiniciar conversa
+                        const saudacaoRandom = saudacoes[Math.floor(Math.random() * saudacoes.length)];
+                        addBotMessage(saudacaoRandom);
+                        
+                        const options = [
+                            "Buscar veículos",
+                            "Financiamento",
+                            "Vender meu carro",
+                            "Agendar test drive"
+                        ];
+                        
+                        addOptions(options);
+                    });
+                    
+                    document.getElementById('confirm-no').addEventListener('click', () => {
+                        confirmClear.remove();
+                    });
+                }
+            });
+            
+            // Simulação de envio de arquivo/imagem
+            attachButton.addEventListener('click', () => {
+                const fileOptions = [
+                    "Enviar foto do veículo",
+                    "Enviar documento",
+                    "Enviar comprovante"
+                ];
+                
+                const fileSelectionContainer = document.createElement('div');
+                fileSelectionContainer.classList.add('file-selection');
+                fileSelectionContainer.innerHTML = `
+                    <p>Selecione o tipo de arquivo:</p>
+                    <div class="file-options">
+                        ${fileOptions.map(option => `<button class="file-option">${option}</button>`).join('')}
+                    </div>
+                `;
+                messagesContainer.appendChild(fileSelectionContainer);
+                scrollToBottom();
+                
+                // Adicionar eventos para botões de seleção de arquivo
+                const fileOptionButtons = document.querySelectorAll('.file-option');
+                fileOptionButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        addUserMessage(`📎 ${button.textContent}`);
+                        fileSelectionContainer.remove();
+                        
+                        showBotTyping();
+                        setTimeout(() => {
+                            const typingIndicators = messagesContainer.querySelectorAll('.typing');
+                            typingIndicators.forEach(indicator => indicator.remove());
+                            
+                            addBotMessage(`${emojis.sucesso} Recebi seu arquivo! Nossa equipe irá analisar e entrar em contato em breve.`);
+                            
+                            // Adicionar pergunta de acompanhamento
+                            setTimeout(() => {
+                                addBotMessage("Posso ajudar com mais alguma coisa?");
+                                addOptions(["Sim, tenho outra dúvida", "Não, obrigado"]);
+                            }, 1000);
+                        }, 1500);
+                    });
+                });
+            });
+            
+            // Enviar mensagem quando o botão for clicado
+            sendButton.addEventListener('click', sendUserMessage);
+            
+            // Ou quando a tecla Enter for pressionada
+            userInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    sendUserMessage();
+                }
+            });
+            
+            // Efeito de digitação ao focar no input
+            userInput.addEventListener('focus', () => {
+                userInput.classList.add('typing-effect');
+                userInput.placeholder = "Digite aqui...";
+            });
+            
+            userInput.addEventListener('blur', () => {
+                userInput.classList.remove('typing-effect');
+                userInput.placeholder = "Digite sua mensagem...";
+            });
+            
+            // Função para enviar mensagem do usuário
+            function sendUserMessage() {
+                const message = userInput.value.trim();
+                if (message !== '') {
+                    addUserMessage(message);
+                    userInput.value = '';
+                    
+                    // Adicionar à história
+                    chatHistory.push({role: 'user', content: message});
+                    
+                    // Simulação de resposta do bot
+                    handleUserMessage(message);
+                    
+                    // Efeito de digitação ao enviar mensagem
+                    userInput.focus();
+                }
+            }
+            
+            // Adicionar mensagem do bot ao chat
+            function addBotMessage(message, withAnimation = true) {
+                // Gerar ID único para a mensagem
+                const messageId = `msg-${Date.now()}-${chatbotContext.messageId++}`;
+                
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message', 'bot-message');
+                messageElement.setAttribute('data-message-id', messageId);
+                
+                if (withAnimation) {
+                    // Criar efeito de digitação com timeout para cada caractere
+                    let i = 0;
+                    messageElement.textContent = "";
+                    messagesContainer.appendChild(messageElement);
+                    
+                    const typeNextChar = () => {
+                        if (i < message.length) {
+                            messageElement.textContent += message.charAt(i);
+                            scrollToBottom();
+                            i++;
+                            setTimeout(typeNextChar, typingSpeed);
+                        }
+                    };
+                    
+                    typeNextChar();
+                } else {
+                    messageElement.textContent = message;
+                    messagesContainer.appendChild(messageElement);
+                }
+                
+                // Adicionar à história
+                chatHistory.push({role: 'bot', content: message, id: messageId});
+                
+                scrollToBottom();
+                return messageId;
+            }
+            
+            // Adicionar mensagem do bot com rich content (imagens, cards, etc)
+            function addBotRichMessage(content) {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message', 'bot-message', 'rich-message');
+                messageElement.innerHTML = content;
+                messagesContainer.appendChild(messageElement);
+                
+                // Adicionar à história (como texto plano para simplicidade)
+                chatHistory.push({role: 'bot', content: 'Enviei algumas informações para você.'});
+                
+                scrollToBottom();
+            }
+            
+            // Adicionar lista de veículos recomendados
+            function addVehicleRecommendations(veiculos) {
+                let cardsHTML = `
+                <div class="message bot-message">
+                    <p>Encontrei estas opções que podem te interessar:</p>
+                </div>
+                <div class="vehicle-cards">
+                `;
+                
+                veiculos.forEach(veiculo => {
+                    cardsHTML += `
+                    <div class="vehicle-card" data-id="${veiculo.id}">
+                        <div class="vehicle-img">
+                            <img src="${veiculo.img}" alt="${veiculo.nome}">
+                        </div>
+                        <div class="vehicle-info">
+                            <h4>${veiculo.nome}</h4>
+                            <p class="vehicle-price">${veiculo.preco}</p>
+                            <button class="vehicle-details-btn" data-id="${veiculo.id}">Ver Detalhes</button>
+                        </div>
+                    </div>
+                    `;
+                });
+                
+                cardsHTML += `</div>`;
+                
+                addBotRichMessage(cardsHTML);
+                
+                // Adicionar eventos aos botões
+                setTimeout(() => {
+                    const detailButtons = document.querySelectorAll('.vehicle-details-btn');
+                    detailButtons.forEach(button => {
+                        button.addEventListener('click', () => {
+                            const veiculoId = button.getAttribute('data-id');
+                            window.open(`detalhe-veiculo.html?id=${veiculoId}`, '_blank');
+                        });
+                    });
+                    
+                    // Adicionar eventos de hover aos cards
+                    const vehicleCards = document.querySelectorAll('.vehicle-card');
+                    vehicleCards.forEach(card => {
+                        card.addEventListener('mouseenter', () => {
+                            card.classList.add('vehicle-card-hover');
+                        });
+                        
+                        card.addEventListener('mouseleave', () => {
+                            card.classList.remove('vehicle-card-hover');
+                        });
+                    });
+                }, 100);
+            }
+            
+            // Adicionar mensagem do usuário ao chat
+            function addUserMessage(message) {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message', 'user-message');
+                messageElement.textContent = message;
+                messagesContainer.appendChild(messageElement);
+                scrollToBottom();
+            }
+            
+            // Mostrar indicador de digitação do bot
+            function showBotTyping() {
+                const typingElement = document.createElement('div');
+                typingElement.classList.add('message', 'bot-message', 'typing');
+                typingElement.innerHTML = '<span></span><span></span><span></span>';
+                messagesContainer.appendChild(typingElement);
+                scrollToBottom();
+            }
+            
+            // Adicionar opções de resposta rápida
+            function addOptions(options) {
+                const optionsContainer = document.createElement('div');
+                optionsContainer.classList.add('options-container');
+                
+                options.forEach(option => {
+                    const button = document.createElement('button');
+                    button.classList.add('option-button');
+                    button.textContent = option;
+                    
+                    // Adicionar efeito de destaque quando mouse passa sobre botão
+                    button.addEventListener('mouseenter', () => {
+                        button.classList.add('option-highlight');
+                    });
+                    
+                    button.addEventListener('mouseleave', () => {
+                        button.classList.remove('option-highlight');
+                    });
+                    
+                    button.addEventListener('click', () => {
+                        addUserMessage(option);
+                        
+                        // Remover os botões após clicar em um
+                        const allOptionsContainers = document.querySelectorAll('.options-container');
+                        allOptionsContainers.forEach(container => {
+                            container.classList.add('fade-out');
+                            setTimeout(() => {
+                                container.remove();
+                            }, 300);
+                        });
+                        
+                        handleUserMessage(option);
+                    });
+                    
+                    optionsContainer.appendChild(button);
+                });
+                
+                messagesContainer.appendChild(optionsContainer);
+                scrollToBottom();
+            }
+            
+            // Processar mensagem do usuário e responder
+            function handleUserMessage(message) {
+                showBotTyping();
+                
+                // Simulando processamento e resposta do bot
+                setTimeout(() => {
+                    // Limpar TODOS os indicadores de digitação para garantir
+                    removeTypingIndicators();
+                    
+                    // Lógica para responder com base na mensagem
+                    const lowerMessage = message.toLowerCase();
+                    
+                    // IMPORTANTE: Primeiro verificar os contextos específicos antes de verificar palavras-chave gerais
+                    
+                    // Verificar contexto de venda de veículo
+                    if (chatbotContext.expectingCarValue) {
+                        chatbotContext.avaliacaoValor = message;
+                        chatbotContext.expectingCarValue = false;
+                        
+                        if (lowerMessage === "sim, já tenho") {
+                            addBotMessage(`${emojis.sucesso} Ótimo! Para prosseguirmos com o anúncio, precisamos de algumas informações sobre o seu veículo.`);
+                            setTimeout(() => {
+                                addBotMessage(`Qual é a marca e modelo do seu carro?`);
+                                chatbotContext.expectingCarModel = true;
+                            }, 500);
+                            return;
+                        } 
+                        else if (lowerMessage === "não, preciso avaliar") {
+                            addBotMessage(`${emojis.informacao} Sem problemas! Podemos ajudar você a avaliar seu veículo. Para uma avaliação precisa, precisamos de algumas informações.`);
+                            setTimeout(() => {
+                                addBotMessage(`Qual é a marca e modelo do seu carro?`);
+                                chatbotContext.expectingCarModel = true;
+                            }, 500);
+                            return;
+                        } 
+                        else if (lowerMessage === "quero só informações") {
+                            addBotMessage(`${emojis.informacao} A WebCars oferece um serviço completo para vendas de veículos, incluindo:`);
+                            addBotMessage(`• Anúncio em nossa plataforma com grande visibilidade\n• Avaliação gratuita do valor de mercado\n• Verificação de documentação\n• Acompanhamento da transação\n• Segurança no recebimento do pagamento`);
+                            
+                            setTimeout(() => {
+                                addBotMessage(`Gostaria de anunciar seu veículo conosco ou saber mais sobre o processo?`);
+                                addOptions(["Quero anunciar", "Mais informações", "Não, obrigado"]);
+                                chatbotContext.expectingSellDecision = true;
+                            }, 1000);
+                            return;
+                        }
+                    }
+
+                    if (chatbotContext.expectingCarModel) {
+                        chatbotContext.modeloCarro = message;
+                        chatbotContext.expectingCarModel = false;
+                        chatbotContext.expectingCarYear = true;
+                        
+                        addBotMessage(`${message}! Excelente escolha. Qual é o ano de fabricação/modelo?`);
+                        return;
+                    }
+
+                    if (chatbotContext.expectingCarYear) {
+                        chatbotContext.anoCarro = message;
+                        chatbotContext.expectingCarYear = false;
+                        chatbotContext.expectingCarMileage = true;
+                        
+                        addBotMessage(`Agora, por favor, informe a quilometragem atual do veículo:`);
+                        return;
+                    }
+
+                    if (chatbotContext.expectingCarMileage) {
+                        chatbotContext.quilometragemCarro = message;
+                        chatbotContext.expectingCarMileage = false;
+                        
+                        addBotMessage(`${emojis.sucesso} Perfeito! Com base nas informações fornecidas, podemos prosseguir para a etapa seguinte.`);
+                        addBotMessage(`Para completar o cadastro do seu ${chatbotContext.modeloCarro} ${chatbotContext.anoCarro} e receber uma avaliação personalizada, precisamos dos seus dados de contato.`);
+                        addBotMessage(`Por favor, informe seu nome completo:`);
+                        chatbotContext.expectingName = true;
+                        chatbotContext.isSellingFlow = true;
+                        return;
+                    }
+
+                    if (chatbotContext.expectingSellDecision) {
+                        chatbotContext.expectingSellDecision = false;
+                        
+                        if (lowerMessage === "quero anunciar") {
+                            addBotMessage(`${emojis.sucesso} Ótimo! Vamos começar o processo de anúncio do seu veículo.`);
+                            addBotMessage(`Qual é a marca e modelo do seu carro?`);
+                            chatbotContext.expectingCarModel = true;
+                            return;
+                        } 
+                        else if (lowerMessage === "mais informações") {
+                            addBotMessage(`${emojis.informacao} Claro! Veja como funciona o processo de venda na WebCars:`);
+                            addBotMessage(`1. Cadastro do veículo: você fornece informações e fotos\n2. Avaliação de mercado: estimamos o valor justo\n3. Publicação do anúncio: seu carro fica visível para milhares de compradores\n4. Negociação: intermediamos o contato com interessados\n5. Venda: auxiliamos na documentação e transação segura`);
+                            
+                            setTimeout(() => {
+                                addBotMessage(`Nossa taxa é de apenas 2% sobre o valor da venda, muito abaixo do mercado!`);
+                                setTimeout(() => {
+                                    addBotMessage(`Gostaria de começar o anúncio agora?`);
+                                    addOptions(["Sim, vamos começar", "Não, talvez depois"]);
+                                    chatbotContext.expectingFinalDecision = true;
+                                }, 1000);
+                            }, 1500);
+                            return;
+                        }
+                        else {
+                            // Se escolher "Não, obrigado" ou qualquer outra opção
+                            addBotMessage(`${emojis.informacao} Sem problemas! Se mudar de ideia ou precisar de ajuda para vender seu veículo, estamos à disposição.`);
+                            
+                            setTimeout(() => {
+                                addBotMessage(`Posso ajudar com mais alguma coisa?`);
+                                addOptions(["Buscar veículos", "Financiamento", "Agendar test drive", "Não, obrigado"]);
+                            }, 1000);
+                            return;
+                        }
+                    }
+
+                    if (chatbotContext.expectingFinalDecision) {
+                        chatbotContext.expectingFinalDecision = false;
+                        
+                        if (lowerMessage.includes("sim")) {
+                            addBotMessage(`${emojis.sucesso} Excelente! Vamos começar o processo.`);
+                            addBotMessage(`Qual é a marca e modelo do seu carro?`);
+                            chatbotContext.expectingCarModel = true;
+                            return;
+                        } else {
+                            addBotMessage(`${emojis.informacao} Tudo bem! Quando estiver pronto, é só voltar ao nosso chat para anunciar seu veículo.`);
+                            
+                            setTimeout(() => {
+                                addBotMessage(`Posso ajudar com mais alguma coisa?`);
+                                addOptions(["Buscar veículos", "Financiamento", "Agendar test drive", "Não, obrigado"]);
+                            }, 1000);
+                            return;
+                        }
+                    }
+
+                    // Continuação das outras verificações de contexto...
+                    if (chatbotContext.expectingName) {
+                        chatbotContext.nomeCliente = message;
+                        chatbotContext.expectingName = false;
+                        chatbotContext.expectingPhone = true;
+                        
+                        if (chatbotContext.isTestDriveFlow) {
+                            addBotMessage(`Prazer em conhecê-lo, ${message}! ${emojis.feliz} Agora, poderia me informar seu telefone para confirmarmos o agendamento?`);
+                        } else if (chatbotContext.isSellingFlow) {
+                            addBotMessage(`Prazer em conhecê-lo, ${message}! ${emojis.feliz} Agora, poderia me informar seu telefone para que nossos especialistas entrem em contato sobre seu ${chatbotContext.modeloCarro}?`);
+                        } else {
+                            addBotMessage(`Prazer em conhecê-lo, ${message}! ${emojis.feliz} Agora, poderia me informar seu telefone para contato?`);
+                        }
+                        return;
+                    }
+
+                    if (chatbotContext.expectingPhone) {
+                        chatbotContext.telefoneCliente = message;
+                        chatbotContext.expectingPhone = false;
+                        chatbotContext.expectingEmail = true;
+                        
+                        addBotMessage(`Ótimo! E qual é o seu e-mail?`);
+                        return;
+                    }
+
+                    if (chatbotContext.expectingEmail) {
+                        chatbotContext.emailCliente = message;
+                        chatbotContext.expectingEmail = false;
+                        chatbotContext.formCompleted = true;
+                        
+                        addBotMessage(`${emojis.sucesso} Perfeito! Seus dados foram registrados com sucesso.`);
+                        
+                        setTimeout(() => {
+                            if (chatbotContext.isTestDriveFlow) {
+                                addBotMessage(`Um de nossos consultores entrará em contato com você em breve no número ${chatbotContext.telefoneCliente} para confirmar seu test drive do ${chatbotContext.veiculoTestar} em ${chatbotContext.cidadeCliente}.`);
+                                
+                                setTimeout(() => {
+                                    addBotMessage(`Deseja receber mais informações sobre o ${chatbotContext.veiculoTestar} ou outro veículo?`);
+                                    addOptions(["Sim, sobre este modelo", "Sim, sobre outro modelo", "Não, obrigado"]);
+                                }, 1000);
+                            } else if (chatbotContext.isSellingFlow) {
+                                addBotMessage(`Um de nossos especialistas entrará em contato com você em breve no número ${chatbotContext.telefoneCliente} para avaliarmos seu ${chatbotContext.modeloCarro} ${chatbotContext.anoCarro} e dar continuidade ao processo de venda.`);
+                                
+                                setTimeout(() => {
+                                    addBotMessage(`Enquanto isso, gostaria de conhecer alguns de nossos veículos disponíveis?`);
+                                    addOptions(["Sim, quero ver", "Não, obrigado"]);
+                                }, 1000);
+                            } else {
+                                addBotMessage(`Um de nossos consultores entrará em contato com você em breve no número ${chatbotContext.telefoneCliente}.`);
+                                
+                                setTimeout(() => {
+                                    addBotMessage(`Enquanto isso, gostaria de ver alguns de nossos veículos em destaque?`);
+                                    addOptions(["Sim, quero ver", "Não, obrigado"]);
+                                }, 1000);
+                            }
+                        }, 1500);
+                        
+                        return;
+                    }
+
+                    if (chatbotContext.expectingVehicleTestDrive) {
+                        chatbotContext.veiculoTestar = message;
+                        chatbotContext.expectingVehicleTestDrive = false;
+                        
+                        if (lowerMessage === "outro modelo") {
+                            addBotMessage(`Por favor, informe qual modelo você tem interesse em testar:`);
+                            chatbotContext.expectingCustomVehicle = true;
+                            return;
+                        } else {
+                            addBotMessage(`Ótima escolha! O ${message} está disponível para test drive. Quando você gostaria de fazer o test drive?`);
+                            addOptions(["Hoje", "Amanhã", "Esta semana", "Próxima semana"]);
+                            chatbotContext.expectingTestDriveDate = true;
+                            return;
+                        }
+                    }
+
+                    if (chatbotContext.expectingCustomVehicle) {
+                        chatbotContext.veiculoTestar = message;
+                        chatbotContext.expectingCustomVehicle = false;
+                        
+                        addBotMessage(`Entendi! Vamos verificar a disponibilidade do ${message} para test drive. Quando você gostaria de fazer o test drive?`);
+                        addOptions(["Hoje", "Amanhã", "Esta semana", "Próxima semana"]);
+                        chatbotContext.expectingTestDriveDate = true;
+                        return;
+                    }
+
+                    if (chatbotContext.expectingTestDriveDate) {
+                        chatbotContext.dataTestDrive = message;
+                        chatbotContext.expectingTestDriveDate = false;
+                        
+                        addBotMessage(`${emojis.sucesso} Perfeito! Para confirmarmos seu test drive do ${chatbotContext.veiculoTestar} em ${chatbotContext.cidadeCliente} para ${message.toLowerCase()}, precisamos de algumas informações.`);
+                        addBotMessage(`Por favor, informe seu nome completo:`);
+                        chatbotContext.expectingName = true;
+                        chatbotContext.isTestDriveFlow = true;
+                        return;
+                    }
+
+                    if (chatbotContext.expectingVehicleType) {
+                        chatbotContext.tipoVeiculo = message;
+                        chatbotContext.expectingVehicleType = false;
+                        chatbotContext.expectingBudget = true;
+                        
+                        addBotMessage(`Entendi que você está interessado em ${message.toLowerCase()}. Qual é seu orçamento aproximado?`);
+                        addOptions(["Até R$100 mil", "R$100 mil a R$200 mil", "R$200 mil a R$500 mil", "Acima de R$500 mil"]);
+                        return;
+                    }
+
+                    if (chatbotContext.expectingBudget) {
+                        chatbotContext.orcamento = message;
+                        chatbotContext.expectingBudget = false;
+                        
+                        addBotMessage(`${emojis.sucesso} Ótimo! Com base nas suas preferências, encontrei algumas opções que podem te interessar:`);
+                        
+                        // Mostrar veículos recomendados
+                        setTimeout(() => {
+                            addVehicleRecommendations(veiculosEmDestaque);
+                            
+                            setTimeout(() => {
+                                addBotMessage(`Posso ajudar com mais informações sobre algum desses veículos ou com uma simulação de financiamento?`);
+                                addOptions(["Quero financiar", "Mais informações", "Agendar test drive", "Não, obrigado"]);
+                            }, 1000);
+                        }, 1000);
+                        
+                        return;
+                    }
+
+                    if (chatbotContext.expectingCity) {
+                        chatbotContext.cidadeCliente = message;
+                        chatbotContext.expectingCity = false;
+                        chatbotContext.expectingVehicleTestDrive = true;
+                        
+                        if (lowerMessage === "outra cidade") {
+                            addBotMessage(`Infelizmente ainda não temos unidades na sua cidade. Mas você pode deixar seus dados para entrarmos em contato quando expandirmos nossa operação.`);
+                            addBotMessage(`Por favor, informe seu nome completo:`);
+                            chatbotContext.expectingName = true;
+                            return;
+                        } else {
+                            addBotMessage(`Perfeito! Temos diversas unidades em ${message}. Qual veículo você gostaria de testar?`);
+                            addOptions(["Audi E-tron", "Jeep Compass", "Toyota Hilux", "Outro modelo"]);
+                            return;
+                        }
+                    }
+
+                    // Verificar por palavras-chave na mensagem
+                    if (lowerMessage.includes('buscar') || lowerMessage.includes('veículo') || lowerMessage.includes('comprar')) {
+                        chatbotContext.expectingVehicleType = true;
+                        
+                        addBotMessage(`${emojis.carro} Que tipo de veículo você está procurando? Temos várias opções disponíveis:`);
+                        addOptions(["Carros novos", "Seminovos", "SUVs", "Picapes", "Elétricos", "Híbridos"]);
+                    } 
+                    else if (lowerMessage.includes('vender meu carro') || lowerMessage.includes('vender') || (lowerMessage.includes('vender') && lowerMessage.includes('carro'))) {
+                        // Resetar o contexto para evitar problemas
+                        resetChatbotContext();
+                        chatbotContext.expectingCarValue = true;
+                        
+                        addBotMessage(`${emojis.vender} Para vender seu veículo na WebCars, precisamos de algumas informações básicas. Você já tem uma avaliação do valor do seu carro?`);
+                        addOptions(["Sim, já tenho", "Não, preciso avaliar", "Quero só informações"]);
+                        return;
+                    }
+                    else if (lowerMessage.includes('financiamento') || lowerMessage.includes('financiar') || lowerMessage.includes('parcela')) {
+                        addBotMessage(`${emojis.financiamento} Posso te ajudar com uma simulação de financiamento personalizada. Quanto você pretende dar de entrada?`);
+                        
+                        // Adicionar slider interativo para entrada
+                        const sliderHTML = `
+                            <div class="chatbot-simulator">
+                                <div class="simulator-control">
+                                    <label>Valor de entrada: <span id="entrada-valor">R$ 30.000</span></label>
+                                    <input type="range" id="entrada-slider" min="10000" max="100000" step="5000" value="30000">
+                                </div>
+                                <div class="simulator-control">
+                                    <label>Prazo (meses): <span id="prazo-valor">36</span></label>
+                                    <input type="range" id="prazo-slider" min="12" max="60" step="6" value="36">
+                                </div>
+                                <div class="simulator-result">
+                                    <p>Parcela estimada: <span id="parcela-valor">R$ 1.200,00</span></p>
+                                </div>
+                                <button id="solicitar-financiamento" class="simulator-button">Solicitar financiamento</button>
+                            </div>
+                        `;
+                        
+                        addBotRichMessage(sliderHTML);
+                        
+                        // Configurar sliders e cálculos
+                        setTimeout(() => {
+                            const entradaSlider = document.getElementById('entrada-slider');
+                            const prazoSlider = document.getElementById('prazo-slider');
+                            const entradaValor = document.getElementById('entrada-valor');
+                            const prazoValor = document.getElementById('prazo-valor');
+                            const parcelaValor = document.getElementById('parcela-valor');
+                            const solicitarBtn = document.getElementById('solicitar-financiamento');
+                            
+                            function atualizarSimulacao() {
+                                const entrada = parseInt(entradaSlider.value);
+                                const prazo = parseInt(prazoSlider.value);
+                                
+                                // Simulação simples
+                                const valorVeiculo = 150000;
+                                const taxaJuros = 1.2; // 1.2% ao mês
+                                const valorFinanciado = valorVeiculo - entrada;
+                                
+                                // Cálculo de parcela (simulação básica)
+                                const fator = Math.pow(1 + (taxaJuros/100), prazo);
+                                const parcela = valorFinanciado * (taxaJuros/100) * fator / (fator - 1);
+                                
+                                entradaValor.textContent = `R$ ${entrada.toLocaleString('pt-BR')}`;
+                                prazoValor.textContent = prazo;
+                                parcelaValor.textContent = `R$ ${parcela.toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, ".")}`;
+                            }
+                            
+                            entradaSlider.addEventListener('input', atualizarSimulacao);
+                            prazoSlider.addEventListener('input', atualizarSimulacao);
+                            
+                            solicitarBtn.addEventListener('click', () => {
+                                const entrada = parseInt(entradaSlider.value);
+                                const prazo = parseInt(prazoSlider.value);
+                                
+                                addUserMessage(`Quero solicitar financiamento com entrada de R$ ${entrada.toLocaleString('pt-BR')} em ${prazo} meses`);
+                                
+                                showBotTyping();
+                                
+                                setTimeout(() => {
+                                    const typingIndicators = messagesContainer.querySelectorAll('.typing');
+                                    typingIndicators.forEach(indicator => indicator.remove());
+                                    
+                                    addBotMessage(`${emojis.sucesso} Ótimo! Para prosseguir com a simulação de financiamento, precisamos de alguns dados. Qual é o seu nome completo?`);
+                                    chatbotContext.expectingName = true;
+                                }, 1200);
+                            });
+                            
+                            // Inicializar simulação
+                            atualizarSimulacao();
+                        }, 100);
+                    }
+                    else if (lowerMessage.includes('test drive') || lowerMessage.includes('testar') || lowerMessage.includes('experimentar')) {
+                        addBotMessage(`${emojis.testar} Agendar um test drive é uma ótima forma de conhecer melhor o veículo! Em qual cidade você está?`);
+                        chatbotContext.expectingCity = true;
+                        addOptions(["São Paulo", "Rio de Janeiro", "Belo Horizonte", "Curitiba", "Outra cidade"]);
+                    }
+                    else if (lowerMessage.includes('ajuda') || lowerMessage.includes('dúvida') || lowerMessage.includes('suporte')) {
+                        addBotMessage(`${emojis.ajuda} Estou aqui para ajudar! Como posso ser útil hoje?`);
+                        addOptions([
+                            "Comprar veículo", 
+                            "Vender veículo", 
+                            "Serviços e manutenção", 
+                            "Financiamento", 
+                            "Falar com atendente"
+                        ]);
+                    }
+                    else if (lowerMessage.includes('preço') || lowerMessage.includes('valor') || lowerMessage.includes('quanto custa')) {
+                        addBotMessage(`${emojis.informacao} Os preços variam conforme o modelo, ano e características do veículo. Qual categoria de veículo você tem interesse?`);
+                        chatbotContext.expectingVehicleType = true;
+                        addOptions(["SUVs", "Sedans", "Picapes", "Elétricos", "Hatches", "Premium"]);
+                    }
+                    else if (lowerMessage.includes('olá') || lowerMessage.includes('oi') || lowerMessage.includes('bom dia') || lowerMessage.includes('boa tarde') || lowerMessage.includes('boa noite')) {
+                        // Selecionar aleatoriamente uma saudação
+                        const saudacaoRandom = saudacoes[Math.floor(Math.random() * saudacoes.length)];
+                        addBotMessage(saudacaoRandom);
+                        addOptions(["Comprar veículo", "Vender meu carro", "Financiamento", "Suporte"]);
+                    }
+                    else if (lowerMessage.includes('atendente') || lowerMessage.includes('pessoa') || lowerMessage.includes('humano') || lowerMessage.includes('consultor')) {
+                        addBotMessage(`${emojis.informacao} Para falar com um de nossos consultores especializados, por favor informe seu nome completo:`);
+                        chatbotContext.expectingName = true;
+                    }
+                    else if (lowerMessage.includes('obrigado') || lowerMessage.includes('obrigada') || lowerMessage.includes('valeu') || lowerMessage.includes('agradeço')) {
+                        addBotMessage(`${emojis.feliz} Foi um prazer te ajudar! Se precisar de qualquer outra informação, é só me chamar. Tenha um ótimo dia!`);
+                    }
+                    else if (lowerMessage.includes('sim, quero ver')) {
+                        addBotMessage(`${emojis.carro} Ótimo! Separei estes veículos em destaque para você conhecer:`);
+                        
+                        setTimeout(() => {
+                            addVehicleRecommendations(veiculosEmDestaque);
+                            
+                            setTimeout(() => {
+                                addBotMessage(`Gostou de algum desses modelos? Você pode clicar em "Ver Detalhes" para mais informações.`);
+                            }, 1000);
+                        }, 1000);
+                    }
+                    else {
+                        addBotMessage(`${emojis.informacao} Posso ajudar com informações sobre nossos veículos e serviços. O que você gostaria de saber?`);
+                        addOptions([
+                            "Veículos disponíveis", 
+                            "Financiamento", 
+                            "Vender meu carro", 
+                            "Agendar test drive",
+                            "Falar com atendente"
+                        ]);
+                    }
+                }, initialResponseDelay);
+            }
+            
+            // Rolar para o final das mensagens
+            function scrollToBottom() {
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+
+            // Função para remover indicadores de digitação
+            function removeTypingIndicators() {
+                const typingIndicators = messagesContainer.querySelectorAll('.typing');
+                typingIndicators.forEach(indicator => indicator.remove());
+            }
+
+            // Função para resetar o contexto do chatbot (exceto histórico)
+            function resetChatbotContext() {
+                Object.keys(chatbotContext).forEach(key => {
+                    if (key !== 'messageId') {
+                        if (key.startsWith('expecting')) {
+                            chatbotContext[key] = false;
+                        } else if (key.startsWith('is')) {
+                            chatbotContext[key] = false;
+                        }
+                    }
+                });
+                
+                // Manter outros valores como undefined em vez de false
+                chatbotContext.nomeCliente = undefined;
+                chatbotContext.telefoneCliente = undefined;
+                chatbotContext.emailCliente = undefined;
+                chatbotContext.modeloCarro = undefined;
+                chatbotContext.anoCarro = undefined;
+                chatbotContext.quilometragemCarro = undefined;
+                chatbotContext.cidadeCliente = undefined;
+                chatbotContext.veiculoTestar = undefined;
+            }
+        });
+    </script>
+
+    <script>
+        // Funções para autenticação social
+        function loginWithGoogle() {
+            try {
+                // Exibir mensagem de carregamento
+                const loginSuccess = document.getElementById('login-success');
+                const loginError = document.getElementById('login-error');
+                const googleBtn = document.getElementById('google-login-btn');
+                
+                if (loginSuccess && loginError && googleBtn) {
+                    // Adicionar classe de animação e desativar botão
+                    googleBtn.classList.add('authenticating');
+                    googleBtn.disabled = true;
+                    
+                    loginSuccess.textContent = 'Conectando com Google...';
+                    loginSuccess.classList.add('show');
+                    loginError.classList.remove('show');
+                    
+                    // Simulando login com Google (em produção, use a API do Google)
+                    setTimeout(() => {
+                        // Remover classe de animação
+                        googleBtn.classList.remove('authenticating');
+                        googleBtn.disabled = false;
+                        
+                        // Verificar se autenticação foi bem-sucedida (simulação)
+                        const success = Math.random() > 0.2; // 80% de chance de sucesso
+                        
+                        if (success) {
+                            loginSuccess.textContent = 'Login com Google realizado com sucesso!';
+                            
+                            // Fechar modal após 2 segundos
+                            setTimeout(() => {
+                                const loginModal = document.getElementById('login-modal-overlay');
+                                if (loginModal) {
+                                    loginModal.classList.remove('active');
+                                    document.body.style.overflow = '';
+                                }
+                            }, 2000);
+                        } else {
+                            // Simulação de erro
+                            loginSuccess.classList.remove('show');
+                            loginError.textContent = 'Não foi possível conectar com o Google. Tente novamente.';
+                            loginError.classList.add('show');
+                        }
+                    }, 2000);
+                }
+            } catch (error) {
+                console.error('Erro ao fazer login com Google:', error);
+                const loginError = document.getElementById('login-error');
+                const googleBtn = document.getElementById('google-login-btn');
+                
+                if (loginError) {
+                    loginError.textContent = 'Erro ao conectar com Google. Tente novamente.';
+                    loginError.classList.add('show');
+                }
+                
+                if (googleBtn) {
+                    googleBtn.classList.remove('authenticating');
+                    googleBtn.disabled = false;
+                }
+            }
+        }
+
+        function loginWithFacebook() {
+            try {
+                // Exibir mensagem de carregamento
+                const loginSuccess = document.getElementById('login-success');
+                const loginError = document.getElementById('login-error');
+                const facebookBtn = document.getElementById('facebook-login-btn');
+                
+                if (loginSuccess && loginError && facebookBtn) {
+                    // Adicionar classe de animação e desativar botão
+                    facebookBtn.classList.add('authenticating');
+                    facebookBtn.disabled = true;
+                    
+                    loginSuccess.textContent = 'Conectando com Facebook...';
+                    loginSuccess.classList.add('show');
+                    loginError.classList.remove('show');
+                    
+                    // Simulando login com Facebook (em produção, use a API do Facebook)
+                    setTimeout(() => {
+                        // Remover classe de animação
+                        facebookBtn.classList.remove('authenticating');
+                        facebookBtn.disabled = false;
+                        
+                        // Verificar se autenticação foi bem-sucedida (simulação)
+                        const success = Math.random() > 0.2; // 80% de chance de sucesso
+                        
+                        if (success) {
+                            loginSuccess.textContent = 'Login com Facebook realizado com sucesso!';
+                            
+                            // Fechar modal após 2 segundos
+                            setTimeout(() => {
+                                const loginModal = document.getElementById('login-modal-overlay');
+                                if (loginModal) {
+                                    loginModal.classList.remove('active');
+                                    document.body.style.overflow = '';
+                                }
+                            }, 2000);
+                        } else {
+                            // Simulação de erro
+                            loginSuccess.classList.remove('show');
+                            loginError.textContent = 'Não foi possível conectar com o Facebook. Tente novamente.';
+                            loginError.classList.add('show');
+                        }
+                    }, 2000);
+                }
+            } catch (error) {
+                console.error('Erro ao fazer login com Facebook:', error);
+                const loginError = document.getElementById('login-error');
+                const facebookBtn = document.getElementById('facebook-login-btn');
+                
+                if (loginError) {
+                    loginError.textContent = 'Erro ao conectar com Facebook. Tente novamente.';
+                    loginError.classList.add('show');
+                }
+                
+                if (facebookBtn) {
+                    facebookBtn.classList.remove('authenticating');
+                    facebookBtn.disabled = false;
+                }
+            }
+        }
+
+        function signupWithGoogle() {
+            try {
+                // Exibir mensagem de carregamento
+                const signupSuccess = document.getElementById('signup-success');
+                const signupError = document.getElementById('signup-error');
+                const googleBtn = document.getElementById('google-signup-btn');
+                
+                if (signupSuccess && signupError && googleBtn) {
+                    // Adicionar classe de animação e desativar botão
+                    googleBtn.classList.add('authenticating');
+                    googleBtn.disabled = true;
+                    
+                    signupSuccess.textContent = 'Registrando com Google...';
+                    signupSuccess.classList.add('show');
+                    signupError.classList.remove('show');
+                    
+                    // Simulando cadastro com Google (em produção, use a API do Google)
+                    setTimeout(() => {
+                        // Remover classe de animação
+                        googleBtn.classList.remove('authenticating');
+                        googleBtn.disabled = false;
+                        
+                        // Verificar se autenticação foi bem-sucedida (simulação)
+                        const success = Math.random() > 0.2; // 80% de chance de sucesso
+                        
+                        if (success) {
+                            signupSuccess.textContent = 'Conta criada com Google com sucesso!';
+                            
+                            // Alternar para a aba de login após 2 segundos
+                            setTimeout(() => {
+                                const loginFormTab = document.querySelector('[data-tab="login-form"]');
+                                if (loginFormTab) loginFormTab.click();
+                            }, 2000);
+                        } else {
+                            // Simulação de erro
+                            signupSuccess.classList.remove('show');
+                            signupError.textContent = 'Não foi possível registrar com o Google. Tente novamente.';
+                            signupError.classList.add('show');
+                        }
+                    }, 2000);
+                }
+            } catch (error) {
+                console.error('Erro ao fazer cadastro com Google:', error);
+                const signupError = document.getElementById('signup-error');
+                const googleBtn = document.getElementById('google-signup-btn');
+                
+                if (signupError) {
+                    signupError.textContent = 'Erro ao registrar com Google. Tente novamente.';
+                    signupError.classList.add('show');
+                }
+                
+                if (googleBtn) {
+                    googleBtn.classList.remove('authenticating');
+                    googleBtn.disabled = false;
+                }
+            }
+        }
+
+        function signupWithFacebook() {
+            try {
+                // Exibir mensagem de carregamento
+                const signupSuccess = document.getElementById('signup-success');
+                const signupError = document.getElementById('signup-error');
+                const facebookBtn = document.getElementById('facebook-signup-btn');
+                
+                if (signupSuccess && signupError && facebookBtn) {
+                    // Adicionar classe de animação e desativar botão
+                    facebookBtn.classList.add('authenticating');
+                    facebookBtn.disabled = true;
+                    
+                    signupSuccess.textContent = 'Registrando com Facebook...';
+                    signupSuccess.classList.add('show');
+                    signupError.classList.remove('show');
+                    
+                    // Simulando cadastro com Facebook (em produção, use a API do Facebook)
+                    setTimeout(() => {
+                        // Remover classe de animação
+                        facebookBtn.classList.remove('authenticating');
+                        facebookBtn.disabled = false;
+                        
+                        // Verificar se autenticação foi bem-sucedida (simulação)
+                        const success = Math.random() > 0.2; // 80% de chance de sucesso
+                        
+                        if (success) {
+                            signupSuccess.textContent = 'Conta criada com Facebook com sucesso!';
+                            
+                            // Alternar para a aba de login após 2 segundos
+                            setTimeout(() => {
+                                const loginFormTab = document.querySelector('[data-tab="login-form"]');
+                                if (loginFormTab) loginFormTab.click();
+                            }, 2000);
+                        } else {
+                            // Simulação de erro
+                            signupSuccess.classList.remove('show');
+                            signupError.textContent = 'Não foi possível registrar com o Facebook. Tente novamente.';
+                            signupError.classList.add('show');
+                        }
+                    }, 2000);
+                }
+            } catch (error) {
+                console.error('Erro ao fazer cadastro com Facebook:', error);
+                const signupError = document.getElementById('signup-error');
+                const facebookBtn = document.getElementById('facebook-signup-btn');
+                
+                if (signupError) {
+                    signupError.textContent = 'Erro ao registrar com Facebook. Tente novamente.';
+                    signupError.classList.add('show');
+                }
+                
+                if (facebookBtn) {
+                    facebookBtn.classList.remove('authenticating');
+                    facebookBtn.disabled = false;
+                }
+            }
+        }
+
+        // Configurar Event Listeners para botões de login social
+        document.addEventListener('DOMContentLoaded', function() {
+            // Botões de login social
+            const googleLoginBtn = document.getElementById('google-login-btn');
+            const facebookLoginBtn = document.getElementById('facebook-login-btn');
+            const googleSignupBtn = document.getElementById('google-signup-btn');
+            const facebookSignupBtn = document.getElementById('facebook-signup-btn');
+            
+            // Verificar se cada botão existe antes de adicionar eventos
+            if (googleLoginBtn) {
+                googleLoginBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loginWithGoogle();
+                });
+            }
+            
+            if (facebookLoginBtn) {
+                facebookLoginBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loginWithFacebook();
+                });
+            }
+            
+            if (googleSignupBtn) {
+                googleSignupBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    signupWithGoogle();
+                });
+            }
+            
+            if (facebookSignupBtn) {
+                facebookSignupBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    signupWithFacebook();
+                });
+            }
+        });
+    </script>
+</body>
+</html> 
+

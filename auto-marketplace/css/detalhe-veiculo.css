@@ -1,0 +1,496 @@
+/* Estilos para Página de Detalhes do Veículo */
+.container-detalhes-veiculo {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #f9f9f9;
+}
+
+.secao-informacoes-principais {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.titulo-veiculo {
+    text-align: center;
+}
+
+.titulo-veiculo h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.titulo-veiculo .localizacao {
+    color: #666;
+    font-size: 1rem;
+}
+
+.galeria-fotos {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.galeria-principal {
+    width: 100%;
+    height: 500px;
+}
+
+.galeria-principal .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.galeria-miniaturas {
+    width: 100%;
+    height: 100px;
+}
+
+.galeria-miniaturas .swiper-slide {
+    width: 150px;
+    height: 100px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.galeria-miniaturas .swiper-slide-active {
+    opacity: 1;
+}
+
+.galeria-miniaturas .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.detalhes-veiculo {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tabela-detalhes {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.tabela-detalhes table {
+    width: 48%;
+    border-collapse: separate;
+    border-spacing: 0 0.5rem;
+}
+
+.tabela-detalhes th {
+    text-align: left;
+    color: #666;
+    font-weight: normal;
+    padding-right: 1rem;
+}
+
+.tabela-detalhes td {
+    font-weight: bold;
+    color: #333;
+}
+
+.diferenciais-anuncio {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.diferencial {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #f0f0f0;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    color: #007bff;
+}
+
+.diferencial i {
+    font-size: 1.2rem;
+}
+
+.descricao-veiculo h3 {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.descricao-veiculo p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.secao-preco-contato {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.preco-veiculo h2 {
+    font-size: 2.5rem;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.formulario-contato {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.formulario-contato input,
+.formulario-contato textarea {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.formulario-contato textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+.formulario-contato button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+
+.formulario-contato button:hover {
+    background-color: #0056b3;
+}
+
+.localizacao-veiculo {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.localizacao-veiculo h3 {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.mapa {
+    width: 100%;
+    height: 400px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.btn-como-chegar {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-como-chegar:hover {
+    background-color: #0056b3;
+}
+
+.secao-informacoes-vendedor {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dados-concessionaria h2 {
+    margin-bottom: 1rem;
+    color: #007bff;
+}
+
+.contato-concessionaria,
+.conquistas-concessionaria {
+    margin-top: 1rem;
+    color: #666;
+}
+
+.whatsapp-contato {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.whatsapp-contato a {
+    display: flex;
+    align-items: center;
+    background-color: #25d366;
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-contato a:hover {
+    transform: scale(1.05);
+}
+
+.whatsapp-contato a i {
+    margin-right: 0.5rem;
+    font-size: 1.5rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container-detalhes-veiculo {
+        padding: 1rem;
+    }
+
+    .titulo-veiculo h1 {
+        font-size: 2rem;
+    }
+
+    .galeria-principal {
+        height: 300px;
+    }
+
+    .galeria-miniaturas {
+        height: 80px;
+    }
+
+    .tabela-detalhes {
+        flex-direction: column;
+    }
+
+    .tabela-detalhes table {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .diferenciais-anuncio {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .secao-preco-contato {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .preco-veiculo h2 {
+        font-size: 2rem;
+    }
+
+    .formulario-contato {
+        width: 100%;
+    }
+
+    .mapa {
+        height: 250px;
+    }
+}
+
+:root {
+    --cor-primaria: #0066cc;
+    --cor-secundaria: #f4f4f4;
+    --cor-texto: #333;
+    --fonte-principal: 'Roboto', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fonte-principal);
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+
+.container-detalhes {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.galeria-veiculo .swiper-slide img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.informacoes-veiculo .info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.informacoes-veiculo .preco-veiculo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--cor-primaria);
+}
+
+.detalhes-principais {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.detalhe-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--cor-secundaria);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.detalhe-item i {
+    font-size: 2rem;
+    color: var(--cor-primaria);
+}
+
+.acoes-veiculo {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.btn-whatsapp, .btn-como-chegar {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-whatsapp {
+    background-color: #25D366;
+    color: white;
+}
+
+.btn-como-chegar {
+    background-color: var(--cor-primaria);
+    color: white;
+}
+
+.formulario-contato {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.formulario-contato input,
+.formulario-contato textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--cor-secundaria);
+    border-radius: 5px;
+}
+
+.formulario-contato button {
+    background-color: var(--cor-primaria);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.localizacao-mapa {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.mapa-container {
+    height: 400px;
+    width: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .container-detalhes {
+        grid-template-columns: 1fr;
+    }
+}
+
+.informacoes-adicionais {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    border: 1px solid #e0e0e0;
+}
+
+.informacoes-adicionais .info-adicional-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.informacoes-adicionais .info-adicional-item:last-of-type {
+    border-bottom: none;
+}
+
+.informacoes-adicionais .opcionais-veiculo {
+    margin-top: 20px;
+}
+
+.informacoes-adicionais .opcionais-veiculo h4 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.informacoes-adicionais .opcionais-veiculo ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.informacoes-adicionais .opcionais-veiculo li {
+    color: #666;
+} 

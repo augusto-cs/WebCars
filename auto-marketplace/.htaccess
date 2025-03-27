@@ -1,0 +1,5 @@
+# Habilitar reescrita de URL
+RewriteEngine On
+
+# Regra para redirecionar /veiculo/123 para detalhe-veiculo.html?id=123
+RewriteRule ^veiculo/([0-9]+)$ detalhe-veiculo.html?id=$1 [L,QSA] 

@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUDI E-TRON - WebCars</title>
+    
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            padding-top: 80px;
+        }
+
+        :root {
+            --cor-primaria: #1e3a8a;
+            --cor-secundaria: #FF5722;
+            --cor-destaque: #25D366;
+            --cor-fundo-card: #ffffff;
+            --cor-texto: #333333;
+            --cor-texto-suave: #666666;
+            --raio-borda: 8px;
+            --sombra-1: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            --sombra-2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+            --border-radius: 8px;
+            --shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            height: 60px;
+        }
+
+        .logo img {
+            height: 100%;
+            object-fit: contain;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 1.5rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--cor-texto);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--cor-primaria);
+        }
+
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--cor-primaria);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        .container-detalhes {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .galeria {
+            background-color: white;
+            border-radius: var(--raio-borda);
+            overflow: hidden;
+            margin-bottom: 2rem;
+            box-shadow: var(--sombra-1);
+        }
+
+        .galeria-fotos {
+            width: 100%;
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .foto-principal {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .foto-principal.ativo {
+            opacity: 1;
+            z-index: 10;
+        }
+
+        .foto-principal img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        .miniaturas {
+            display: flex;
+            overflow-x: auto;
+            padding: 1rem;
+            gap: 0.5rem;
+            background-color: #f3f3f3;
+            scrollbar-width: thin;
+            scrollbar-color: var(--cor-primaria) #f1f1f1;
+        }
+
+        .miniatura {
+            width: 90px;
+            height: 70px;
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .miniatura.ativo {
+            opacity: 1;
+            border-color: var(--cor-primaria);
+        }
+
+        .miniatura:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+        .miniatura img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .informacoes {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 992px) {
+            .informacoes {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .informacoes-coluna-esquerda,
+        .informacoes-coluna-direita {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .informacoes-principais {
+            background-color: var(--cor-fundo-card);
+            padding: 1.5rem;
+            border-radius: var(--raio-borda);
+            box-shadow: var(--sombra-1);
+        }
+
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .badge-novo {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .badge-favorito, 
+        .badge-compartilhar {
+            border: 1px solid #ddd;
+            color: var(--cor-texto-suave);
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .badge-favorito:hover {
+            border-color: var(--cor-primaria);
+            color: var(--cor-primaria);
+        }
+
+        .badge-compartilhar:hover {
+            border-color: var(--cor-secundaria);
+            color: var(--cor-secundaria);
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 0.5rem 0 1rem;
+            color: var(--cor-texto);
+        }
+
+        .localizacao {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--cor-texto-suave);
+            margin-bottom: 1rem;
+        }
+
+        .preco-container {
+            background-color: #f3f8ff;
+            padding: 1.2rem;
+            border-radius: var(--raio-borda);
+            margin: 1rem 0;
+            border-left: 4px solid var(--cor-primaria);
+        }
+
+        .preco-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .preco-atual {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--cor-primaria);
+            margin: 0;
+        }
+
+        .desconto-badge {
+            background-color: var(--cor-secundaria);
+            color: white;
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .preco-parcela {
+            color: var(--cor-texto-suave);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .eficiencia-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .eficiencia-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .eficiencia-valor {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--cor-primaria);
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-radius: 50%;
+            margin-bottom: 0.5rem;
+        }
+
+        .eficiencia-titulo {
+            font-size: 0.8rem;
+            color: var(--cor-texto-suave);
+        }
+
+        .acoes-veiculo {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .acoes-veiculo {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .btn {
+            padding: 0.8rem;
+            text-align: center;
+            border-radius: var(--raio-borda);
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-whatsapp {
+            background-color: var(--cor-destaque);
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #20b858;
+            transform: translateY(-2px);
+            box-shadow: var(--sombra-2);
+        }
+
+        .btn-ligacao {
+            background-color: var(--cor-secundaria);
+            color: white;
+        }
+
+        .btn-ligacao:hover {
+            background-color: #e64a19;
+            transform: translateY(-2px);
+            box-shadow: var(--sombra-2);
+        }
+
+        .btn-como-chegar {
+            background-color: var(--cor-primaria);
+            color: white;
+        }
+
+        .btn-como-chegar:hover {
+            background-color: #15296d;
+            transform: translateY(-2px);
+            box-shadow: var(--sombra-2);
+        }
+
+        .detalhes-veiculo {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            background-color: var(--cor-fundo-card);
+            padding: 1.5rem;
+            border-radius: var(--raio-borda);
+            box-shadow: var(--sombra-1);
+        }
+
+        @media (max-width: 992px) {
+            .detalhes-veiculo {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .detalhes-veiculo {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .detalhe-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem;
+            background-color: #f9f9f9;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .detalhe-item:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        .detalhe-item i {
+            color: var(--cor-primaria);
+            font-size: 1.2rem;
+        }
+
+        .detalhe-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .detalhe-label {
+            font-size: 0.7rem;
+            color: var(--cor-texto-suave);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .detalhe-valor {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--cor-texto);
+        }
+
+        .secao-vistoriado,
+        .secao-sobre-carro, 
+        .secao-opcionais,
+        .secao-financiamento,
+        .secao-similares,
+        .formulario-contato {
+            background-color: var(--cor-fundo-card);
+            padding: 1.5rem;
+            border-radius: var(--raio-borda);
+            box-shadow: var(--sombra-1);
+        }
+
+        .secao-vistoriado {
+            border-top: 4px solid #4CAF50;
+        }
+
+        .secao-financiamento {
+            border-top: 4px solid var(--cor-primaria);
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 1.2rem;
+            color: var(--cor-texto);
+            position: relative;
+        }
+
+        h3:after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--cor-primaria);
+        }
+
+        .vistoria-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .vistoria-selo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .vistoria-selo img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+
+        .vistoria-items {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .vistoria-items {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .vistoria-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem;
+            background-color: rgba(76, 175, 80, 0.1);
+            border-radius: var(--raio-borda);
+        }
+
+        .vistoria-item.aprovado i {
+            color: #4CAF50;
+        }
+
+        .vistoria-info {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .btn-ver-relatorio {
+            display: inline-block;
+            background-color: var(--cor-primaria);
+            color: white;
+            padding: 0.8rem 1.2rem;
+            border-radius: var(--raio-borda);
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-ver-relatorio:hover {
+            background-color: #15296d;
+            transform: translateY(-2px);
+            box-shadow: var(--sombra-2);
+        }
+
+        .descricao-sobre-carro {
+            line-height: 1.6;
+            color: var(--cor-texto-suave);
+            white-space: pre-line;
+        }
+
+        .opcionais-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .opcionais-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .opcional-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem;
+            background-color: #f9f9f9;
+            border-radius: var(--raio-borda);
+            transition: all 0.3s ease;
+        }
+
+        .opcional-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .opcional-item i {
+            color: var(--cor-primaria);
+        }
+
+        .range-container {
+            margin-bottom: 1rem;
+        }
+
+        .range-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .range-label {
+            font-size: 0.9rem;
+            color: var(--cor-texto-suave);
+        }
+
+        .range-value {
+            font-weight: 600;
+            color: var(--cor-texto);
+            font-size: 0.9rem;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            background: #ddd;
+            border-radius: 5px;
+            -webkit-appearance: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--cor-primaria);
+            cursor: pointer;
+        }
+
+        .resultado-simulacao {
+            background-color: rgba(30, 58, 138, 0.05);
+            padding: 1rem;
+            border-radius: var(--raio-borda);
+            margin-top: 1rem;
+        }
+
+        .resultado-simulacao p {
+            margin: 0.3rem 0;
+        }
+
+        .parcela-valor {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--cor-primaria);
+        }
+
+        .similares-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .similares-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .veiculo-similar {
+            background-color: white;
+            border-radius: var(--raio-borda);
+            overflow: hidden;
+            box-shadow: var(--sombra-1);
+            transition: all 0.3s ease;
+        }
+
+        .veiculo-similar:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--sombra-2);
+        }
+
+        .similar-img {
+            height: 140px;
+            width: 100%;
+        }
+
+        .similar-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .similar-info {
+            padding: 1rem;
+        }
+
+        .similar-titulo {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .similar-preco {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--cor-primaria);
+        }
+
+        .similar-detalhes {
+            display: flex;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--cor-texto-suave);
+            margin-top: 0.5rem;
+        }
+
+        .form-grupo {
+            margin-bottom: 1rem;
+        }
+
+        .form-grupo label {
+            display: block;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            color: var(--cor-texto);
+        }
+
+        .formulario-contato input,
+        .formulario-contato textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: var(--raio-borda);
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .formulario-contato textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .formulario-contato input:focus,
+        .formulario-contato textarea:focus {
+            outline: none;
+            border-color: var(--cor-primaria);
+            box-shadow: 0 0 0 2px rgba(30, 58, 138, 0.1);
+        }
+
+        .formulario-contato button {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: var(--cor-primaria);
+            color: white;
+            border: none;
+            border-radius: var(--raio-borda);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .formulario-contato button:hover {
+            background-color: #15296d;
+            transform: translateY(-2px);
+            box-shadow: var(--sombra-2);
+        }
+
+        /* Modal */
+        .modal-imagem {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .modal-conteudo {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .modal-conteudo img {
+            max-width: 100%;
+            max-height: 90vh;
+            display: block;
+            object-fit: contain;
+        }
+
+        .fechar {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        .navegacao-modal {
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .navegacao-modal button {
+            background-color: rgba(255, 255, 255, 0.3);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .navegacao-modal button:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Setas de navegação */
+        .navegacao-galeria {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1rem;
+            z-index: 20;
+        }
+
+        .seta-navegacao {
+            background-color: rgba(255, 255, 255, 0.7);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .seta-navegacao:hover {
+            background-color: white;
+            transform: scale(1.1);
+        }
+
+        /* Indicadores de progresso */
+        .progresso-fotos {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 20;
+        }
+
+        .indicador-foto {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicador-foto.ativo {
+            background-color: white;
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="img/logosite.jpeg" alt="WebCars Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="#comprar">Comprar</a></li>
+                <li><a href="#vender">Vender</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container-detalhes">
+        <section class="galeria">
+            <div class="galeria-fotos">
+                <!-- As fotos serão adicionadas dinamicamente pelo JavaScript -->
+                <div class="navegacao-galeria">
+                    <button class="seta-navegacao seta-esquerda" onclick="mudarFoto(-1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="seta-navegacao seta-direita" onclick="mudarFoto(1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="progresso-fotos">
+                    <!-- Os indicadores serão adicionados dinamicamente pelo JavaScript -->
+                </div>
+            </div>
+            <div class="miniaturas">
+                <!-- As miniaturas serão adicionadas dinamicamente pelo JavaScript -->
+            </div>
+        </section>
+
+        <section class="informacoes">
+            <div class="informacoes-coluna-esquerda">
+                <div class="informacoes-principais">
+                    <div class="badge-container">
+                        <span class="badge badge-novo">Semi-Novo</span>
+                        <span class="badge badge-favorito"><i class="far fa-heart"></i> Favoritar</span>
+                        <span class="badge badge-compartilhar"><i class="fas fa-share-alt"></i> Compartilhar</span>
+                    </div>
+                    <h1>AUDI E-TRON</h1>
+                    <div class="localizacao">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>São Paulo (SP)</span>
+                    </div>
+                    
+                    <div class="preco-container">
+                        <div class="preco-info">
+                            <h2 class="preco-atual">R$ 459.990,00</h2>
+                            <span class="desconto-badge">-12% ABAIXO DA FIPE</span>
+                        </div>
+                        <p class="preco-parcela">Em até 60x de R$ 7.666,00</p>
+                    </div>
+                    
+                    <div class="eficiencia-container">
+                        <div class="eficiencia-item">
+                            <div class="eficiencia-valor">A+</div>
+                            <span class="eficiencia-titulo">Consumo</span>
+                        </div>
+                        <div class="eficiencia-item">
+                            <div class="eficiencia-valor">A</div>
+                            <span class="eficiencia-titulo">Segurança</span>
+                        </div>
+                        <div class="eficiencia-item">
+                            <div class="eficiencia-valor">A+</div>
+                            <span class="eficiencia-titulo">Conforto</span>
+                        </div>
+                        <div class="eficiencia-item">
+                            <div class="eficiencia-valor">A</div>
+                            <span class="eficiencia-titulo">Manutenção</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="acoes-veiculo">
+                    <a href="#" class="btn btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>WhatsApp</span>
+                    </a>
+                    <a href="#" class="btn btn-ligacao">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>Ligar</span>
+                    </a>
+                    <a href="#" class="btn btn-como-chegar">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <span>Como Chegar</span>
+                    </a>
+                </div>
+
+                <div class="detalhes-veiculo">
+                    <div class="detalhe-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <div class="detalhe-info">
+                            <span class="detalhe-label">Ano</span>
+                            <span class="detalhe-valor">2021/2022</span>
+                        </div>
+                    </div>
+                    <div class="detalhe-item">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <div class="detalhe-info">
+                            <span class="detalhe-label">Quilometragem</span>
+                            <span class="detalhe-valor">15.900 km</span>
+                        </div>
+                    </div>
+                    <div class="detalhe-item">
+                        <i class="fas fa-gas-pump"></i>
+                        <div class="detalhe-info">
+                            <span class="detalhe-label">Combustível</span>
+                            <span class="detalhe-valor">Elétrico</span>
+                        </div>
+                    </div>
+                    <div class="detalhe-item">
+                        <i class="fas fa-cog"></i>
+                        <div class="detalhe-info">
+                            <span class="detalhe-label">Câmbio</span>
+                            <span class="detalhe-valor">Automático</span>
+                        </div>
+                    </div>
+                    <div class="detalhe-item">
+                        <i class="fas fa-palette"></i>
+                        <div class="detalhe-info">
+                            <span class="detalhe-label">Cor</span>
+                            <span class="detalhe-valor">Laranja</span>
+                        </div>
+                    </div>
+                    <div class="detalhe-item">
+                        <i class="fas fa-car"></i>
+                        <div class="detalhe-info">
+                            <span class="detalhe-label">Portas</span>
+                            <span class="detalhe-valor">5</span>
+                        </div>
+                    </div>
+                    <div class="detalhe-item">
+                        <i class="fas fa-bolt"></i>
+                        <div class="detalhe-info">
+                            <span class="detalhe-label">Potência</span>
+                            <span class="detalhe-valor">408 cv</span>
+                        </div>
+                    </div>
+                    <div class="detalhe-item">
+                        <i class="fas fa-charging-station"></i>
+                        <div class="detalhe-info">
+                            <span class="detalhe-label">Autonomia</span>
+                            <span class="detalhe-valor">436 km</span>
+                        </div>
+                    </div>
+                </div>
+
+                <section class="secao-sobre-carro">
+                    <h3>Sobre este carro</h3>
+                    <div class="descricao-sobre-carro">
+                        O Audi e-tron é um SUV 100% elétrico que combina luxo e tecnologia de ponta com uma condução silenciosa e potente. Com seus 408cv e tração integral quattro, oferece uma experiência de direção dinâmica e segura.
+
+                        Este exemplar está em excelente estado de conservação, com apenas 15.900 km rodados. Possui interior premium com acabamento em couro, teto solar panorâmico, sistema de navegação GPS de última geração, e uma autonomia de aproximadamente 436 km com carga completa.
+
+                        Carregamento rápido: atinge 80% da bateria em apenas 30 minutos em estações de recarga rápida DC.
+
+                        Veículo com garantia de fábrica até 2025, todas as revisões em dia realizadas em concessionária autorizada Audi. Excelente oportunidade para quem busca um veículo elétrico de alta performance aliado ao conforto e tecnologia que só a Audi proporciona.
+
+                        Entre em contato agora e agende seu test drive!
+                    </div>
+                </section>
+
+                <section class="secao-opcionais">
+                    <h3>Itens do Veículo</h3>
+                    <div class="opcionais-grid">
+                        <div class="opcional-item">
+                            <i class="fas fa-check"></i>
+                            <span>Airbag</span>
+                        </div>
+                        <div class="opcional-item">
+                            <i class="fas fa-check"></i>
+                            <span>Ar condicionado</span>
+                        </div>
+                        <div class="opcional-item">
+                            <i class="fas fa-check"></i>
+                            <span>Teto solar</span>
+                        </div>
+                        <div class="opcional-item">
+                            <i class="fas fa-check"></i>
+                            <span>Bancos em couro</span>
+                        </div>
+                        <div class="opcional-item">
+                            <i class="fas fa-check"></i>
+                            <span>GPS</span>
+                        </div>
+                        <div class="opcional-item">
+                            <i class="fas fa-check"></i>
+                            <span>Câmbio automático</span>
+                        </div>
+                        <div class="opcional-item">
+                            <i class="fas fa-check"></i>
+                            <span>Freio ABS</span>
+                        </div>
+                        <div class="opcional-item">
+                            <i class="fas fa-check"></i>
+                            <span>Sensor de estacionamento</span>
+                        </div>
+                        <div class="opcional-item">
+                            <i class="fas fa-check"></i>
+                            <span>Câmera de ré</span>
+                        </div>
+                        <div class="opcional-item">
+                            <i class="fas fa-check"></i>
+                            <span>Direção elétrica</span>
+                        </div>
+                        <div class="opcional-item">
+                            <i class="fas fa-check"></i>
+                            <span>Central multimídia</span>
+                        </div>
+                        <div class="opcional-item">
+                            <i class="fas fa-check"></i>
+                            <span>Start/Stop automático</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="informacoes-coluna-direita">
+                <section class="secao-vistoriado">
+                    <h3>Vistoriado</h3>
+                    <div class="vistoria-container">
+                        <div class="vistoria-selo">
+                            <img src="img/selo-vistoria.png" alt="Selo de Vistoria">
+                            <div>
+                                <strong>Verificado e Aprovado</strong>
+                                <p class="vistoria-data">Vistoriado em 15/10/2023</p>
+                            </div>
+                        </div>
+                        <div class="vistoria-items">
+                            <div class="vistoria-item aprovado">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Motor e desempenho</span>
+                            </div>
+                            <div class="vistoria-item aprovado">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Sistema elétrico</span>
+                            </div>
+                            <div class="vistoria-item aprovado">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Suspensão</span>
+                            </div>
+                            <div class="vistoria-item aprovado">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Freios</span>
+                            </div>
+                            <div class="vistoria-item aprovado">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Estrutura</span>
+                            </div>
+                            <div class="vistoria-item aprovado">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Interior</span>
+                            </div>
+                            <div class="vistoria-item aprovado">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Bateria</span>
+                            </div>
+                            <div class="vistoria-item aprovado">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Documentação</span>
+                            </div>
+                        </div>
+                        <div class="vistoria-info">
+                            <p><strong>Aprovado pelo nosso time de especialistas</strong></p>
+                            <p>Este veículo passou por 147 pontos de verificação e está aprovado para venda. Garantimos a procedência e o excelente estado do veículo.</p>
+                            <a href="#" class="btn-ver-relatorio">Ver relatório completo</a>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="secao-financiamento">
+                    <h3>Simule seu Financiamento</h3>
+                    <div class="simulacao-container">
+                        <div class="range-container">
+                            <div class="range-header">
+                                <label class="range-label">Entrada</label>
+                                <span class="range-value">R$ 100.000,00</span>
+                            </div>
+                            <input type="range" min="0" max="350000" value="100000" id="entrada">
+                        </div>
+                        
+                        <div class="range-container">
+                            <div class="range-header">
+                                <label class="range-label">Parcelas</label>
+                                <span class="range-value">60 meses</span>
+                            </div>
+                            <input type="range" min="12" max="72" value="60" id="parcelas">
+                        </div>
+                        
+                        <div class="resultado-simulacao">
+                            <p>Valor do veículo: <strong>R$ 459.990,00</strong></p>
+                            <p>Valor financiado: <strong>R$ 359.990,00</strong></p>
+                            <p>Parcela mensal: <span class="parcela-valor">R$ 7.666,00</span></p>
+                            <p><small>* Simulação sujeita à aprovação de crédito</small></p>
+                        </div>
+                    </div>
+                </div>
+
+                <section class="secao-similares">
+                    <h3>Veículos similares</h3>
+                    <div class="similares-grid">
+                        <div class="veiculo-similar">
+                            <div class="similar-img">
+                                <img src="img/carro1.jpg" alt="Veículo similar">
+                            </div>
+                            <div class="similar-info">
+                                <div class="similar-titulo">Tesla Model 3</div>
+                                <div class="similar-preco">R$ 399.990,00</div>
+                                <div class="similar-detalhes">
+                                    <span>2022</span>
+                                    <span>•</span>
+                                    <span>12.000 km</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="veiculo-similar">
+                            <div class="similar-img">
+                                <img src="img/carro2.jpg" alt="Veículo similar">
+                            </div>
+                            <div class="similar-info">
+                                <div class="similar-titulo">BMW iX3</div>
+                                <div class="similar-preco">R$ 489.900,00</div>
+                                <div class="similar-detalhes">
+                                    <span>2023</span>
+                                    <span>•</span>
+                                    <span>8.500 km</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="formulario-contato">
+                    <h3>Envie uma mensagem ao vendedor</h3>
+                    <form>
+                        <div class="form-grupo">
+                            <label for="nome">Nome completo</label>
+                            <input type="text" id="nome" placeholder="Digite seu nome" required>
+                        </div>
+                        
+                        <div class="form-grupo">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" placeholder="Digite seu e-mail" required>
+                        </div>
+                        
+                        <div class="form-grupo">
+                            <label for="telefone">Telefone</label>
+                            <input type="tel" id="telefone" placeholder="(00) 00000-0000" required>
+                        </div>
+                        
+                        <div class="form-grupo">
+                            <label for="mensagem">Mensagem</label>
+                            <textarea id="mensagem" placeholder="Digite sua mensagem" required>Olá, tenho interesse no Audi E-Tron. Por favor entre em contato.</textarea>
+                        </div>
+                        
+                        <button type="submit">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/detalhe-veiculo.js"></script>
+    <script>
+        let fotoAtual = 0;
+        let totalFotos = 0;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const idVeiculo = urlParams.get('id') || 'etron-2022'; // Fallback para o Audi E-Tron
+            
+            // Setup simulação de financiamento
+            setupSimulacaoFinanciamento();
+            
+            // Setup de favoritar e compartilhar
+            setupInteracoes();
+            
+            if (dadosVeiculos[idVeiculo]) {
+                const veiculo = dadosVeiculos[idVeiculo];
+                atualizarDadosVeiculo(veiculo);
+            } else {
+                console.error('Veículo não encontrado:', idVeiculo);
+                // Não mostrar alerta, apenas manter os dados padrão
+            }
+        });
+        
+        function atualizarDadosVeiculo(veiculo) {
+            const galeriaFotos = document.querySelector('.galeria-fotos');
+            const miniaturas = document.querySelector('.miniaturas');
+            const progressoFotos = document.querySelector('.progresso-fotos');
+            const informacoesPrincipais = document.querySelector('.informacoes-principais');
+            const detalhesVeiculo = document.querySelector('.detalhes-veiculo');
+            const secaoSobreCarro = document.querySelector('.secao-sobre-carro .descricao-sobre-carro');
+            const secaoOpcionais = document.querySelector('.secao-opcionais .opcionais-grid');
+            const badgeNovo = document.querySelector('.badge-novo');
+            
+            // Atualizar badge de status
+            if (badgeNovo) {
+                badgeNovo.textContent = veiculo.km === 0 ? '0 km' : 'Semi-Novo';
+            }
+
+            // Atualizar informações principais
+            if (informacoesPrincipais) {
+                // Atualizar título, preço e localização
+                const h1 = informacoesPrincipais.querySelector('h1');
+                if (h1) h1.textContent = veiculo.nome;
+                
+                const precoAtual = informacoesPrincipais.querySelector('.preco-atual');
+                if (precoAtual) precoAtual.textContent = `R$ ${veiculo.preco.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+                
+                const descontoBadge = informacoesPrincipais.querySelector('.desconto-badge');
+                if (descontoBadge) descontoBadge.textContent = `-${veiculo.desconto}% ABAIXO DA FIPE`;
+                
+                const localizacao = informacoesPrincipais.querySelector('.localizacao span');
+                if (localizacao) localizacao.textContent = veiculo.localizacao;
+                
+                // Atualizar valor da parcela
+                const precoParcela = informacoesPrincipais.querySelector('.preco-parcela');
+                if (precoParcela) {
+                    const valorParcela = (veiculo.preco - 100000) / 60;
+                    precoParcela.textContent = `Em até 60x de R$ ${valorParcela.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+                }
+            }
+
+            // Atualizar detalhes do veículo
+            if (detalhesVeiculo) {
+                const detalhes = detalhesVeiculo.querySelectorAll('.detalhe');
+                
+                // Mapeamento dos detalhes para seus índices
+                const detalhesMap = {
+                    'Cidade': { index: 0, icon: 'map-marker-alt', format: loc => loc.replace(' (SP)', ' - SP') },
+                    'Ano': { index: 1, icon: 'calendar-alt', format: ano => ano },
+                    'KM': { index: 2, icon: 'tachometer-alt', format: km => km.toLocaleString('pt-BR') },
+                    'Câmbio': { index: 3, icon: 'cogs', format: cambio => cambio },
+                    'Carroceria': { index: 4, icon: 'car', format: carroceria => carroceria || 'Não especificado' },
+                    'Combustível': { index: 5, icon: 'gas-pump', format: combustivel => combustivel },
+                    'Final de placa': { index: 6, icon: 'hashtag', format: final => final || 'N/A' },
+                    'Cor': { index: 7, icon: 'palette', format: cor => cor },
+                    'Aceita troca': { index: 8, icon: 'exchange-alt', format: aceita => aceita ? 'Sim' : 'Não' },
+                    'Revisões': { index: 9, icon: 'clipboard-check', format: revisoes => revisoes ? 'Sim' : 'Não' },
+                    'Único dono': { index: 10, icon: 'user', format: unico => unico ? 'Sim' : 'Não' },
+                    'IPVA pago': { index: 11, icon: 'receipt', format: ipva => ipva === 'Pago' ? 'Sim' : 'Não' }
+                };
+                
+                // Dados a serem atualizados
+                const dadosDetalhes = {
+                    'Cidade': veiculo.localizacao,
+                    'Ano': veiculo.anoModelo,
+                    'KM': veiculo.km,
+                    'Câmbio': veiculo.cambio,
+                    'Carroceria': veiculo.informacoesAdicionais?.carroceria,
+                    'Combustível': veiculo.combustivel,
+                    'Final de placa': veiculo.informacoesAdicionais?.finalPlaca,
+                    'Cor': veiculo.cor,
+                    'Aceita troca': veiculo.informacoesAdicionais?.aceitaTroca,
+                    'Revisões': veiculo.informacoesAdicionais?.revisoes,
+                    'Único dono': veiculo.informacoesAdicionais?.unicoDono,
+                    'IPVA pago': veiculo.informacoesAdicionais?.ipva
+                };
+                
+                // Atualizar cada detalhe
+                for (const [titulo, valor] of Object.entries(dadosDetalhes)) {
+                    const detalheConfig = detalhesMap[titulo];
+                    if (detalheConfig && detalhes[detalheConfig.index]) {
+                        const detalheElement = detalhes[detalheConfig.index];
+                        const valorElement = detalheElement.querySelector('p');
+                        if (valorElement && valor !== undefined) {
+                            valorElement.textContent = detalheConfig.format(valor);
+                        }
+                    }
+                }
+            }
+
+            // Atualizar descrição sobre o carro
+            if (secaoSobreCarro && veiculo.descricaoDetalhada) {
+                secaoSobreCarro.textContent = veiculo.descricaoDetalhada;
+            }
+
+            // Atualizar opcionais
+            if (secaoOpcionais && veiculo.opcionais) {
+                secaoOpcionais.innerHTML = veiculo.opcionais.map(opcional => `
+                    <div class="opcional-item">
+                        <i class="fas fa-check"></i>
+                        <span>${opcional}</span>
+                    </div>
+                `).join('');
+            }
+
+            // Limpar e atualizar galeria de fotos
+            if (galeriaFotos && miniaturas && progressoFotos && veiculo.fotos) {
+                // Limpar navegação existente
+                const navegacaoGaleria = galeriaFotos.querySelector('.navegacao-galeria');
+                galeriaFotos.innerHTML = '';
+                progressoFotos.innerHTML = '';
+                miniaturas.innerHTML = '';
+                
+                // Readicionar navegação
+                if (navegacaoGaleria) {
+                    galeriaFotos.appendChild(navegacaoGaleria);
+                } else {
+                    const novaNavegacao = document.createElement('div');
+                    novaNavegacao.classList.add('navegacao-galeria');
+                    novaNavegacao.innerHTML = `
+                        <button class="seta-navegacao seta-esquerda" onclick="mudarFoto(-1)">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="seta-navegacao seta-direita" onclick="mudarFoto(1)">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    `;
+                    galeriaFotos.appendChild(novaNavegacao);
+                }
+                
+                // Readicionar progresso
+                galeriaFotos.appendChild(progressoFotos);
+
+                // Adicionar fotos principais
+                veiculo.fotos.forEach((foto, index) => {
+                    // Criar div para foto principal
+                    const fotoPrincipal = document.createElement('div');
+                    fotoPrincipal.classList.add('foto-principal');
+                    
+                    // Adicionar classe 'ativo' para a primeira foto
+                    if (index === 0) {
+                        fotoPrincipal.classList.add('ativo');
+                    }
+
+                    // Criar imagem
+                    const img = document.createElement('img');
+                    img.src = foto;
+                    img.alt = `Foto ${index + 1} do ${veiculo.nome}`;
+                    
+                    // Adicionar evento de clique para abrir modal
+                    img.addEventListener('click', () => abrirImagemModal(foto, index, veiculo.fotos));
+
+                    // Adicionar imagem à div da foto
+                    fotoPrincipal.appendChild(img);
+                    
+                    // Adicionar foto à galeria
+                    galeriaFotos.appendChild(fotoPrincipal);
+
+                    // Criar miniatura
+                    const miniatura = document.createElement('div');
+                    miniatura.classList.add('miniatura');
+                    
+                    // Adicionar classe 'ativo' para a primeira miniatura
+                    if (index === 0) {
+                        miniatura.classList.add('ativo');
+                    }
+
+                    // Criar imagem da miniatura
+                    const imgMiniatura = document.createElement('img');
+                    imgMiniatura.src = foto;
+                    imgMiniatura.alt = `Miniatura ${index + 1}`;
+
+                    // Adicionar evento de clique para trocar foto
+                    miniatura.addEventListener('click', () => {
+                        mudarFotoEspecifica(index);
+                    });
+
+                    // Adicionar imagem à miniatura
+                    miniatura.appendChild(imgMiniatura);
+                    
+                    // Adicionar miniatura à área de miniaturas
+                    miniaturas.appendChild(miniatura);
+                    
+                    // Criar indicadores de progresso
+                    const indicador = document.createElement('div');
+                    indicador.classList.add('indicador-foto');
+                    if (index === 0) {
+                        indicador.classList.add('ativo');
+                    }
+                    indicador.addEventListener('click', () => mudarFotoEspecifica(index));
+                    progressoFotos.appendChild(indicador);
+                });
+
+                // Atualizar total de fotos
+                totalFotos = veiculo.fotos.length;
+            }
+            
+            // Atualizar simulação de financiamento
+            atualizarSimulacaoFinanciamento(veiculo.preco);
+        }
+        
+        function setupSimulacaoFinanciamento() {
+            const sliderEntrada = document.getElementById('entrada');
+            const sliderParcelas = document.getElementById('parcelas');
+            
+            if (sliderEntrada && sliderParcelas) {
+                sliderEntrada.addEventListener('input', () => {
+                    const entradaValor = parseInt(sliderEntrada.value);
+                    document.querySelector('.range-container:nth-child(1) .range-value').textContent = 
+                        `R$ ${entradaValor.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+                    atualizarResultadoSimulacao();
+                });
+                
+                sliderParcelas.addEventListener('input', () => {
+                    const parcelasValor = parseInt(sliderParcelas.value);
+                    document.querySelector('.range-container:nth-child(2) .range-value').textContent = 
+                        `${parcelasValor} meses`;
+                    atualizarResultadoSimulacao();
+                });
+            }
+        }
+        
+        function atualizarSimulacaoFinanciamento(precoVeiculo) {
+            if (!precoVeiculo) return;
+            
+            const sliderEntrada = document.getElementById('entrada');
+            if (sliderEntrada) {
+                sliderEntrada.max = precoVeiculo * 0.9;
+                sliderEntrada.value = precoVeiculo * 0.3;
+                
+                // Disparar evento para atualizar o valor mostrado
+                const evento = new Event('input');
+                sliderEntrada.dispatchEvent(evento);
+                
+                // Atualizar texto do resultado
+                document.querySelector('.resultado-simulacao p:first-child strong').textContent = 
+                    `R$ ${precoVeiculo.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+            }
+        }
+        
+        function atualizarResultadoSimulacao() {
+            const entradaValor = parseInt(document.getElementById('entrada').value);
+            const parcelasValor = parseInt(document.getElementById('parcelas').value);
+            const precoVeiculoText = document.querySelector('.resultado-simulacao p:first-child strong').textContent;
+            const precoVeiculo = parseFloat(precoVeiculoText.replace('R$ ', '').replace(/\./g, '').replace(',', '.'));
+            
+            const valorFinanciado = precoVeiculo - entradaValor;
+            // Taxa de juros simulada (1% ao mês)
+            const taxaJuros = 0.01;
+            
+            // Cálculo da parcela usando a fórmula de amortização
+            const parcela = valorFinanciado * (taxaJuros * Math.pow(1 + taxaJuros, parcelasValor)) / 
+                            (Math.pow(1 + taxaJuros, parcelasValor) - 1);
+            
+            document.querySelector('.resultado-simulacao p:nth-child(2) strong').textContent = 
+                `R$ ${valorFinanciado.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+            
+            document.querySelector('.parcela-valor').textContent = 
+                `R$ ${parcela.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+        }
+        
+        function setupInteracoes() {
+            // Setup botão de favoritar
+            const favoritoBtn = document.querySelector('.badge-favorito');
+            if (favoritoBtn) {
+                favoritoBtn.addEventListener('click', function() {
+                    const icon = this.querySelector('i');
+                    if (icon.classList.contains('far')) {
+                        icon.classList.remove('far');
+                        icon.classList.add('fas');
+                        this.style.backgroundColor = 'rgba(0, 102, 204, 0.1)';
+                    } else {
+                        icon.classList.remove('fas');
+                        icon.classList.add('far');
+                        this.style.backgroundColor = '';
+                    }
+                });
+            }
+            
+            // Setup botão de compartilhar
+            const compartilharBtn = document.querySelector('.badge-compartilhar');
+            if (compartilharBtn) {
+                compartilharBtn.addEventListener('click', function() {
+                    if (navigator.share) {
+                        navigator.share({
+                            title: document.querySelector('h1').textContent,
+                            url: window.location.href
+                        }).catch(console.error);
+                    } else {
+                        // Fallback para navegadores que não suportam a API de compartilhamento
+                        const url = encodeURIComponent(window.location.href);
+                        const titulo = encodeURIComponent(document.querySelector('h1').textContent);
+                        window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+                    }
+                });
+            }
+        }
+
+        function mudarFoto(direcao) {
+            // Remover classe 'ativo' de todas as fotos
+            const fotos = document.querySelectorAll('.foto-principal');
+            const miniaturas = document.querySelectorAll('.miniatura');
+            const indicadores = document.querySelectorAll('.indicador-foto');
+            
+            fotos.forEach(foto => foto.classList.remove('ativo'));
+            miniaturas.forEach(miniatura => miniatura.classList.remove('ativo'));
+            indicadores.forEach(indicador => indicador.classList.remove('ativo'));
+
+            // Calcular novo índice da foto
+            fotoAtual = (fotoAtual + direcao + totalFotos) % totalFotos;
+
+            // Adicionar classe 'ativo' na nova foto, miniatura e indicador
+            fotos[fotoAtual].classList.add('ativo');
+            miniaturas[fotoAtual].classList.add('ativo');
+            indicadores[fotoAtual].classList.add('ativo');
+            
+            // Garantir que a miniatura está visível (scroll para ela)
+            miniaturas[fotoAtual].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+        
+        function mudarFotoEspecifica(index) {
+            if (index >= 0 && index < totalFotos) {
+                // Remover classe 'ativo' de todas as fotos
+                const fotos = document.querySelectorAll('.foto-principal');
+                const miniaturas = document.querySelectorAll('.miniatura');
+                const indicadores = document.querySelectorAll('.indicador-foto');
+                
+                fotos.forEach(foto => foto.classList.remove('ativo'));
+                miniaturas.forEach(miniatura => miniatura.classList.remove('ativo'));
+                indicadores.forEach(indicador => indicador.classList.remove('ativo'));
+                
+                // Atualizar índice atual
+                fotoAtual = index;
+                
+                // Adicionar classe 'ativo' na foto específica
+                fotos[fotoAtual].classList.add('ativo');
+                miniaturas[fotoAtual].classList.add('ativo');
+                indicadores[fotoAtual].classList.add('ativo');
+                
+                // Garantir que a miniatura está visível (scroll para ela)
+                miniaturas[fotoAtual].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
+        }
+
+        function abrirImagemModal(urlImagem, index, todasFotos) {
+            // Remover modal existente
+            const modalExistente = document.querySelector('.modal-imagem');
+            if (modalExistente) modalExistente.remove();
+
+            // Criar novo modal
+            const modal = document.createElement('div');
+            modal.classList.add('modal-imagem');
+            
+            let conteudoModal = `
+                <div class="modal-conteudo">
+                    <span class="fechar">&times;</span>
+                    <img src="${urlImagem}" alt="Imagem ampliada">
+                </div>
+            `;
+            
+            // Adicionar navegação se tivermos múltiplas fotos
+            if (todasFotos && todasFotos.length > 1) {
+                conteudoModal = `
+                    <div class="modal-conteudo">
+                        <span class="fechar">&times;</span>
+                        <img src="${urlImagem}" alt="Imagem ampliada" id="modal-img-atual">
+                        <div class="navegacao-modal">
+                            <button onclick="mudarFotoModal(-1)">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button onclick="mudarFotoModal(1)">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                // Armazenar as informações no objeto window para acesso global
+                window.modalData = {
+                    fotos: todasFotos,
+                    indiceAtual: index || 0
+                };
+            }
+            
+            modal.innerHTML = conteudoModal;
+            document.body.appendChild(modal);
+
+            // Fechar modal ao clicar no botão de fechar ou fora da imagem
+            modal.querySelector('.fechar').addEventListener('click', () => modal.remove());
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) modal.remove();
+            });
+        }
+        
+        function mudarFotoModal(direcao) {
+            if (!window.modalData) return;
+            
+            const { fotos, indiceAtual } = window.modalData;
+            const novoIndice = (indiceAtual + direcao + fotos.length) % fotos.length;
+            
+            // Atualizar imagem no modal
+            const imgModal = document.getElementById('modal-img-atual');
+            if (imgModal) {
+                imgModal.src = fotos[novoIndice];
+                
+                // Atualizar o índice atual
+                window.modalData.indiceAtual = novoIndice;
+            }
+        }
+    </script>
+</body>
+</html> 
