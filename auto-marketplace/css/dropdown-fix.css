@@ -1,0 +1,237 @@
+/* Correções para o menu dropdown */
+
+/* Remove a linha de sublinhado do dropdown toggle */
+.no-underline,
+.dropdown-toggle {
+    text-decoration: none !important;
+}
+
+.no-underline:hover,
+.dropdown-toggle:hover {
+    text-decoration: none !important;
+}
+
+/* Esconde a linha azul que aparece embaixo do toggle */
+.no-underline::after,
+.no-underline:hover::after,
+.dropdown-toggle::after,
+.dropdown-toggle:hover::after {
+    display: none !important;
+}
+
+/* Estilo para o ícone do dropdown */
+.dropdown-toggle::before {
+    content: '\f107' !important;
+    font-family: 'Font Awesome 5 Free' !important;
+    font-weight: 900 !important;
+    position: absolute !important;
+    right: 0 !important;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease !important;
+    color: #333 !important;
+}
+
+/* Rotação do ícone quando o menu está aberto (hover no dropdown) */
+.dropdown:hover .dropdown-toggle::before {
+    transform: translateY(-50%) rotate(180deg) !important;
+    color: #0056b3 !important;
+}
+
+/* Estilos para o menu dropdown */
+.dropdown-menu {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    background-color: #fff !important;
+    min-width: 200px !important;
+    z-index: 1000 !important;
+    border: 1px solid rgba(0,0,0,0.1) !important;
+    margin-top: 5px !important;
+    padding: 8px 0 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    transform: translateY(10px) !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+    border-radius: 4px !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+    display: block !important;
+}
+
+/* Garante que o dropdown apareça no hover */
+.dropdown:hover .dropdown-menu {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+    pointer-events: auto !important;
+}
+
+/* Estilo para os itens do menu dropdown */
+.dropdown-menu ul {
+    padding: 0 !important;
+    margin: 0 !important;
+    list-style: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+}
+
+.dropdown-menu li {
+    width: 100% !important;
+    display: block !important;
+}
+
+.dropdown-menu li a {
+    display: flex !important;
+    align-items: center !important;
+    padding: 12px 15px !important;
+    color: #333 !important;
+    text-decoration: none !important;
+    transition: all 0.25s ease !important;
+    border-radius: 4px !important;
+    margin: 0 5px !important;
+    width: calc(100% - 10px) !important;
+}
+
+.dropdown-menu li a:hover {
+    background-color: rgba(0, 86, 179, 0.08);
+    color: #0056b3;
+    transform: translateX(3px);
+}
+
+.dropdown-menu i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+/* Melhora a aparência dos ícones no menu dropdown */
+.dropdown-menu li a i {
+    font-size: 16px;
+    margin-right: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    transition: transform 0.2s ease;
+}
+
+/* Efeito de escala no ícone quando passa o mouse */
+.dropdown-menu li a:hover i {
+    transform: scale(1.15);
+    color: #0056b3;
+}
+
+/* Posicionamento adicional para garantir que o menu esteja corretamente posicionado */
+.dropdown {
+    position: relative;
+}
+
+nav ul li.dropdown .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    min-width: 200px;
+    z-index: 1000;
+    border: 1px solid rgba(0,0,0,0.1);
+    margin-top: 5px;
+    padding: 8px 0;
+}
+
+/* Adiciona espaçamento entre os itens de navegação que têm dropdown */
+nav ul li.dropdown {
+    margin-right: 8px;
+}
+
+/* Ajuste para garantir espaço entre os menus dropdown */
+nav ul li.dropdown:not(:first-child) {
+    margin-left: 10px;
+}
+
+/* Corrige a largura mínima do menu dropdown de "Vender" que é menor */
+nav ul li.dropdown:nth-child(2) .dropdown-menu {
+    min-width: 180px;
+}
+
+/* Ajusta a largura do menu dropdown de "Serviços" que tem itens mais longos */
+nav ul li.dropdown:nth-child(3) .dropdown-menu {
+    min-width: 280px;
+}
+
+/* Ajusta a largura do menu dropdown de "Notícias WC" */
+nav ul li.dropdown:nth-child(4) .dropdown-menu {
+    min-width: 200px;
+}
+
+/* Adiciona estado ativo explícito usando classe */
+.dropdown.hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Corrige o comportamento em dispositivos móveis */
+@media (max-width: 768px) {
+    .dropdown-menu {
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+    
+    /* Reduz espaço entre itens em telas menores */
+    .dropdown-menu li a {
+        padding: 10px;
+    }
+}
+
+/* Ajuste para ícones duplos (como no caso do Seguro Veículo) */
+.dropdown-menu li a i + i {
+    margin-left: 0;
+    position: absolute;
+}
+
+/* Animação especial para os ícones de serviços */
+.dropdown:nth-child(3) .dropdown-menu li a:hover i.fa-wrench {
+    transform: rotate(20deg) scale(1.15);
+}
+
+.dropdown:nth-child(3) .dropdown-menu li a:hover i.fa-chart-line {
+    transform: translateY(-2px) scale(1.15);
+}
+
+.dropdown:nth-child(3) .dropdown-menu li a:hover i.fa-university {
+    transform: scale(1.15);
+}
+
+.dropdown:nth-child(3) .dropdown-menu li a:hover i.fa-car-crash,
+.dropdown:nth-child(3) .dropdown-menu li a:hover i.fa-shield-alt {
+    transform: scale(1.15);
+}
+
+/* Animação de pulso para o ícone de escudo no Seguro Veículo */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.dropdown:nth-child(3) .dropdown-menu li:nth-child(4) a:hover i.fa-shield-alt {
+    animation: pulse 1s infinite;
+    transform-origin: center;
+}
+
+/* Animação para o ícone de jornal no dropdown de Notícias */
+.dropdown:nth-child(4) .dropdown-menu li a:hover i.fa-newspaper {
+    transform: translateY(-2px) scale(1.15);
+    animation: paper-flip 1.5s infinite;
+}
+
+@keyframes paper-flip {
+    0% { transform: translateY(0) scale(1.1); }
+    50% { transform: translateY(-3px) scale(1.15) rotateY(10deg); }
+    100% { transform: translateY(0) scale(1.1); }
+} 

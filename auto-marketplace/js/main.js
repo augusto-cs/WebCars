@@ -440,6 +440,37 @@ function adicionarEstilosPaginaDetalhes() {
     document.head.appendChild(styleElement);
 }
 
+// Função para inicializar o menu dropdown
+function initializeDropdownMenu() {
+    const dropdowns = document.querySelectorAll('.dropdown');
+    
+    dropdowns.forEach(dropdown => {
+        const toggle = dropdown.querySelector('.dropdown-toggle');
+        
+        // Prevenir o comportamento padrão dos links do dropdown
+        toggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            dropdown.classList.toggle('active');
+        });
+        
+        // Fechar ao clicar fora
+        document.addEventListener('click', function(e) {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+        
+        // Mostrar/esconder ao passar o mouse (opcional)
+        dropdown.addEventListener('mouseenter', function() {
+            dropdown.classList.add('active');
+        });
+        
+        dropdown.addEventListener('mouseleave', function() {
+            dropdown.classList.remove('active');
+        });
+    });
+}
+
 // Carregar conteúdo quando o DOM estiver pronto
 document.addEventListener('DOMContentLoaded', () => {
     renderizarVeiculosDestaque();
@@ -478,4 +509,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Inicializar o menu dropdown
+    initializeDropdownMenu();
 }); 

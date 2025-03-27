@@ -1,0 +1,1 @@
+// Arquivo esvaziado - chatbot removido

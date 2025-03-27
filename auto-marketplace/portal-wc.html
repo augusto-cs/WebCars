@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal WC - Notícias e Novidades sobre o Mundo Automotivo</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/portal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="portal-header">
+        <div class="logo">
+            <img src="img/logosite.png" alt="WebCars Logo">
+        </div>
+        <h1>Portal <span>WC</span></h1>
+        <div class="portal-nav">
+            <a href="index.html" class="btn-voltar"><i class="fas fa-arrow-left"></i> Voltar ao site</a>
+        </div>
+    </header>
+
+    <main class="portal-main">
+        <section class="destaque-principal">
+            <div class="destaque-container">
+                <div class="destaque-img">
+                    <img src="https://img.odcdn.com.br/wp-content/uploads/2025/02/fileira-de-carros-1920x1080.jpg" alt="Lançamentos 2025">
+                </div>
+                <div class="destaque-conteudo">
+                    <span class="categoria">Lançamentos</span>
+                    <h2 class="destaque-titulo">Os 10 carros mais aguardados de 2025: o que esperar do mercado automotivo</h2>
+                    <p class="data">Publicado em 12 de janeiro de 2025</p>
+                    <p class="descricao">O mercado automotivo está se preparando para grandes lançamentos em 2025. Conheça os modelos mais aguardados, desde elétricos revolucionários até SUVs de alto desempenho que prometem mudar o cenário das estradas brasileiras.</p>
+                    <a href="https://www.autoesporte.globo.com/lancamentos/" class="btn-ler-mais" target="_blank">Leia a matéria completa</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="noticias-portal">
+            <div class="noticias-header">
+                <h2>Últimas Notícias</h2>
+                <div class="filtros-noticias">
+                    <button class="filtro ativo" data-categoria="todos">Todos</button>
+                    <button class="filtro" data-categoria="lancamentos">Lançamentos</button>
+                    <button class="filtro" data-categoria="tecnologia">Tecnologia</button>
+                    <button class="filtro" data-categoria="mercado">Mercado</button>
+                    <button class="filtro" data-categoria="eletricos">Elétricos</button>
+                </div>
+            </div>
+
+            <div class="grid-noticias">
+                <div class="noticia-card" data-categoria="tecnologia">
+                    <div class="noticia-img">
+                        <img src="https://cdn.oantagonista.com/uploads/2025/01/Novas-tecnologias-para-carros-em-2025-1-1024x576.jpg" alt="Tecnologias de Segurança 2025">
+                    </div>
+                    <div class="noticia-conteudo">
+                        <span class="categoria">Tecnologia</span>
+                        <h3>As tecnologias de segurança que todo carro deveria ter em 2025</h3>
+                        <p>Sistemas avançados de assistência ao motorista (ADAS) estão se tornando essenciais. Veja quais recursos não podem faltar no seu próximo veículo.</p>
+                        <div class="noticia-footer">
+                            <span class="data">10 de janeiro de 2025</span>
+                            <a href="https://quatrorodas.abril.com.br/guia-de-compras/sistemas-de-seguranca/" class="ler-mais" target="_blank">Ler mais</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="noticia-card" data-categoria="eletricos">
+                    <div class="noticia-img">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXN59mkJBZc6bHpGbrz23WjPjX-LcB4Rwcbg&s" alt="Mercado de Elétricos 2025">
+                    </div>
+                    <div class="noticia-conteudo">
+                        <span class="categoria">Elétricos</span>
+                        <h3>Mercado de carros elétricos cresce 200% no Brasil em 2024</h3>
+                        <p>Dados mostram aumento expressivo nas vendas de veículos elétricos e híbridos, com destaque para modelos compactos mais acessíveis.</p>
+                        <div class="noticia-footer">
+                            <span class="data">8 de janeiro de 2025</span>
+                            <a href="https://www.abve.org.br/estatisticas/" class="ler-mais" target="_blank">Ler mais</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="noticia-card" data-categoria="lancamentos">
+                    <div class="noticia-img">
+                        <img src="https://uploads.automaistv.com.br/2024/10/p4iwfVYl-Novo-Honda-City-2025-1-jpg.webp" alt="Novo Honda City 2025">
+                    </div>
+                    <div class="noticia-conteudo">
+                        <span class="categoria">Lançamentos</span>
+                        <h3>Honda City 2025 chega ao mercado com nova reestilização e motor turbo</h3>
+                        <p>A Honda renova o visual do City e adiciona motorização turbo para enfrentar a concorrência cada vez mais acirrada entre os sedãs compactos.</p>
+                        <div class="noticia-footer">
+                            <span class="data">5 de janeiro de 2025</span>
+                            <a href="https://www.honda.com.br/automoveis/city" class="ler-mais" target="_blank">Ler mais</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="noticia-card" data-categoria="mercado">
+                    <div class="noticia-img">
+                        <img src="https://fotos-jornaldocarro-estadao.nyc3.cdn.digitaloceanspaces.com/wp-content/uploads/2023/04/13180624/GM.jpg" alt="Ranking de Vendas 2025">
+                    </div>
+                    <div class="noticia-conteudo">
+                        <span class="categoria">Mercado</span>
+                        <h3>Os 10 carros mais vendidos no primeiro trimestre de 2025</h3>
+                        <p>Confira o ranking dos veículos que lideram as vendas no Brasil neste início de ano, com surpresas e novos entrantes.</p>
+                        <div class="noticia-footer">
+                            <span class="data">3 de janeiro de 2025</span>
+                            <a href="https://www.fenabrave.org.br/portal/conteudo/view/18246" class="ler-mais" target="_blank">Ler mais</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="noticia-card" data-categoria="tecnologia">
+                    <div class="noticia-img">
+                        <img src="https://arautomotivo.com/wp-content/uploads/2024/10/cockpit-futurista-inovacoes-eletronica-automotiva.webp" alt="Inteligência Artificial em Carros 2025">
+                    </div>
+                    <div class="noticia-conteudo">
+                        <span class="categoria">Tecnologia</span>
+                        <h3>Como a inteligência artificial está transformando a experiência ao volante em 2025</h3>
+                        <p>Sistemas de IA não apenas melhoram a segurança, mas estão revolucionando a forma como interagimos com nossos veículos.</p>
+                        <div class="noticia-footer">
+                            <span class="data">1 de janeiro de 2025</span>
+                            <a href="https://www.tecmundo.com.br/mobilidade-urbana-smart-cities" class="ler-mais" target="_blank">Ler mais</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="noticia-card" data-categoria="lancamentos">
+                    <div class="noticia-img">
+                        <img src="https://s2-autoesporte.glbimg.com/Fk-8HXzL0L0S36QT1oPfQygCuNo=/0x0:1980x1115/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_cf9d035bf26b4646b105bd958f32089d/internal_photos/bs/2024/t/9/UyB3yKQCKiVv6ypThKvw/linha-byd-2025.jpg" alt="Linha BYD 2025">
+                    </div>
+                    <div class="noticia-conteudo">
+                        <span class="categoria">Lançamentos</span>
+                        <h3>BYD anuncia 5 novos modelos para o mercado brasileiro em 2025</h3>
+                        <p>A marca chinesa planeja expandir sua presença no Brasil com lançamentos que vão de compactos a SUVs de luxo.</p>
+                        <div class="noticia-footer">
+                            <span class="data">28 de dezembro de 2024</span>
+                            <a href="https://www.byd.com/br" class="ler-mais" target="_blank">Ler mais</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carregar-mais">
+                <button id="btn-carregar-mais">
+                    <i class="fas fa-sync-alt"></i> Carregar mais notícias
+                </button>
+            </div>
+        </section>
+
+        <!-- Nova seção de galeria de fotos -->
+        <section class="galeria-fotos">
+            <h2>Galeria de Imagens</h2>
+            <p class="secao-subtitulo">Confira os destaques visuais do mundo automotivo</p>
+            
+            <div class="grid-galeria">
+                <div class="galeria-item galeria-item-grande">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Lamborghini_Revuelto_DSC_6985_%28cropped%29.jpg/1200px-Lamborghini_Revuelto_DSC_6985_%28cropped%29.jpg" alt="Lamborghini Revuelto 2025">
+                    <div class="galeria-caption">
+                        <h3>Lamborghini Revuelto</h3>
+                        <p>O primeiro superesportivo V12 híbrido plug-in da marca italiana</p>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <img src="https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iwui3IZB.nLs/v3/-1x-1.webp" alt="Ferrari 296 GTS 2025">
+                    <div class="galeria-caption">
+                        <h3>Ferrari 296 GTS</h3>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <img src="https://cdn.motor1.com/images/mgl/9mQYrl/s1/porsche-911-gt3-rs-br.webp" alt="Porsche 911 GT3 RS 2025">
+                    <div class="galeria-caption">
+                        <h3>Porsche 911 GT3 RS</h3>
+                    </div>
+                </div>
+                
+                <div class="galeria-item">
+                    <img src="https://www.topgear.com/sites/default/files/2022/08/1%20MG4%20EV.jpg" alt="MG4 Plus 2025">
+                    <div class="galeria-caption">
+                        <h3>MG4 Plus</h3>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <img src="https://cdn.motor1.com/images/mgl/ERJXR/s1/4x3/2021-ram-trx-exterior.webp" alt="RAM TRX 2025">
+                    <div class="galeria-caption">
+                        <h3>RAM TRX</h3>
+                    </div>
+                </div>
+                <div class="galeria-item galeria-item-grande">
+                    <img src="https://cdn.motor1.com/images/mgl/oj14qy/s3/2022-id.-buzz.jpg" alt="Volkswagen ID. Buzz 2025">
+                    <div class="galeria-caption">
+                        <h3>Volkswagen ID. Buzz</h3>
+                        <p>O retorno da clássica Kombi em versão 100% elétrica</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="analises-carros">
+            <h2>Análises e Avaliações</h2>
+            <div class="analises-container">
+                <div class="analise-card">
+                    <div class="analise-img">
+                        <img src="https://cdn.autopapo.com.br/box/uploads/2024/04/06151226/fiat-fastback-abarth-2024-branco-frente-lateral-traseira-jabulas-9-732x488.jpg" alt="Fiat Fastback Abarth 2024">
+                        <span class="nota">9.2</span>
+                    </div>
+                    <div class="analise-conteudo">
+                        <h3>Fiat Fastback Abarth 2025: O SUV que quer ser esportivo</h3>
+                        <div class="avaliacoes">
+                            <div class="avaliacao-item">
+                                <span class="aspecto">Performance</span>
+                                <div class="barras">
+                                    <span class="barra" style="width: 90%"></span>
+                                </div>
+                            </div>
+                            <div class="avaliacao-item">
+                                <span class="aspecto">Economia</span>
+                                <div class="barras">
+                                    <span class="barra" style="width: 75%"></span>
+                                </div>
+                            </div>
+                            <div class="avaliacao-item">
+                                <span class="aspecto">Conforto</span>
+                                <div class="barras">
+                                    <span class="barra" style="width: 85%"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="https://www.fiat.com.br/carros/fastback.html" class="btn-ver-analise" target="_blank">Ver avaliação completa</a>
+                    </div>
+                </div>
+
+                <div class="analise-card">
+                    <div class="analise-img">
+                        <img src="https://cdn.autopapo.com.br/box/uploads/2024/04/23124147/toyota-corolla-cross-xrx-hev-2025-azul-frente-parado.jpg" alt="Toyota Corolla Cross 2025">
+                        <span class="nota">8.7</span>
+                    </div>
+                    <div class="analise-conteudo">
+                        <h3>Toyota Corolla Cross 2025: Híbrido que vale o investimento?</h3>
+                        <div class="avaliacoes">
+                            <div class="avaliacao-item">
+                                <span class="aspecto">Performance</span>
+                                <div class="barras">
+                                    <span class="barra" style="width: 80%"></span>
+                                </div>
+                            </div>
+                            <div class="avaliacao-item">
+                                <span class="aspecto">Economia</span>
+                                <div class="barras">
+                                    <span class="barra" style="width: 95%"></span>
+                                </div>
+                            </div>
+                            <div class="avaliacao-item">
+                                <span class="aspecto">Conforto</span>
+                                <div class="barras">
+                                    <span class="barra" style="width: 90%"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="https://www.toyota.com.br/modelos/corolla-cross/" class="btn-ver-analise" target="_blank">Ver avaliação completa</a>
+                    </div>
+                </div>
+            </div>
+            <a href="https://quatrorodas.abril.com.br/testes/" class="btn-ver-todas-analises" target="_blank">Ver todas as análises</a>
+        </section>
+
+        <section class="guias-tutoriais">
+            <h2>Guias e Tutoriais</h2>
+            <div class="guias-container">
+                <a href="https://quatrorodas.abril.com.br/manutencao/" class="guia-card" target="_blank">
+                    <div class="guia-icone">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Manutenção Preventiva</h3>
+                    <p>Aprenda a cuidar do seu veículo e evitar problemas futuros</p>
+                </a>
+                <a href="https://www.unicoautoservice.com.br/blog/dicas-para-economizar-combustivel/" class="guia-card" target="_blank">
+                    <div class="guia-icone">
+                        <i class="fas fa-gas-pump"></i>
+                    </div>
+                    <h3>Economia de Combustível</h3>
+                    <p>Dicas para aumentar a autonomia e gastar menos na hora de abastecer</p>
+                </a>
+                <a href="https://www.gov.br/prf/pt-br/assuntos/educacao/dicas-de-seguranca" class="guia-card" target="_blank">
+                    <div class="guia-icone">
+                        <i class="fas fa-car-crash"></i>
+                    </div>
+                    <h3>Segurança no Trânsito</h3>
+                    <p>Práticas essenciais para dirigir com mais segurança</p>
+                </a>
+                <a href="https://www.webmotors.com.br/guia/dicas/compra/" class="guia-card" target="_blank">
+                    <div class="guia-icone">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3>Negociação na Compra</h3>
+                    <p>Como conseguir o melhor preço na hora de comprar seu carro</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Nova seção de carros de luxo -->
+        <section class="carros-luxo">
+            <div class="container">
+                <h2>Carros de Luxo 2025</h2>
+                <p class="secao-subtitulo">Conheça os modelos que são sinônimo de exclusividade e sofisticação</p>
+                
+                <div class="slider-luxo">
+                    <div class="luxo-card">
+                        <div class="luxo-img">
+                            <img src="https://i.ytimg.com/vi/7OgDl5CU-vM/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCd8BvFdb4oJRHZLQ1LH0qsOZDaIA" alt="Rolls-Royce Phantom 2025">
+                            <div class="luxo-overlay">
+                                <span class="preco-estimado">A partir de R$ 9.500.000</span>
+                            </div>
+                        </div>
+                        <div class="luxo-info">
+                            <h3>Rolls-Royce Phantom 2025</h3>
+                            <p>O epítome do luxo automobilístico, combinando artesanato tradicional com tecnologia de ponta</p>
+                            <a href="https://www.rolls-roycemotorcars.com/en_GB/showroom/phantom.html" class="btn-saiba-mais" target="_blank">Saiba mais</a>
+                        </div>
+                    </div>
+                    
+                    <div class="luxo-card">
+                        <div class="luxo-img">
+                            <img src="https://hips.hearstapps.com/hmg-prod/images/2025-bentley-flying-spur-speed-101-6740a5a9b84c9.jpg?crop=0.615xw:0.519xh;0.196xw,0.327xh&resize=2048:*" alt="Bentley Flying Spur 2025">
+                            <div class="luxo-overlay">
+                                <span class="preco-estimado">A partir de R$ 4.200.000</span>
+                            </div>
+                        </div>
+                        <div class="luxo-info">
+                            <h3>Bentley Flying Spur 2025</h3>
+                            <p>Um sedan de luxo que oferece desempenho esportivo sem comprometer o conforto e elegância</p>
+                            <a href="https://www.bentleymotors.com/en/models/flying-spur.html" class="btn-saiba-mais" target="_blank">Saiba mais</a>
+                        </div>
+                    </div>
+                    
+                    <div class="luxo-card">
+                        <div class="luxo-img">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlyfcoa0OYF3S_zi7s3jLe0A1xirHAvP93vA&s" alt="Maserati GranTurismo Folgore 2025">
+                            <div class="luxo-overlay">
+                                <span class="preco-estimado">A partir de R$ 3.100.000</span>
+                            </div>
+                        </div>
+                        <div class="luxo-info">
+                            <h3>Maserati GranTurismo Folgore 2025</h3>
+                            <p>O primeiro supercarro elétrico da marca italiana, combinando tradição e futuro</p>
+                            <a href="https://www.maserati.com/br/pt/models/granturismo" class="btn-saiba-mais" target="_blank">Saiba mais</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="https://revistacarclub.com.br/secao/carros-de-luxo/" class="ver-mais-luxo" target="_blank">Ver mais carros de luxo</a>
+            </div>
+        </section>
+        
+        <!-- Nova seção de comparativos -->
+        <section class="comparativos">
+            <h2>Comparativos</h2>
+            <p class="secao-subtitulo">Análises lado a lado para ajudar na sua decisão de compra</p>
+            
+            <div class="grid-comparativos">
+                <div class="comparativo-card">
+                    <div class="comparativo-header">
+                        <h3>SUVs Compactos 2025: Quem leva a melhor?</h3>
+                        <span class="data-comparativo">Publicado em 05/01/2025</span>
+                    </div>
+                    <div class="comparativo-content">
+                        <div class="comparativo-img">
+                            <div class="img-versus">
+                                <div class="carro-comparativo">
+                                    <img src="https://cdn.motor1.com/images/mgl/7ZeG0A/s1/honda-hr-v-touring-vs.-vw-t-cross-highline-vs.-jeep-renegade-s.jpg" alt="Honda HR-V 2025">
+                                    <span class="nome-carro">Honda HR-V 2025</span>
+                                </div>
+                                <div class="versus">VS</div>
+                                <div class="carro-comparativo">
+                                    <img src="https://s2-autoesporte.glbimg.com/OJJ3WND47aNqb2YDVl3oCBkUIC8=/0x0:1400x788/888x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_cf9d035bf26b4646b105bd958f32089d/internal_photos/bs/2022/5/o/uXl8E7R4GquYxcbcNpYQ/volkswagen-nivus-highline-.jpg" alt="VW Nivus 2025">
+                                    <span class="nome-carro">VW Nivus 2025</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comparativo-resumo">
+                            <p>Honda HR-V e VW Nivus disputam a preferência no segmento de SUVs compactos. Comparamos desempenho, consumo, espaço interno e custo-benefício.</p>
+                            <div class="veredito">
+                                <div class="vencedor">
+                                    <span class="label">Vencedor:</span>
+                                    <span class="valor">Honda HR-V</span>
+                                </div>
+                                <div class="destaque">
+                                    <span class="label">Destaque:</span>
+                                    <span class="valor">Espaço interno e revenda</span>
+                                </div>
+                            </div>
+                            <a href="https://www.autoesporte.globo.com/comparativos/" class="btn-ver-comparativo" target="_blank">Ver comparativo completo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="comparativo-card">
+                    <div class="comparativo-header">
+                        <h3>Sedãs médios premium 2025: conforto ou esportividade?</h3>
+                        <span class="data-comparativo">Publicado em 02/01/2025</span>
+                    </div>
+                    <div class="comparativo-content">
+                        <div class="comparativo-img">
+                            <div class="img-versus">
+                                <div class="carro-comparativo">
+                                    <img src="https://cdn.motor1.com/images/mgl/8AYkyM/s1/linha-mercedes-benz-c200-e-c300-2025.jpg" alt="Mercedes-Benz Classe C 2025">
+                                    <span class="nome-carro">Mercedes Classe C 2025</span>
+                                </div>
+                                <div class="versus">VS</div>
+                                <div class="carro-comparativo">
+                                    <img src="https://www.bmw.com.br/content/dam/bmw/common/all-models/3-series/sedan/2022/navigation/bmw-3-series-sedan-lci-modelfinder.png" alt="BMW Série 3">
+                                    <span class="nome-carro">BMW Série 3 2025</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comparativo-resumo">
+                            <p>Mercedes-Benz Classe C e BMW Série 3 são referências entre os sedãs médios premium. Analisamos qual oferece a melhor experiência para diferentes perfis de motoristas.</p>
+                            <div class="veredito">
+                                <div class="vencedor">
+                                    <span class="label">Vencedor:</span>
+                                    <span class="valor">BMW Série 3</span>
+                                </div>
+                                <div class="destaque">
+                                    <span class="label">Destaque:</span>
+                                    <span class="valor">Dinâmica de condução</span>
+                                </div>
+                            </div>
+                            <a href="https://quatrorodas.abril.com.br/comparativos/" class="btn-ver-comparativo" target="_blank">Ver comparativo completo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="https://www.carrosnaweb.com.br/comparativos.asp" class="ver-mais-comparativos" target="_blank">Ver mais comparativos</a>
+        </section>
+    </main>
+
+    <footer class="portal-footer">
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <img src="img/logosite.png" alt="WebCars Logo" class="footer-logo">
+                    <p>Seu portal completo de notícias automotivas</p>
+                    <div class="social-media">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Categorias</h4>
+                    <ul>
+                        <li><a href="#">Lançamentos</a></li>
+                        <li><a href="#">Tecnologia</a></li>
+                        <li><a href="#">Mercado</a></li>
+                        <li><a href="#">Elétricos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>WebCars</h4>
+                    <ul>
+                        <li><a href="index.html">Página Inicial</a></li>
+                        <li><a href="#">Sobre Nós</a></li>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Newsletter</h4>
+                    <p>Receba nossas atualizações:</p>
+                    <div class="newsletter-portal">
+                        <input type="email" placeholder="Seu e-mail">
+                        <button>Inscrever</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 WebCars. Todos os direitos reservados.</p>
+                <div>
+                    <a href="#">Termos de Uso</a>
+                    <a href="#">Política de Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Garantir visibilidade da seção de notícias
+            const secaoNoticias = document.querySelector('.noticias-portal');
+            const gridNoticias = document.querySelector('.grid-noticias');
+            const noticiaCards = document.querySelectorAll('.noticia-card');
+            
+            // Força exibição dos elementos
+            if (secaoNoticias) {
+                secaoNoticias.style.display = 'block';
+                secaoNoticias.style.visibility = 'visible';
+                secaoNoticias.style.opacity = '1';
+            }
+            
+            if (gridNoticias) {
+                gridNoticias.style.display = 'grid';
+                gridNoticias.style.visibility = 'visible';
+                gridNoticias.style.opacity = '1';
+            }
+            
+            noticiaCards.forEach(card => {
+                card.style.display = 'flex';
+                card.style.visibility = 'visible';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            });
+            
+            // Funcionalidade dos filtros
+            const filtros = document.querySelectorAll('.filtro');
+            
+            filtros.forEach(filtro => {
+                filtro.addEventListener('click', function() {
+                    // Remover classe ativo de todos os filtros
+                    filtros.forEach(f => f.classList.remove('ativo'));
+                    
+                    // Adicionar classe ativo ao filtro clicado
+                    this.classList.add('ativo');
+                    
+                    // Obter categoria selecionada
+                    const categoriaSelecionada = this.getAttribute('data-categoria');
+                    
+                    // Filtrar cards
+                    noticiaCards.forEach(card => {
+                        if (categoriaSelecionada === 'todos') {
+                            card.style.display = 'flex';
+                            card.style.opacity = '1';
+                            card.style.visibility = 'visible';
+                            card.style.transform = 'translateY(0)';
+                        } else if (card.getAttribute('data-categoria') === categoriaSelecionada) {
+                            card.style.display = 'flex';
+                            card.style.opacity = '1';
+                            card.style.visibility = 'visible';
+                            card.style.transform = 'translateY(0)';
+                        } else {
+                            card.style.display = 'none';
+                            card.style.opacity = '0';
+                            card.style.visibility = 'hidden';
+                        }
+                    });
+                });
+            });
+            
+            // Botão de carregar mais
+            const btnCarregarMais = document.getElementById('btn-carregar-mais');
+            let contador = 0;
+            
+            if (btnCarregarMais) {
+                btnCarregarMais.addEventListener('click', function() {
+                    const iconElement = this.querySelector('i');
+                    
+                    // Estilo de carregamento
+                    iconElement.classList.add('fa-spin');
+                    this.innerHTML = '';
+                    this.appendChild(iconElement);
+                    this.appendChild(document.createTextNode(' Carregando...'));
+                    
+                    // Simular o carregamento de mais notícias
+                    setTimeout(() => {
+                        contador++;
+                        iconElement.classList.remove('fa-spin');
+                        
+                        if (contador >= 2) {
+                            this.innerHTML = '<i class="fas fa-check"></i> Não há mais notícias';
+                            this.disabled = true;
+                            this.style.cursor = 'not-allowed';
+                            this.style.opacity = '0.7';
+                        } else {
+                            this.innerHTML = '<i class="fas fa-sync-alt"></i> Carregar mais notícias';
+                        }
+                    }, 1500);
+                });
+            }
+            
+            // Aplicar a filtragem inicial (todos)
+            const filtroTodos = document.querySelector('.filtro[data-categoria="todos"]');
+            if (filtroTodos) {
+                filtroTodos.click();
+            }
+        });
+    </script>
+</body>
+</html> 
