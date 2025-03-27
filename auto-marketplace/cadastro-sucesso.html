@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebCars - Cadastro Concluído</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/login.css">
+    <style>
+        .success-container {
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(120deg, #2f2841, #201b2c, #372b4d);
+            background-size: 300% 300%;
+            animation: gradientAnimation 15s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .success-card {
+            max-width: 600px;
+            width: 90%;
+            background: rgba(47, 40, 65, 0.9);
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            box-shadow: 0px 10px 40px #00000056;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .success-icon {
+            font-size: 80px;
+            color: #00ff88;
+            margin-bottom: 30px;
+            animation: pulseSuccess 2s infinite;
+        }
+        
+        .success-title {
+            color: #00ff88;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .success-message {
+            color: #f0ffffde;
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        
+        .success-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .success-button {
+            padding: 15px 30px;
+            border-radius: 10px;
+            border: none;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .success-button.primary {
+            background: #00ff88;
+            color: #2b134b;
+        }
+        
+        .success-button.secondary {
+            background: transparent;
+            color: #f0ffffde;
+            border: 2px solid #00ff88;
+        }
+        
+        .success-button i {
+            margin-right: 10px;
+        }
+        
+        .success-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        @keyframes pulseSuccess {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .success-card {
+                padding: 30px 20px;
+            }
+            
+            .success-title {
+                font-size: 1.8rem;
+            }
+            
+            .success-message {
+                font-size: 1rem;
+            }
+            
+            .success-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <div class="success-card">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h1 class="success-title">Cadastro Concluído!</h1>
+            <p class="success-message">
+                Parabéns! Sua conta na WebCars foi criada com sucesso.<br>
+                Enviamos um email de confirmação para o endereço fornecido.<br>
+                Agora você já pode acessar sua conta e aproveitar todas as funcionalidades.
+            </p>
+            <div class="success-buttons">
+                <a href="login.html" class="success-button primary">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Fazer Login
+                </a>
+                <a href="index.html" class="success-button secondary">
+                    <i class="fas fa-home"></i>
+                    Ir para a Página Inicial
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Adicionar classe de loading na página para efeito fade in
+            document.body.classList.add('loaded');
+            
+            // Contar segundos para redirecionamento automático
+            let seconds = 10;
+            const loginButton = document.querySelector('.success-button.primary');
+            
+            const interval = setInterval(() => {
+                seconds--;
+                
+                if (seconds <= 0) {
+                    clearInterval(interval);
+                    window.location.href = 'login.html';
+                } else {
+                    loginButton.innerHTML = `<i class="fas fa-sign-in-alt"></i> Fazer Login (${seconds}s)`;
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html> 

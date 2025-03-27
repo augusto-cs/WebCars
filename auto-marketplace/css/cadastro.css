@@ -1,0 +1,139 @@
+/* Estilos específicos para a página de cadastro */
+
+/* Aumentar o tamanho do card de cadastro */
+.card-cadastro {
+    max-width: 500px;
+    padding: 35px;
+}
+
+/* Estilos para o checkbox de termos */
+.termos-uso {
+    width: 100%;
+    margin: 15px 0;
+    display: flex;
+    align-items: flex-start;
+}
+
+.termos-uso input {
+    margin-right: 10px;
+    margin-top: 3px;
+    accent-color: #1E90FF;
+}
+
+.termos-uso label {
+    color: #f0ffffde;
+    font-size: 0.85em;
+    line-height: 1.4;
+}
+
+.termos-link {
+    color: #1E90FF;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.termos-link:hover {
+    text-decoration: underline;
+    color: #4F94CD;
+}
+
+/* Estilos para o botão de cadastro */
+.btn-cadastro {
+    background: #005FB8;
+}
+
+.btn-cadastro:hover {
+    background: #0050A0;
+}
+
+/* Efeito de força da senha */
+.forca-senha {
+    width: 100%;
+    height: 5px;
+    background: #514869;
+    border-radius: 10px;
+    margin-top: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.forca-senha-barra {
+    height: 100%;
+    width: 0%;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.forca-senha-texto {
+    font-size: 0.7em;
+    color: #f0ffffde;
+    margin-top: 5px;
+    text-align: right;
+}
+
+.forca-fraca {
+    background: #ff5a5a;
+    width: 25%;
+}
+
+.forca-media {
+    background: #ffcc00;
+    width: 50%;
+}
+
+.forca-forte {
+    background: #4F94CD;
+    width: 75%;
+}
+
+.forca-excelente {
+    background: #1E90FF;
+    width: 100%;
+}
+
+/* Ajustes responsivos específicos */
+@media only screen and (max-width: 950px) {
+    .card-cadastro {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .termos-uso label {
+        font-size: 0.75em;
+    }
+}
+
+/* Mensagem de caracteres não permitidos */
+.char-not-allowed {
+    color: #ff5a5a;
+    font-size: 0.8em;
+    margin-top: 5px;
+    display: block;
+    animation: fadeIn 0.3s ease, fadeOut 0.3s ease 1.7s;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/* Fallback para carregamento de imagens */
+.animation-container img {
+    transition: all 0.3s ease;
+    max-width: 100%;
+    height: auto;
+}
+
+.animation-container img[src$=".png"],
+.animation-container img[src$=".jpg"],
+.animation-container img[src$=".jpeg"] {
+    max-width: 200px;
+    margin: 20px 0;
+    animation: none;
+} 

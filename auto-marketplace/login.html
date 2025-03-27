@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebCars - Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <div class="main-login">
+        <div class="left-login">
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Voltar para o site
+            </a>
+            <img src="img/logosite.png" alt="WebCars Logo" class="logo-img">
+            <h1>Faça login<br>E entre para o nosso time</h1>
+            <p class="login-description">Acesse sua conta para gerenciar seus anúncios, favoritos e muito mais!</p>
+            <div class="animation-container">
+                <img src="img/teladeloginanim.svg" alt="Animação de login" class="car-animation">
+            </div>
+        </div>
+        <div class="right-login">
+            <div class="card-login">
+                <h1>LOGIN</h1>
+                <div class="textfield">
+                    <label for="usuario">
+                        <i class="fas fa-user"></i> Usuário
+                    </label>
+                    <input type="text" name="usuario" id="usuario" placeholder="Digite seu email ou usuário">
+                </div>
+                <div class="textfield">
+                    <label for="senha">
+                        <i class="fas fa-lock"></i> Senha
+                    </label>
+                    <input type="password" name="senha" id="senha" placeholder="Digite sua senha">
+                    <button type="button" id="toggle-password" class="toggle-password" aria-label="Mostrar senha">
+                        <i class="far fa-eye"></i>
+                    </button>
+                </div>
+                <div class="remember-forgot">
+                    <div class="remember-me">
+                        <input type="checkbox" id="lembrar" name="lembrar">
+                        <label for="lembrar">Lembrar-me</label>
+                    </div>
+                    <a href="#" class="forgot-password">Esqueci minha senha</a>
+                </div>
+                <button class="btn-login">
+                    <i class="fas fa-sign-in-alt"></i> Entrar
+                </button>
+                <div class="social-login">
+                    <p>Ou entre com</p>
+                    <div class="social-icons">
+                        <button class="social-btn google">
+                            <i class="fab fa-google"></i>
+                        </button>
+                        <button class="social-btn facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </button>
+                        <button class="social-btn apple">
+                            <i class="fab fa-apple"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="register-now">
+                    <p>Não tem uma conta? <a href="cadastro.html">Cadastre-se</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/login.js"></script>
+</body>
+</html> 

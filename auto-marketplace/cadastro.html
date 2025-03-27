@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebCars - Cadastro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/cadastro.css">
+</head>
+<body>
+    <div class="main-login">
+        <div class="left-login">
+            <a href="login.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Voltar para o login
+            </a>
+            <img src="img/logosite.png" alt="WebCars Logo" class="logo-img">
+            <h1>Crie sua conta<br>E junte-se à nossa comunidade</h1>
+            <p class="login-description">Cadastre-se para anunciar seus veículos, fazer negócios e aproveitar toda a plataforma WebCars!</p>
+            <div class="animation-container">
+                <img src="img/teladeloginanim.svg" alt="Animação de login" class="car-animation">
+            </div>
+        </div>
+        <div class="right-login">
+            <div class="card-login card-cadastro">
+                <h1>CADASTRO</h1>
+                <div class="textfield">
+                    <label for="nome">
+                        <i class="fas fa-user"></i> Usuário
+                    </label>
+                    <input type="text" name="nome" id="nome" placeholder="Digite seu nome de usuário">
+                </div>
+                <div class="textfield">
+                    <label for="email">
+                        <i class="fas fa-envelope"></i> Email
+                    </label>
+                    <input type="email" name="email" id="email" placeholder="Digite seu email">
+                </div>
+                <div class="textfield">
+                    <label for="telefone">
+                        <i class="fas fa-phone"></i> Telefone
+                    </label>
+                    <input type="tel" name="telefone" id="telefone" placeholder="Digite seu telefone">
+                </div>
+                <div class="textfield">
+                    <label for="senha">
+                        <i class="fas fa-lock"></i> Senha
+                    </label>
+                    <input type="password" name="senha" id="senha" placeholder="Crie uma senha forte">
+                    <button type="button" id="toggle-password" class="toggle-password" aria-label="Mostrar senha">
+                        <i class="far fa-eye"></i>
+                    </button>
+                </div>
+                <div class="textfield">
+                    <label for="confirmar-senha">
+                        <i class="fas fa-lock"></i> Confirmar Senha
+                    </label>
+                    <input type="password" name="confirmar-senha" id="confirmar-senha" placeholder="Confirme sua senha">
+                    <button type="button" id="toggle-password-confirm" class="toggle-password" aria-label="Mostrar senha">
+                        <i class="far fa-eye"></i>
+                    </button>
+                </div>
+                <div class="termos-uso">
+                    <input type="checkbox" id="termos" name="termos">
+                    <label for="termos">Li e concordo com os <a href="#" class="termos-link">Termos de Uso</a> e <a href="#" class="termos-link">Política de Privacidade</a></label>
+                </div>
+                <button class="btn-login btn-cadastro">
+                    <i class="fas fa-user-plus"></i> Criar Conta
+                </button>
+                <div class="social-login">
+                    <p>Ou cadastre-se com</p>
+                    <div class="social-icons">
+                        <button class="social-btn google">
+                            <i class="fab fa-google"></i>
+                        </button>
+                        <button class="social-btn facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </button>
+                        <button class="social-btn apple">
+                            <i class="fab fa-apple"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="register-now">
+                    <p>Já tem uma conta? <a href="login.html">Faça login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/cadastro.js"></script>
+</body>
+</html> 

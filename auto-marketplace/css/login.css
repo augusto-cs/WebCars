@@ -1,0 +1,518 @@
+/* Estilos gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+body.loaded {
+    opacity: 1;
+}
+
+/* Animação de fundo */
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Container principal */
+.main-login {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(120deg, #2f2841, #201b2c, #372b4d);
+    background-size: 300% 300%;
+    animation: gradientAnimation 15s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Lado esquerdo */
+.left-login {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    padding: 40px;
+}
+
+.back-button {
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    color: #4F94CD;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    color: #1E90FF;
+    transform: translateX(-5px);
+}
+
+.back-button i {
+    margin-right: 8px;
+}
+
+.logo-img {
+    max-width: 200px;
+    margin-bottom: 30px;
+}
+
+.left-login > h1 {
+    color: #4F94CD;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.login-description {
+    color: #d1d1d1;
+    font-size: 1rem;
+    text-align: center;
+    max-width: 80%;
+    margin-bottom: 40px;
+}
+
+.animation-container {
+    width: 70%;
+    max-width: 400px;
+    margin-top: 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.car-animation {
+    width: 100%;
+    height: auto;
+    animation: carEntrance 1s ease-out forwards, float 6s ease-in-out infinite;
+    filter: drop-shadow(0px 15px 10px rgba(0, 0, 0, 0.2));
+    transition: transform 0.1s ease-out;
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+}
+
+.car-animation.loaded {
+    opacity: 1;
+}
+
+/* Criar reflexo sob a animação */
+.animation-container::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 15px;
+    background: rgba(79, 148, 205, 0.3);
+    border-radius: 50%;
+    filter: blur(10px);
+    z-index: 1;
+    animation: reflexoFloat 6s ease-in-out infinite;
+}
+
+@keyframes reflexoFloat {
+    0% {
+        opacity: 0.3;
+        transform: translateX(-50%) scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateX(-50%) scale(0.85);
+    }
+    100% {
+        opacity: 0.3;
+        transform: translateX(-50%) scale(1);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Lado direito */
+.right-login {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-login {
+    width: 70%;
+    max-width: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px;
+    background: rgba(47, 40, 65, 0.9);
+    border-radius: 20px;
+    box-shadow: 0px 10px 40px #00000056;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-login > h1 {
+    color: #1E90FF;
+    font-weight: 800;
+    margin: 0;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    font-size: 2.2em;
+}
+
+.textfield {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 10px 0;
+    position: relative;
+}
+
+.textfield > label {
+    color: #f0ffffde;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+}
+
+.textfield label i {
+    margin-right: 8px;
+    color: #4F94CD;
+}
+
+.textfield > input {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    background: #514869;
+    color: #f0ffffde;
+    font-size: 12pt;
+    box-shadow: 0px 10px 40px #00000056;
+    outline: none;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.textfield > input::placeholder {
+    color: #f0ffff94;
+}
+
+.textfield > input:focus {
+    border: 2px solid #1E90FF;
+    background: #594f70;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 45px;
+    background: none;
+    border: none;
+    color: #f0ffffde;
+    cursor: pointer;
+}
+
+.remember-forgot {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+}
+
+.remember-me input {
+    margin-right: 8px;
+    accent-color: #1E90FF;
+}
+
+.remember-me label, .forgot-password {
+    color: #f0ffffde;
+    font-size: 0.9em;
+}
+
+.forgot-password {
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.forgot-password:hover {
+    color: #1E90FF;
+    text-decoration: underline;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 16px 0px;
+    margin: 20px 0;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #ffffff;
+    background: #1E90FF;
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px rgba(30, 144, 255, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.btn-login i {
+    margin-right: 10px;
+}
+
+.btn-login:hover {
+    background: #4F94CD;
+    transform: translateY(-3px);
+}
+
+.social-login {
+    width: 100%;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.social-login p {
+    color: #f0ffffde;
+    margin-bottom: 15px;
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+.social-login p::before,
+.social-login p::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 30%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.social-login p::before {
+    left: 0;
+}
+
+.social-login p::after {
+    right: 0;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 18px;
+}
+
+.google {
+    background: #fff;
+    color: #db4437;
+}
+
+.facebook {
+    background: #fff;
+    color: #4267B2;
+}
+
+.apple {
+    background: #fff;
+    color: #000;
+}
+
+.social-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.register-now {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.register-now p {
+    color: #f0ffffde;
+    font-size: 0.9em;
+}
+
+.register-now a {
+    color: #1E90FF;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.register-now a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos de erro */
+.textfield.error label {
+    color: #ff5a5a;
+}
+
+.textfield.error input {
+    border: 2px solid #ff5a5a;
+    background: rgba(255, 90, 90, 0.1);
+}
+
+.error-message {
+    color: #ff5a5a;
+    font-size: 0.8em;
+    margin-top: 5px;
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Efeito de clique nos botões sociais */
+.social-btn.clicked {
+    transform: scale(0.9);
+}
+
+/* Estilo adicional para inputs com foco */
+.textfield.focused label {
+    color: #1E90FF;
+    font-weight: 500;
+}
+
+/* Animação para o botão de login */
+.btn-login:active {
+    transform: scale(0.95);
+}
+
+/* Responsividade */
+@media only screen and (max-width: 950px) {
+    .main-login {
+        flex-direction: column;
+    }
+
+    .left-login, .right-login {
+        width: 100%;
+        height: auto;
+        min-height: 50vh;
+    }
+
+    .left-login {
+        padding: 30px 20px;
+    }
+
+    .left-login > h1 {
+        font-size: 2rem;
+    }
+
+    .card-login {
+        width: 90%;
+        max-width: 400px;
+    }
+
+    .back-button {
+        top: 20px;
+        left: 20px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .card-login {
+        width: 95%;
+        padding: 30px 20px;
+    }
+
+    .left-login > h1 {
+        font-size: 1.8rem;
+    }
+
+    .login-description {
+        font-size: 0.9rem;
+        max-width: 95%;
+    }
+
+    .animation-container {
+        width: 80%;
+    }
+}
+
+/* Ajustes para a animação do carro */
+@keyframes carEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+} 
