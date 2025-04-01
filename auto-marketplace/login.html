@@ -6,70 +6,1197 @@
     <title>WebCars - Login</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/login.css">
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
+
+    <!-- Configuração do Firebase -->
+    <script>
+        // Configuração e inicialização do Firebase
+        if (!firebase.apps.length) {
+            firebase.initializeApp({
+                apiKey: "AIzaSyDNYQauTdDmnb_yvupaCi_W6RhwtMR-X2A",
+                authDomain: "webcars-b316f.firebaseapp.com",
+                projectId: "webcars-b316f",
+                storageBucket: "webcars-b316f.firebasestorage.app",
+                messagingSenderId: "229149363655",
+                appId: "1:229149363655:web:952f209aa2411a4d48dde2"
+            });
+        }
+
+        // Login com Google
+        async function loginComGoogle() {
+            try {
+                const auth = firebase.auth();
+                const googleProvider = new firebase.auth.GoogleAuthProvider();
+                const result = await auth.signInWithPopup(googleProvider);
+                const user = result.user;
+                const db = firebase.firestore();
+
+                // Salvar/atualizar no Firestore
+                await db.collection("usuarios").doc(user.uid).set({
+                    nome: user.displayName,
+                    email: user.email,
+                    telefone: user.phoneNumber || "Não informado",
+                    ultimoLogin: firebase.firestore.FieldValue.serverTimestamp()
+                }, { merge: true });
+
+                // Salvar dados no localStorage
+                localStorage.setItem('usuario_logado', user.displayName);
+                localStorage.setItem('usuario_uid', user.uid);
+                localStorage.setItem('mostrar_toast_boas_vindas', 'true');
+
+                // Mostrar notificação de sucesso
+                window.criarToast('Login realizado', 'Login com Google bem-sucedido!', 'success');
+
+                // Redirecionar para a página inicial
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1500);
+
+                console.log("Login com Google bem-sucedido:", user.uid);
+                return user;
+            } catch (error) {
+                console.error("Erro ao logar com Google:", error.message);
+                window.criarToast('Erro no login', 'Erro ao fazer login com Google: ' + error.message, 'error');
+                throw error;
+            }
+        }
+
+        // Adicionar evento de click no botão do Google quando o DOM estiver carregado
+        document.addEventListener('DOMContentLoaded', function() {
+            const googleButton = document.querySelector('.social-button.google');
+            if (googleButton) {
+                googleButton.addEventListener('click', loginComGoogle);
+            }
+
+            // Botões sociais não implementados (Facebook e Apple)
+            const otherSocialButtons = [
+                document.querySelector('.social-button.facebook'),
+                document.querySelector('.social-button.apple')
+            ];
+            
+            otherSocialButtons.forEach(button => {
+                if (button) {
+                    button.addEventListener('click', function() {
+                        this.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i>';
+                        
+                        // Simular carregamento para recursos não implementados
+                        setTimeout(() => {
+                            this.innerHTML = this.classList.contains('facebook') ? 
+                                          '<i class="fab fa-facebook-f"></i>' : 
+                                          '<i class="fab fa-apple"></i>';
+                            
+                            window.criarToast('Em desenvolvimento', 'Esta opção de login ainda não está disponível', 'error');
+                        }, 1000);
+                    });
+                }
+            });
+
+            // Verificação de login existente
+            const usuarioLogado = localStorage.getItem('usuario_logado');
+            const usuarioUid = localStorage.getItem('usuario_uid');
+            
+            if (usuarioLogado && usuarioUid) {
+                // Criar o modal para confirmar logout
+                const modal = document.createElement('div');
+                modal.className = 'modal';
+                modal.innerHTML = `
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>Você já está logado</h3>
+                            <button class="modal-close">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Você já está logado como <strong>${usuarioLogado}</strong>.</p>
+                            <p>Deseja sair da sua conta?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="modal-button cancel">Não, voltar para o site</button>
+                            <button class="modal-button confirm">Sim, fazer logout</button>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(modal);
+                
+                // Estilo do modal
+                const style = document.createElement('style');
+                style.textContent = `
+                    .modal {
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0,0,0,0.7);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        z-index: 1000;
+                        animation: fadeIn 0.3s ease;
+                    }
+                    
+                    @keyframes fadeIn {
+                        from { opacity: 0; }
+                        to { opacity: 1; }
+                    }
+                    
+                    .modal-content {
+                        background: white;
+                        border-radius: 15px;
+                        width: 90%;
+                        max-width: 450px;
+                        box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+                        overflow: hidden;
+                        animation: slideIn 0.3s ease;
+                    }
+                    
+                    @keyframes slideIn {
+                        from { transform: translateY(-50px); opacity: 0; }
+                        to { transform: translateY(0); opacity: 1; }
+                    }
+                    
+                    .modal-header {
+                        padding: 15px 20px;
+                        background: linear-gradient(to right, #0575E6, #021B79);
+                        color: white;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                    }
+                    
+                    .modal-header h3 {
+                        margin: 0;
+                        font-size: 1.2rem;
+                    }
+                    
+                    .modal-close {
+                        background: none;
+                        border: none;
+                        color: white;
+                        font-size: 1.5rem;
+                        cursor: pointer;
+                        padding: 0;
+                    }
+                    
+                    .modal-body {
+                        padding: 20px;
+                    }
+                    
+                    .modal-footer {
+                        padding: 15px 20px;
+                        display: flex;
+                        justify-content: flex-end;
+                        gap: 10px;
+                        background: #f5f5f5;
+                    }
+                    
+                    .modal-button {
+                        padding: 10px 15px;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        font-weight: 500;
+                        transition: all 0.2s ease;
+                    }
+                    
+                    .modal-button.cancel {
+                        background: #f5f5f5;
+                        border: 1px solid #ddd;
+                        color: #333;
+                    }
+                    
+                    .modal-button.cancel:hover {
+                        background: #e5e5e5;
+                    }
+                    
+                    .modal-button.confirm {
+                        background: #0575E6;
+                        border: none;
+                        color: white;
+                    }
+                    
+                    .modal-button.confirm:hover {
+                        background: #0463c1;
+                    }
+                `;
+                document.head.appendChild(style);
+                
+                // Funcionalidade dos botões
+                const confirmButton = modal.querySelector('.modal-button.confirm');
+                const cancelButton = modal.querySelector('.modal-button.cancel');
+                const closeButton = modal.querySelector('.modal-close');
+                
+                // Função para fechar o modal
+                function fecharModal() {
+                    modal.style.animation = 'fadeOut 0.3s ease forwards';
+                    
+                    // Adicionar animação de saída
+                    const modalContent = modal.querySelector('.modal-content');
+                    modalContent.style.animation = 'slideOut 0.3s ease forwards';
+                    
+                    // Criar estilos de animação de saída
+                    const styleOut = document.createElement('style');
+                    styleOut.textContent = `
+                        @keyframes fadeOut {
+                            from { opacity: 1; }
+                            to { opacity: 0; }
+                        }
+                        
+                        @keyframes slideOut {
+                            from { transform: translateY(0); opacity: 1; }
+                            to { transform: translateY(50px); opacity: 0; }
+                        }
+                    `;
+                    document.head.appendChild(styleOut);
+                    
+                    setTimeout(() => {
+                        modal.remove();
+                        styleOut.remove();
+                    }, 300);
+                }
+                
+                // Eventos
+                confirmButton.addEventListener('click', function() {
+                    // Remover dados do localStorage
+                    localStorage.removeItem('usuario_logado');
+                    localStorage.removeItem('usuario_uid');
+                    localStorage.removeItem('mostrar_toast_boas_vindas');
+                    
+                    fecharModal();
+                    
+                    // Mostrar mensagem de deslogado
+                    window.criarToast('Logout realizado', 'Você foi desconectado com sucesso', 'success');
+                });
+                
+                cancelButton.addEventListener('click', function() {
+                    fecharModal();
+                    
+                    // Redirecionar para a página inicial
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 300);
+                });
+                
+                closeButton.addEventListener('click', fecharModal);
+            }
+            
+            // Animação de entrada
+            const inputs = document.querySelectorAll('.input-with-icon input');
+            inputs.forEach((input, index) => {
+                input.style.opacity = 0;
+                setTimeout(() => {
+                    input.style.transition = 'opacity 0.5s ease';
+                    input.style.opacity = 1;
+                }, 300 + (index * 150));
+            });
+            
+            // Toggle senha visibilidade
+            const togglePassword = document.getElementById('togglePassword');
+            const passwordInput = document.getElementById('password');
+            const loginButton = document.getElementById('loginButton');
+            const emailInput = document.getElementById('email');
+            
+            if (togglePassword && passwordInput) {
+                togglePassword.addEventListener('click', function() {
+                    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                    passwordInput.setAttribute('type', type);
+                    
+                    const icon = this.querySelector('i');
+                    if (type === 'password') {
+                        icon.classList.remove('fa-eye-slash');
+                        icon.classList.add('fa-eye');
+                    } else {
+                        icon.classList.remove('fa-eye');
+                        icon.classList.add('fa-eye-slash');
+                    }
+                });
+            }
+            
+            // Login com Email e Senha
+            if (loginButton) {
+                loginButton.addEventListener('click', async function() {
+                    // Validação básica
+                    if (!emailInput.value.trim() || !passwordInput.value.trim()) {
+                        window.criarToast('Campos obrigatórios', 'Por favor, preencha todos os campos', 'error');
+                        loginButton.classList.add('shake');
+                        setTimeout(() => {
+                            loginButton.classList.remove('shake');
+                        }, 800);
+                        return;
+                    }
+                    
+                    // Mostrar carregamento
+                    this.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Entrando...';
+                    this.disabled = true;
+                    
+                    try {
+                        let result;
+                        const email = emailInput.value.trim();
+                        const senha = passwordInput.value.trim();
+
+                        // Login usando Firebase ou alternativa
+                        result = await loginComEmailSenha(email, senha);
+                        const user = result.user;
+                        const userData = result.userData;
+                        
+                        // Armazenar informações da sessão
+                        localStorage.setItem('usuario_logado', userData?.nome || user.email.split('@')[0]);
+                        localStorage.setItem('usuario_uid', user.uid);
+                        localStorage.setItem('mostrar_toast_boas_vindas', 'true');
+                        
+                        // Mostrar notificação de sucesso
+                        window.criarToast('Login realizado', 'Você será redirecionado para a página inicial', 'success');
+                        
+                        // Redirecionar para página inicial
+                        setTimeout(() => {
+                            window.location.href = 'index.html';
+                        }, 1500);
+                    } catch (error) {
+                        // Restaurar botão
+                        this.innerHTML = '<i class="fas fa-sign-in-alt"></i> Entrar';
+                        this.disabled = false;
+                        
+                        console.error("Detalhes do erro:", error.code, error.message);
+                        
+                        // Tratar erros específicos
+                        let mensagemErro = 'Ocorreu um erro durante o login: ' + error.message;
+                        if (error.code === 'auth/wrong-password' || error.code === 'auth/user-not-found') {
+                            mensagemErro = 'Email ou senha incorretos. Verifique suas credenciais e tente novamente.';
+                        } else if (error.code === 'auth/too-many-requests') {
+                            mensagemErro = 'Muitas tentativas incorretas. Tente novamente mais tarde ou redefina sua senha.';
+                        } else if (error.code === 'auth/invalid-email') {
+                            mensagemErro = 'O formato do email digitado é inválido. Verifique e tente novamente.';
+                        } else if (error.code === 'auth/network-request-failed') {
+                            mensagemErro = 'Problema de conexão. Verifique sua internet e tente novamente.';
+                        }
+                        
+                        window.criarToast('Erro no login', mensagemErro, 'error');
+                    }
+                });
+            }
+            
+            // Adicionar animação de efeito de foco para os inputs
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.parentElement.classList.add('focused');
+                });
+                
+                input.addEventListener('blur', function() {
+                    if (!this.value) {
+                        this.parentElement.parentElement.classList.remove('focused');
+                    }
+                });
+            });
+            
+            // Login com tecla Enter
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter' && loginButton && !loginButton.disabled) {
+                    loginButton.click();
+                }
+            });
+        });
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #0575E6, #021B79, #0575E6);
+            background-size: 300% 300%;
+            animation: gradient 15s ease infinite;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Círculos decorativos */
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            z-index: 0;
+            animation: float 8s infinite;
+        }
+
+        .circle:nth-child(1) {
+            width: 120px;
+            height: 120px;
+            top: 10%;
+            left: 15%;
+            animation-delay: 0s;
+        }
+
+        .circle:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            bottom: 5%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .circle:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            bottom: 30%;
+            left: 5%;
+            animation-delay: 4s;
+        }
+
+        .circle:nth-child(4) {
+            width: 50px;
+            height: 50px;
+            top: 30%;
+            right: 20%;
+            animation-delay: 6s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(0) rotate(360deg);
+                opacity: 0.8;
+            }
+        }
+
+        /* Container principal */
+        .main-container {
+            width: 90%;
+            max-width: 1100px;
+            height: 85vh;
+            display: flex;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Lado esquerdo com informações */
+        .info-side {
+            flex: 1;
+            background: rgba(2, 27, 121, 0.7);
+            padding: 40px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Lado direito com formulário */
+        .form-side {
+            flex: 1;
+            background: white;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow-y: auto;
+        }
+
+        /* Logo */
+        .logo {
+            max-width: 180px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        /* Textos informativos */
+        .info-text h1 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            background: linear-gradient(to right, #fff, #70a1ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .info-text p {
+            font-size: 1rem;
+            line-height: 1.6;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        /* Botão voltar */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .back-button i {
+            margin-right: 5px;
+        }
+
+        .back-button:hover {
+            opacity: 1;
+            transform: translateX(-5px);
+        }
+
+        /* Título do formulário */
+        .form-title {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        /* Campos do formulário */
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .form-group i {
+            color: #0575E6;
+            margin-right: 5px;
+        }
+
+        .input-with-icon {
+            position: relative;
+        }
+
+        .input-with-icon input {
+            width: 100%;
+            padding: 12px 15px 12px 40px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            background-color: #f9f9f9;
+        }
+
+        .input-with-icon i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #0575E6;
+        }
+
+        .input-with-icon input:focus {
+            border-color: #0575E6;
+            box-shadow: 0 0 0 2px rgba(5, 117, 230, 0.2);
+            background-color: #fff;
+        }
+
+        /* Botão mostrar senha */
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #555;
+            cursor: pointer;
+            padding: 0;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-password:hover {
+            color: #0575E6;
+        }
+
+        /* Lembrar e Esqueci senha */
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 0.85rem;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+        }
+
+        .remember-me input {
+            margin-right: 8px;
+            accent-color: #0575E6;
+        }
+
+        .forgot-password {
+            color: #0575E6;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        /* Botão de login */
+        .login-button {
+            background: linear-gradient(to right, #0575E6, #021B79);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-button i {
+            margin-right: 8px;
+        }
+
+        .login-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(5, 117, 230, 0.3);
+        }
+
+        .login-button:active {
+            transform: translateY(0);
+        }
+
+        /* Ou entre com */
+        .social-login {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .social-login p {
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .social-login p::before,
+        .social-login p::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 35%;
+            height: 1px;
+            background-color: #ddd;
+        }
+
+        .social-login p::before {
+            left: 0;
+        }
+
+        .social-login p::after {
+            right: 0;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-button {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-button.google {
+            color: #DB4437;
+        }
+
+        .social-button.facebook {
+            color: #4267B2;
+        }
+
+        .social-button.apple {
+            color: #000;
+        }
+
+        .social-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Criar conta */
+        .signup-link {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .signup-link a {
+            color: #0575E6;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Toast notifications */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+
+        .toast {
+            background: white;
+            color: #333;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            min-width: 300px;
+            max-width: 400px;
+            transform: translateX(120%);
+            transition: transform 0.3s ease;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast-icon {
+            font-size: 24px;
+            margin-right: 12px;
+        }
+
+        .toast-content {
+            flex: 1;
+        }
+
+        .toast-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .toast-message {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .toast-close {
+            background: none;
+            border: none;
+            color: #777;
+            cursor: pointer;
+            padding: 4px;
+            margin-left: 10px;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .toast-close:hover {
+            opacity: 1;
+        }
+
+        .toast.success .toast-icon {
+            color: #4CAF50;
+        }
+
+        .toast.success .toast-title {
+            color: #4CAF50;
+        }
+
+        .toast.error .toast-icon {
+            color: #F44336;
+        }
+
+        .toast.error .toast-title {
+            color: #F44336;
+        }
+
+        /* Efeito shake para erro */
+        @keyframes shake {
+            0%, 100% {transform: translateX(0);}
+            10%, 30%, 50%, 70%, 90% {transform: translateX(-5px);}
+            20%, 40%, 60%, 80% {transform: translateX(5px);}
+        }
+
+        .shake {
+            animation: shake 0.8s;
+        }
+
+        /* Responsividade */
+        @media (max-width: 1024px) {
+            .main-container {
+                max-width: 900px;
+                height: auto;
+                min-height: 85vh;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+                height: auto;
+                width: 95%;
+                max-height: 85vh;
+            }
+
+            .info-side {
+                padding: 30px;
+                flex: 0 0 auto;
+            }
+
+            .form-side {
+                padding: 30px;
+                flex: 1;
+            }
+
+            .info-text h1 {
+                font-size: 1.8rem;
+            }
+
+            .info-text p {
+                font-size: 0.9rem;
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-container {
+                width: 100%;
+                border-radius: 0;
+                height: 100vh;
+                max-height: none;
+            }
+
+            .info-side {
+                padding: 20px;
+                flex: 0 0 auto;
+            }
+
+            .form-side {
+                padding: 20px;
+            }
+
+            .form-title {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+            }
+
+            .social-login p::before,
+            .social-login p::after {
+                width: 30%;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="main-login">
-        <div class="left-login">
+    <!-- Círculos decorativos -->
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+
+    <div class="main-container">
+        <!-- Lado esquerdo - Informações -->
+        <div class="info-side">
             <a href="index.html" class="back-button">
                 <i class="fas fa-arrow-left"></i> Voltar para o site
             </a>
-            <img src="img/logosite.png" alt="WebCars Logo" class="logo-img">
-            <h1>Faça login<br>E entre para o nosso time</h1>
-            <p class="login-description">Acesse sua conta para gerenciar seus anúncios, favoritos e muito mais!</p>
-            <div class="animation-container">
-                <img src="img/teladeloginanim.svg" alt="Animação de login" class="car-animation">
+            <div style="text-align: center;">
+                <img src="img/logosite.png" alt="WebCars Logo" class="logo">
+                <div class="info-text">
+                    <h1>Bem-vindo de volta</h1>
+                    <p>Acesse sua conta para gerenciar seus anúncios, veículos favoritos, mensagens e aproveite todas as vantagens de ser um membro da WebCars.</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <img src="img/teladeloginanim.svg" alt="Ilustração" style="max-width: 80%; max-height: 200px;">
             </div>
         </div>
-        <div class="right-login">
-            <div class="card-login">
-                <h1>LOGIN</h1>
-                <div class="textfield">
-                    <label for="usuario">
-                        <i class="fas fa-user"></i> Usuário
-                    </label>
-                    <input type="text" name="usuario" id="usuario" placeholder="Digite seu email ou usuário">
+
+        <!-- Lado direito - Formulário -->
+        <div class="form-side">
+            <h2 class="form-title">Entrar na sua conta</h2>
+            
+            <div class="form-group">
+                <label for="email"><i class="fas fa-envelope"></i> Email ou usuário</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="email" name="email" placeholder="Digite seu email ou nome de usuário">
                 </div>
-                <div class="textfield">
-                    <label for="senha">
-                        <i class="fas fa-lock"></i> Senha
-                    </label>
-                    <input type="password" name="senha" id="senha" placeholder="Digite sua senha">
-                    <button type="button" id="toggle-password" class="toggle-password" aria-label="Mostrar senha">
+            </div>
+            
+            <div class="form-group">
+                <label for="password"><i class="fas fa-lock"></i> Senha</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" name="password" placeholder="Digite sua senha">
+                    <button type="button" id="togglePassword" class="toggle-password" aria-label="Mostrar senha">
                         <i class="far fa-eye"></i>
                     </button>
                 </div>
-                <div class="remember-forgot">
-                    <div class="remember-me">
-                        <input type="checkbox" id="lembrar" name="lembrar">
-                        <label for="lembrar">Lembrar-me</label>
-                    </div>
-                    <a href="#" class="forgot-password">Esqueci minha senha</a>
+            </div>
+            
+            <div class="remember-forgot">
+                <div class="remember-me">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Lembrar-me</label>
                 </div>
-                <button class="btn-login">
-                    <i class="fas fa-sign-in-alt"></i> Entrar
-                </button>
-                <div class="social-login">
-                    <p>Ou entre com</p>
-                    <div class="social-icons">
-                        <button class="social-btn google">
-                            <i class="fab fa-google"></i>
-                        </button>
-                        <button class="social-btn facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </button>
-                        <button class="social-btn apple">
-                            <i class="fab fa-apple"></i>
-                        </button>
-                    </div>
+                <a href="#" class="forgot-password">Esqueci minha senha</a>
+            </div>
+            
+            <button class="login-button" id="loginButton">
+                <i class="fas fa-sign-in-alt"></i> Entrar
+            </button>
+            
+            <div class="social-login">
+                <p>Ou entre com</p>
+                <div class="social-buttons">
+                    <button class="social-button google">
+                        <i class="fab fa-google"></i>
+                    </button>
+                    <button class="social-button facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </button>
+                    <button class="social-button apple">
+                        <i class="fab fa-apple"></i>
+                    </button>
                 </div>
-                <div class="register-now">
-                    <p>Não tem uma conta? <a href="cadastro.html">Cadastre-se</a></p>
-                </div>
+            </div>
+            
+            <div class="signup-link">
+                <p>Não tem uma conta? <a href="cadastro.html">Cadastre-se</a></p>
             </div>
         </div>
     </div>
 
-    <script src="js/login.js"></script>
+    <div class="toast-container"></div>
+
+    <!-- Importar scripts globais -->
+    <script src="js/toast.js"></script>
+
+    <!-- Scripts do Firebase -->
+    <script type="module">
+        // Importar funções necessárias do Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
+
+        // Modo de depuração para facilitar solução de problemas
+        const DEBUG = true;
+        
+        function debugLog(...args) {
+            if (DEBUG) {
+                console.log('[DEBUG]', ...args);
+            }
+        }
+
+        // Configuração do Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyDNYQauTdDmnb_yvupaCi_W6RhwtMR-X2A",
+            authDomain: "webcars-b316f.firebaseapp.com",
+            projectId: "webcars-b316f",
+            storageBucket: "webcars-b316f.firebasestorage.app",
+            messagingSenderId: "229149363655",
+            appId: "1:229149363655:web:952f209aa2411a4d48dde2"
+        };
+
+        // Usuários de teste para caso o Firebase não esteja funcionando
+        const testUsers = [
+            { email: "teste@teste.com", password: "123456", nome: "Usuário Teste" },
+            { email: "admin@webcars.com", password: "admin123", nome: "Administrador" }
+        ];
+
+        // Inicializar Firebase
+        let app, auth, db, googleProvider;
+        let firebaseInitialized = false;
+
+        try {
+            app = initializeApp(firebaseConfig);
+            auth = getAuth(app);
+            db = getFirestore(app);
+            googleProvider = new GoogleAuthProvider();
+            firebaseInitialized = true;
+            console.log("Firebase inicializado com sucesso");
+        } catch (error) {
+            console.error("Erro ao inicializar Firebase:", error);
+            firebaseInitialized = false;
+        }
+
+        // Função para login alternativo (sem Firebase)
+        function loginWithTestUser(email, password) {
+            return new Promise((resolve, reject) => {
+                const user = testUsers.find(u => u.email === email && u.password === password);
+                
+                if (user) {
+                    // Simular um usuário Firebase
+                    const fakeUser = {
+                        uid: btoa(user.email),  // Base64 do email como UID
+                        email: user.email,
+                        displayName: user.nome
+                    };
+                    
+                    setTimeout(() => {
+                        resolve({
+                            user: fakeUser,
+                            userData: {
+                                nome: user.nome,
+                                email: user.email,
+                                ultimoLogin: new Date().toISOString()
+                            }
+                        });
+                    }, 800); // Simular delay de rede
+                } else {
+                    setTimeout(() => {
+                        reject({
+                            code: 'auth/wrong-password',
+                            message: 'Email ou senha incorretos (modo offline)'
+                        });
+                    }, 800);
+                }
+            });
+        }
+
+        // Login com Email e Senha
+        async function loginComEmailSenha(email, senha) {
+            debugLog("Tentando login com email:", email);
+            try {
+                // Se Firebase não estiver funcionando, tenta login alternativo
+                if (!firebaseInitialized) {
+                    debugLog("Firebase não inicializado, usando modo offline");
+                    return await loginWithTestUser(email, senha);
+                }
+
+                debugLog("Chamando Firebase signInWithEmailAndPassword");
+                const userCredential = await signInWithEmailAndPassword(auth, email, senha);
+                const user = userCredential.user;
+                debugLog("Login bem-sucedido:", user.uid);
+                
+                // Atualizar último login no Firestore
+                try {
+                    debugLog("Atualizando timestamp de último login");
+                    await setDoc(doc(db, "usuarios", user.uid), {
+                        ultimoLogin: serverTimestamp()
+                    }, { merge: true });
+                    debugLog("Timestamp atualizado com sucesso");
+                } catch (firestoreError) {
+                    console.error("Erro ao atualizar dados no Firestore:", firestoreError);
+                    debugLog("Erro ao atualizar timestamp:", firestoreError);
+                    // Continuar mesmo com erro no Firestore
+                }
+                
+                // Buscar informações adicionais do usuário
+                try {
+                    debugLog("Buscando dados adicionais do usuário");
+                    const docRef = doc(db, "usuarios", user.uid);
+                    const docSnap = await getDoc(docRef);
+                    
+                    if (docSnap.exists()) {
+                        debugLog("Dados do usuário encontrados:", docSnap.data());
+                        return {
+                            user,
+                            userData: docSnap.data()
+                        };
+                    } else {
+                        // Se não existir documento para o usuário, criar um
+                        debugLog("Criando novo documento para o usuário");
+                        await setDoc(docRef, {
+                            nome: user.displayName || user.email.split('@')[0],
+                            email: user.email,
+                            ultimoLogin: serverTimestamp(),
+                            dataCriacao: serverTimestamp()
+                        });
+                        
+                        return { 
+                            user,
+                            userData: {
+                                nome: user.displayName || user.email.split('@')[0],
+                                email: user.email
+                            }
+                        };
+                    }
+                } catch (getUserError) {
+                    console.error("Erro ao obter dados do usuário:", getUserError);
+                    debugLog("Erro ao buscar/criar dados do usuário:", getUserError);
+                    // Continuar mesmo se não conseguir obter dados adicionais
+                    return { user };
+                }
+            } catch (error) {
+                console.error("Erro no login:", error.code, error.message);
+                debugLog("Erro na autenticação:", error.code, error.message);
+                throw error;
+            }
+        }
+    </script>
 </body>
 </html> 

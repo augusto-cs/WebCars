@@ -1,0 +1,32 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Usuários podem ler/escrever apenas nos seus próprios documentos
+    match /usuarios/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Qualquer usuário autenticado pode ler dados públicos de veículos
+    match /veiculos/{veiculoId} {
+      allow read: if true; // Permitir leitura pública
+      allow write, update, delete: if request.auth != null && 
+                                     request.resource.data.userId == request.auth.uid;
+    }
+    
+    // Coleção para favoritos - usuários só podem acessar seus próprios favoritos
+    match /favoritos/{favoritoId} {
+      allow read, write: if request.auth != null && 
+                            request.resource.data.userId == request.auth.uid;
+    }
+    
+    // Coleção para testes durante desenvolvimento
+    match /teste/{docId} {
+      allow read, write: if true;
+    }
+    
+    // Por padrão, negar acesso a todas as outras coleções
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+} 

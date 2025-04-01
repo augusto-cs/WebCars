@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/dropdown-fix.css">
+    <link rel="stylesheet" href="css/toast.css">
+    <link rel="stylesheet" href="css/temp/fipe-badges.css">
 </head>
 <body>
     <header>
@@ -471,26 +473,68 @@
 
         <section id="recomendados">
             <div class="container">
-                <h2>Carros abaixo da FIPE</h2>
-                <p class="secao-subtitulo">Encontre os melhores negócios com descontos incríveis</p>
+                <div class="recomendados-header">
+                    <h2>Carros abaixo da FIPE</h2>
+                    <p class="secao-subtitulo">Encontre os melhores negócios com descontos reais baseados na tabela FIPE</p>
+                    <div class="fipe-explicacao">
+                        <div class="fipe-info">
+                            <div class="fipe-icon">
+                                <i class="fas fa-info-circle"></i>
+                            </div>
+                            <div class="fipe-text">
+                                <p>A <strong>Tabela FIPE</strong> é referência oficial de preços de veículos no Brasil. Nessa seção você encontra veículos com preços abaixo do valor de mercado!</p>
+                            </div>
+                        </div>
+                        <div class="fipe-ordenacao">
+                            <label for="ordenar-fipe">Ordenar por:</label>
+                            <select id="ordenar-fipe" class="ordenar-select">
+                                <option value="maior-desconto">Maior desconto</option>
+                                <option value="menor-preco">Menor preço</option>
+                                <option value="mais-recente">Mais recente</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
                 <div class="veiculos-container">
                     <div class="veiculo link-veiculo destaque" data-id="compass-2023" onclick="window.open('detalhe-veiculo.html?id=compass-2023', '_blank')">
-                        <div class="desconto-badge">-15% ABAIXO DA FIPE</div>
-                        <img src="https://image.webmotors.com.br/_fotos/anunciousados/gigante/2025/202503/20250320/jeep-compass-1-3-t270-turbo-flex-s-at6-wmimagem11110914342.webp?s=fill&w=552&h=414&q=60" alt="JEEP COMPASS 1.3 T270 TURBO FLEX S AT6">
+                        <div class="veiculo-img-container">
+                            <img src="https://image.webmotors.com.br/_fotos/anunciousados/gigante/2025/202503/20250320/jeep-compass-1-3-t270-turbo-flex-s-at6-wmimagem11110914342.webp?s=fill&w=552&h=414&q=60" alt="JEEP COMPASS 1.3 T270 TURBO FLEX S AT6">
+                            <div class="tags-container">
+                                <span class="tag tag-destaque"><i class="fas fa-medal"></i> Melhor negócio</span>
+                                <span class="tag tag-garantia"><i class="fas fa-shield-alt"></i> Garantia de fábrica</span>
+                            </div>
+                        </div>
                         <div class="info-veiculo">
                             <div class="veiculo-header">
                                 <h3>JEEP COMPASS</h3>
                                 <span class="badge-novo">Semi-Novo</span>
                             </div>
                             <p>1.3 T270 TURBO FLEX S AT6</p>
-                            <div class="preco-container">
-                                <p class="preco-original"><s>R$ 195.990</s></p>
-                                <p class="preco-atual">R$ 166.990</p>
+                            <div class="badges-container">
+                                <div class="desconto-badge">15% ABAIXO DA FIPE</div>
+                                <div class="economia-badge">ECONOMIA R$ 29.000</div>
+                            </div>
+                            <div class="fipe-comparacao">
+                                <div class="fipe-valor">
+                                    <span class="label">Valor FIPE</span>
+                                    <span class="valor">R$ 195.990</span>
+                                </div>
+                                <div class="fipe-seta">
+                                    <i class="fas fa-arrow-down"></i>
+                                </div>
+                                <div class="preco-atual">
+                                    <span class="label">Preço WebCars</span>
+                                    <span class="valor">R$ 166.990</span>
+                                </div>
+                            </div>
+                            <div class="financiamento-preview">
+                                <i class="fas fa-calculator"></i>
+                                <span>Entrada de <strong>R$ 50.097</strong> + 48× <strong>R$ 3.245</strong></span>
                             </div>
                             <div class="veiculo-detalhes">
-                                <span>📅 2023/2023</span>
-                                <span>🏎️ 40.000 km</span>
-                                <span>📍 São Paulo</span>
+                                <span><i class="fas fa-calendar-alt"></i> 2023/2023</span>
+                                <span><i class="fas fa-tachometer-alt"></i> 40.000 km</span>
+                                <span><i class="fas fa-map-marker-alt"></i> São Paulo</span>
                             </div>
                             <div class="veiculo-acoes">
                                 <a href="detalhe-veiculo.html?id=compass-2023" class="btn-detalhes" data-id="compass-2023">Ver Detalhes</a>
@@ -499,22 +543,44 @@
                         </div>
                     </div>
                     <div class="veiculo link-veiculo" data-id="hilux-2025" onclick="window.open('detalhe-veiculo.html?id=hilux-2025', '_blank')">
-                        <div class="desconto-badge">-10% ABAIXO DA FIPE</div>
-                        <img src="https://image.webmotors.com.br/_fotos/anunciousados/gigante/2025/202503/20250314/toyota-hilux-2-8-d4d-turbo-diesel-cd-srx-plus-4x4-automatico-wmimagem17251698518.webp?s=fill&w=552&h=414&q=60" alt="TOYOTA HILUX 2.8 D-4D TURBO DIESEL CD SRX PLUS 4X4 AUTOMÁTICO">
+                        <div class="veiculo-img-container">
+                            <img src="https://image.webmotors.com.br/_fotos/anunciousados/gigante/2025/202503/20250314/toyota-hilux-2-8-d4d-turbo-diesel-cd-srx-plus-4x4-automatico-wmimagem17251698518.webp?s=fill&w=552&h=414&q=60" alt="TOYOTA HILUX 2.8 D-4D TURBO DIESEL CD SRX PLUS 4X4 AUTOMÁTICO">
+                            <div class="tags-container">
+                                <span class="tag tag-zerokm"><i class="fas fa-star"></i> 0km</span>
+                                <span class="tag tag-financiamento"><i class="fas fa-percentage"></i> Taxa 0.99%</span>
+                            </div>
+                        </div>
                         <div class="info-veiculo">
                             <div class="veiculo-header">
                                 <h3>TOYOTA HILUX</h3>
                                 <span class="badge-novo">0 km</span>
                             </div>
                             <p>2.8 D-4D Turbo Diesel CD SRX Plus 4x4 Automático</p>
-                            <div class="preco-container">
-                                <p class="preco-original"><s>R$ 389.800</s></p>
-                                <p class="preco-atual">R$ 351.800</p>
+                            <div class="badges-container">
+                                <div class="desconto-badge">10% ABAIXO DA FIPE</div>
+                                <div class="economia-badge">ECONOMIA R$ 38.000</div>
+                            </div>
+                            <div class="fipe-comparacao">
+                                <div class="fipe-valor">
+                                    <span class="label">Valor FIPE</span>
+                                    <span class="valor">R$ 389.800</span>
+                                </div>
+                                <div class="fipe-seta">
+                                    <i class="fas fa-arrow-down"></i>
+                                </div>
+                                <div class="preco-atual">
+                                    <span class="label">Preço WebCars</span>
+                                    <span class="valor">R$ 351.800</span>
+                                </div>
+                            </div>
+                            <div class="financiamento-preview">
+                                <i class="fas fa-calculator"></i>
+                                <span>Entrada de <strong>R$ 105.540</strong> + 48× <strong>R$ 6.880</strong></span>
                             </div>
                             <div class="veiculo-detalhes">
-                                <span>📅 2025/2025</span>
-                                <span>🏎️ 0 km</span>
-                                <span>📍 Jundiaí</span>
+                                <span><i class="fas fa-calendar-alt"></i> 2025/2025</span>
+                                <span><i class="fas fa-tachometer-alt"></i> 0 km</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Jundiaí</span>
                             </div>
                             <div class="veiculo-acoes">
                                 <a href="detalhe-veiculo.html?id=hilux-2025" class="btn-detalhes" data-id="hilux-2025">Ver Detalhes</a>
@@ -523,22 +589,44 @@
                         </div>
                     </div>
                     <div class="veiculo link-veiculo" data-id="etron-2022" onclick="window.open('detalhe-veiculo.html?id=etron-2022', '_blank')">
-                        <div class="desconto-badge">-12% ABAIXO DA FIPE</div>
-                        <img src="https://image.webmotors.com.br/_fotos/anunciousados/gigante/2025/202502/20250226/audi-etron-eletrico-sportback-performance-black-quattro-wmimagem16411974193.jpg?s=fill&w=552&h=414&q=60" alt="AUDI E-TRON ELÉTRICO SPORTBACK PERFORMANCE BLACK QUATTRO">
+                        <div class="veiculo-img-container">
+                            <img src="https://image.webmotors.com.br/_fotos/anunciousados/gigante/2025/202502/20250226/audi-etron-eletrico-sportback-performance-black-quattro-wmimagem16411974193.jpg?s=fill&w=552&h=414&q=60" alt="AUDI E-TRON ELÉTRICO SPORTBACK PERFORMANCE BLACK QUATTRO">
+                            <div class="tags-container">
+                                <span class="tag tag-eletrico"><i class="fas fa-bolt"></i> Elétrico</span>
+                                <span class="tag tag-premium"><i class="fas fa-crown"></i> Premium</span>
+                            </div>
+                        </div>
                         <div class="info-veiculo">
                             <div class="veiculo-header">
                                 <h3>AUDI E-TRON</h3>
                                 <span class="badge-novo">Semi-Novo</span>
                             </div>
                             <p>ELÉTRICO SPORTBACK PERFORMANCE BLACK</p>
-                            <div class="preco-container">
-                                <p class="preco-original"><s>R$ 522.717</s></p>
-                                <p class="preco-atual">R$ 459.990</p>
+                            <div class="badges-container">
+                                <div class="desconto-badge">12% ABAIXO DA FIPE</div>
+                                <div class="economia-badge">ECONOMIA R$ 62.727</div>
+                            </div>
+                            <div class="fipe-comparacao">
+                                <div class="fipe-valor">
+                                    <span class="label">Valor FIPE</span>
+                                    <span class="valor">R$ 522.717</span>
+                                </div>
+                                <div class="fipe-seta">
+                                    <i class="fas fa-arrow-down"></i>
+                                </div>
+                                <div class="preco-atual">
+                                    <span class="label">Preço WebCars</span>
+                                    <span class="valor">R$ 459.990</span>
+                                </div>
+                            </div>
+                            <div class="financiamento-preview">
+                                <i class="fas fa-calculator"></i>
+                                <span>Entrada de <strong>R$ 138.000</strong> + 48× <strong>R$ 8.950</strong></span>
                             </div>
                             <div class="veiculo-detalhes">
-                                <span>📅 2021/2022</span>
-                                <span>🏎️ 15.900 km</span>
-                                <span>📍 São Paulo</span>
+                                <span><i class="fas fa-calendar-alt"></i> 2021/2022</span>
+                                <span><i class="fas fa-tachometer-alt"></i> 15.900 km</span>
+                                <span><i class="fas fa-map-marker-alt"></i> São Paulo</span>
                             </div>
                             <div class="veiculo-acoes">
                                 <a href="detalhe-veiculo.html?id=etron-2022" class="btn-detalhes">Ver Detalhes</a>
@@ -548,7 +636,23 @@
                     </div>
                 </div>
                 <div class="ver-mais-container">
-                    <a href="#carros-abaixo-fipe" class="btn-ver-mais">Ver Mais Ofertas Abaixo da FIPE</a>
+                    <a href="#carros-abaixo-fipe" class="btn-ver-mais">
+                        <i class="fas fa-percentage"></i> Ver Mais Ofertas Abaixo da FIPE
+                    </a>
+                    <div class="ofertas-numeros">
+                        <div class="oferta-numero">
+                            <div class="numero-valor">387</div>
+                            <div class="numero-label">Veículos abaixo da FIPE</div>
+                        </div>
+                        <div class="oferta-numero">
+                            <div class="numero-valor">R$ 15.890</div>
+                            <div class="numero-label">Desconto médio</div>
+                        </div>
+                        <div class="oferta-numero">
+                            <div class="numero-valor">20%</div>
+                            <div class="numero-label">Maior desconto</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -634,6 +738,8 @@
 
     <!-- Scripts -->
     <script src="js/dropdown.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/toast.js"></script>
     <script>
         // Garantir que as categorias sejam exibidas
         document.addEventListener('DOMContentLoaded', function() {
@@ -663,6 +769,318 @@
                     noticia.style.visibility = 'visible';
                     noticia.style.transform = 'translateY(0)';
                 });
+            }
+        });
+
+        // Adicionar verificação de usuário logado e exibição do nome no cabeçalho
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verificar se existe usuário logado
+            const usuarioLogado = localStorage.getItem('usuario_logado');
+            const usuarioUid = localStorage.getItem('usuario_uid');
+            const mostrarToast = localStorage.getItem('mostrar_toast_boas_vindas');
+            
+            // Elemento no header para usuário logado
+            const headerRight = document.querySelector('header .header-right') || 
+                               document.querySelector('header .header-actions') ||
+                               document.querySelector('header nav');
+            
+            if (headerRight && usuarioLogado && usuarioUid) {
+                // Se já tiver um botão de login, substituir pelo dropdown do usuário
+                const loginBtn = headerRight.querySelector('a[href="login.html"]');
+                
+                if (loginBtn) {
+                    // Criar elemento de usuário logado
+                    const userElement = document.createElement('div');
+                    userElement.className = 'user-account';
+                    userElement.innerHTML = `
+                        <div class="user-info">
+                            <i class="fas fa-user-circle"></i>
+                            <span>${usuarioLogado}</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="user-dropdown">
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-user"></i> Meu Perfil
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-car"></i> Meus Anúncios
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-heart"></i> Favoritos
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-cog"></i> Configurações
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item logout">
+                                <i class="fas fa-sign-out-alt"></i> Sair
+                            </a>
+                        </div>
+                    `;
+                    
+                    // Substituir o botão de login pelo elemento de usuário
+                    loginBtn.parentNode.replaceChild(userElement, loginBtn);
+                    
+                    // Estilo para o elemento de usuário
+                    const style = document.createElement('style');
+                    style.textContent = `
+                        .user-account {
+                            position: relative;
+                            margin-left: 15px;
+                        }
+                        
+                        .user-info {
+                            display: flex;
+                            align-items: center;
+                            cursor: pointer;
+                            padding: 8px 12px;
+                            border-radius: 20px;
+                            transition: all 0.3s ease;
+                            background: rgba(255, 255, 255, 0.1);
+                            border: 1px solid rgba(255, 255, 255, 0.2);
+                        }
+                        
+                        .user-info:hover {
+                            background: rgba(255, 255, 255, 0.2);
+                        }
+                        
+                        .user-info i.fa-user-circle {
+                            font-size: 1.2rem;
+                            margin-right: 8px;
+                        }
+                        
+                        .user-info span {
+                            margin-right: 8px;
+                            font-weight: 500;
+                            max-width: 120px;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+                        
+                        .user-info i.fa-chevron-down {
+                            font-size: 0.8rem;
+                            transition: transform 0.3s ease;
+                        }
+                        
+                        .user-account.active .user-info i.fa-chevron-down {
+                            transform: rotate(180deg);
+                        }
+                        
+                        .user-dropdown {
+                            position: absolute;
+                            top: calc(100% + 10px);
+                            right: 0;
+                            background: white;
+                            border-radius: 10px;
+                            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+                            width: 200px;
+                            opacity: 0;
+                            visibility: hidden;
+                            transform: translateY(-10px);
+                            transition: all 0.3s ease;
+                            z-index: 100;
+                        }
+                        
+                        .user-account.active .user-dropdown {
+                            opacity: 1;
+                            visibility: visible;
+                            transform: translateY(0);
+                        }
+                        
+                        .dropdown-item {
+                            display: flex;
+                            align-items: center;
+                            padding: 12px 15px;
+                            color: #333;
+                            text-decoration: none;
+                            transition: background 0.2s ease;
+                        }
+                        
+                        .dropdown-item:first-child {
+                            border-radius: 10px 10px 0 0;
+                        }
+                        
+                        .dropdown-item:last-child {
+                            border-radius: 0 0 10px 10px;
+                        }
+                        
+                        .dropdown-item:hover {
+                            background: #f5f5f5;
+                        }
+                        
+                        .dropdown-item i {
+                            margin-right: 10px;
+                            width: 20px;
+                            text-align: center;
+                            color: #0575E6;
+                        }
+                        
+                        .dropdown-item.logout i {
+                            color: #e74c3c;
+                        }
+                        
+                        .dropdown-divider {
+                            height: 1px;
+                            background: #eee;
+                            margin: 5px 0;
+                        }
+                        
+                        /* Toast para boas-vindas */
+                        .toast-container {
+                            position: fixed;
+                            top: 20px;
+                            right: 20px;
+                            z-index: 9999;
+                        }
+                        
+                        .toast {
+                            background: white;
+                            color: #333;
+                            padding: 15px 20px;
+                            border-radius: 10px;
+                            margin-bottom: 10px;
+                            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+                            display: flex;
+                            align-items: center;
+                            min-width: 300px;
+                            max-width: 400px;
+                            transform: translateX(120%);
+                            transition: transform 0.3s ease;
+                        }
+                        
+                        .toast.show {
+                            transform: translateX(0);
+                        }
+                        
+                        .toast-icon {
+                            font-size: 24px;
+                            margin-right: 12px;
+                        }
+                        
+                        .toast.success .toast-icon {
+                            color: #4CAF50;
+                        }
+                        
+                        .toast-content {
+                            flex: 1;
+                        }
+                        
+                        .toast-title {
+                            font-size: 16px;
+                            font-weight: 600;
+                            margin-bottom: 4px;
+                        }
+                        
+                        .toast.success .toast-title {
+                            color: #4CAF50;
+                        }
+                        
+                        .toast-message {
+                            font-size: 14px;
+                            opacity: 0.9;
+                        }
+                        
+                        .toast-close {
+                            background: none;
+                            border: none;
+                            color: #777;
+                            cursor: pointer;
+                            padding: 4px;
+                            margin-left: 10px;
+                            opacity: 0.7;
+                            transition: opacity 0.2s;
+                        }
+                        
+                        .toast-close:hover {
+                            opacity: 1;
+                        }
+                    `;
+                    document.head.appendChild(style);
+                    
+                    // Criar toast container se não existir
+                    if (!document.querySelector('.toast-container')) {
+                        const toastContainer = document.createElement('div');
+                        toastContainer.className = 'toast-container';
+                        document.body.appendChild(toastContainer);
+                    }
+                    
+                    // Função para criar toast
+                    function criarToast(titulo, mensagem, tipo = 'success') {
+                        const container = document.querySelector('.toast-container');
+                        const toast = document.createElement('div');
+                        toast.className = 'toast ' + tipo;
+                        
+                        toast.innerHTML = `
+                            <div class="toast-icon">
+                                <i class="fas ${tipo === 'error' ? 'fa-exclamation-circle' : 'fa-check-circle'}"></i>
+                            </div>
+                            <div class="toast-content">
+                                <div class="toast-title">${titulo}</div>
+                                <div class="toast-message">${mensagem}</div>
+                            </div>
+                            <button class="toast-close">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        `;
+                        
+                        container.appendChild(toast);
+                        setTimeout(() => toast.classList.add('show'), 10);
+                        
+                        const closeButton = toast.querySelector('.toast-close');
+                        closeButton.addEventListener('click', () => {
+                            toast.classList.remove('show');
+                            setTimeout(() => toast.remove(), 300);
+                        });
+                        
+                        setTimeout(() => {
+                            toast.classList.remove('show');
+                            setTimeout(() => toast.remove(), 300);
+                        }, 5000);
+                    }
+                    
+                    // Toggle dropdown ao clicar
+                    const userInfo = userElement.querySelector('.user-info');
+                    userInfo.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        userElement.classList.toggle('active');
+                    });
+                    
+                    // Fechar dropdown ao clicar fora
+                    document.addEventListener('click', function() {
+                        userElement.classList.remove('active');
+                    });
+                    
+                    // Evitar fechar ao clicar dentro do dropdown
+                    userElement.querySelector('.user-dropdown').addEventListener('click', function(e) {
+                        e.stopPropagation();
+                    });
+                    
+                    // Lógica de logout
+                    const logoutButton = userElement.querySelector('.logout');
+                    logoutButton.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        // Remover dados do localStorage
+                        localStorage.removeItem('usuario_logado');
+                        localStorage.removeItem('usuario_uid');
+                        localStorage.removeItem('mostrar_toast_boas_vindas');
+                        
+                        // Mostrar toast de logout
+                        criarToast('Logout realizado', 'Você foi desconectado com sucesso', 'success');
+                        
+                        // Recarregar a página após breve delay
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 1500);
+                    });
+                    
+                    // Mostrar toast de boas-vindas se necessário
+                    if (mostrarToast === 'true') {
+                        criarToast('Bem-vindo', `Olá, ${usuarioLogado}! Você está logado.`, 'success');
+                        localStorage.removeItem('mostrar_toast_boas_vindas');
+                    }
+                }
             }
         });
     </script>

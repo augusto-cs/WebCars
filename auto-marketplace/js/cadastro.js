@@ -1,3 +1,8 @@
+// Importar autenticação do Firebase
+import { auth, db } from './firebase-config.js';
+import { createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+import { doc, setDoc } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+
 // Esperar o DOM carregar completamente
 document.addEventListener('DOMContentLoaded', function() {
     // Elementos
@@ -180,11 +185,63 @@ document.addEventListener('DOMContentLoaded', function() {
             cadastroButton.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Processando...';
             cadastroButton.disabled = true;
             
-            // Simulação de cadastro (aqui você conectaria à sua API real)
-            setTimeout(() => {
-                // Redirecionar para a página de sucesso ou login
-                window.location.href = 'cadastro-sucesso.html';
-            }, 2000);
+            // Cadastro com Firebase Auth
+            const email = emailInput.value.trim();
+            const password = senhaInput.value.trim();
+            const nome = nomeInput.value.trim();
+            const telefone = telefoneInput.value.trim();
+            
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    // Cadastro bem-sucedido
+                    const user = userCredential.user;
+                    console.log("Usuário cadastrado com sucesso:", user);
+                    
+                    // Atualizar perfil com o nome do usuário
+                    return updateProfile(user, {
+                        displayName: nome,
+                        phoneNumber: telefone
+                    }).then(() => {
+                        // Salvar dados adicionais no Firestore
+                        return setDoc(doc(db, "usuarios", user.uid), {
+                            nome: nome,
+                            email: email,
+                            telefone: telefone,
+                            dataCadastro: new Date().toISOString()
+                        });
+                    });
+                })
+                .then(() => {
+                    // Salvar informações do usuário para uso pelo toast
+                    localStorage.setItem('usuario_cadastrado', nome);
+                    
+                    // Redirecionar para a página de sucesso
+                    window.location.href = 'cadastro-sucesso.html';
+                })
+                .catch((error) => {
+                    // Tratar erros de cadastro
+                    console.error("Erro no cadastro:", error.code, error.message);
+                    
+                    // Restaurar o botão
+                    cadastroButton.innerHTML = '<i class="fas fa-user-plus"></i> Criar conta';
+                    cadastroButton.disabled = false;
+                    
+                    // Mostrar mensagem de erro apropriada
+                    let mensagemErro = 'Erro ao criar conta. Tente novamente.';
+                    
+                    if (error.code === 'auth/email-already-in-use') {
+                        mensagemErro = 'Este e-mail já está sendo usado por outra conta.';
+                        showError(emailInput, mensagemErro);
+                    } else if (error.code === 'auth/invalid-email') {
+                        mensagemErro = 'Endereço de e-mail inválido.';
+                        showError(emailInput, mensagemErro);
+                    } else if (error.code === 'auth/weak-password') {
+                        mensagemErro = 'A senha é muito fraca.';
+                        showError(senhaInput, mensagemErro);
+                    } else {
+                        criarToastErro('Erro no Cadastro', mensagemErro);
+                    }
+                });
         }
     });
     
@@ -415,4 +472,56 @@ function inicializarValidacaoUsuario() {
             }
         }
     });
+}
+
+// Função para criar toast de erro
+function criarToastErro(titulo, mensagem) {
+    const container = criarToastContainer();
+    const toast = document.createElement('div');
+    toast.className = 'toast error';
+    
+    toast.innerHTML = `
+        <div class="toast-icon">
+            <i class="fas fa-exclamation-circle"></i>
+        </div>
+        <div class="toast-content">
+            <div class="toast-title">${titulo}</div>
+            <div class="toast-message">${mensagem}</div>
+        </div>
+        <button class="toast-close">
+            <i class="fas fa-times"></i>
+        </button>
+    `;
+    
+    container.appendChild(toast);
+    toast.offsetHeight; // Forçar reflow
+    toast.classList.add('show');
+    
+    // Configurar o botão de fechar
+    const closeButton = toast.querySelector('.toast-close');
+    closeButton.addEventListener('click', () => {
+        toast.classList.remove('show');
+        setTimeout(() => {
+            toast.remove();
+        }, 300);
+    });
+    
+    // Remover após 5 segundos
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => {
+            toast.remove();
+        }, 300);
+    }, 5000);
+}
+
+// Função para criar o container do toast
+function criarToastContainer() {
+    let container = document.querySelector('.toast-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.className = 'toast-container';
+        document.body.appendChild(container);
+    }
+    return container;
 } 

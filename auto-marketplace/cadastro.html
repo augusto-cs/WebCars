@@ -6,89 +6,972 @@
     <title>WebCars - Cadastro</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/login.css">
-    <link rel="stylesheet" href="css/cadastro.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #0575E6, #021B79, #0575E6);
+            background-size: 300% 300%;
+            animation: gradient 15s ease infinite;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Círculos decorativos */
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            z-index: 0;
+            animation: float 8s infinite;
+        }
+
+        .circle:nth-child(1) {
+            width: 120px;
+            height: 120px;
+            top: 10%;
+            left: 15%;
+            animation-delay: 0s;
+        }
+
+        .circle:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            bottom: 5%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .circle:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            bottom: 30%;
+            left: 5%;
+            animation-delay: 4s;
+        }
+
+        .circle:nth-child(4) {
+            width: 50px;
+            height: 50px;
+            top: 30%;
+            right: 20%;
+            animation-delay: 6s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(0) rotate(360deg);
+                opacity: 0.8;
+            }
+        }
+
+        /* Container principal */
+        .main-container {
+            width: 90%;
+            max-width: 1200px;
+            height: 85vh;
+            display: flex;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Lado esquerdo com informações */
+        .info-side {
+            flex: 1;
+            background: rgba(2, 27, 121, 0.7);
+            padding: 40px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Lado direito com formulário */
+        .form-side {
+            flex: 1.2;
+            background: white;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow-y: auto;
+        }
+
+        /* Logo */
+        .logo {
+            max-width: 180px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        /* Textos informativos */
+        .info-text h1 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            background: linear-gradient(to right, #fff, #70a1ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .info-text p {
+            font-size: 1rem;
+            line-height: 1.6;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        /* Botão voltar */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .back-button i {
+            margin-right: 5px;
+        }
+
+        .back-button:hover {
+            opacity: 1;
+            transform: translateX(-5px);
+        }
+
+        /* Título do formulário */
+        .form-title {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        /* Campos do formulário */
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .form-group i {
+            color: #0575E6;
+            margin-right: 5px;
+        }
+
+        .input-with-icon {
+            position: relative;
+        }
+
+        .input-with-icon input {
+            width: 100%;
+            padding: 12px 15px 12px 40px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            background-color: #f9f9f9;
+        }
+
+        .input-with-icon i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #0575E6;
+        }
+
+        .input-with-icon input:focus {
+            border-color: #0575E6;
+            box-shadow: 0 0 0 2px rgba(5, 117, 230, 0.2);
+            background-color: #fff;
+        }
+
+        /* Botão mostrar senha */
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #555;
+            cursor: pointer;
+            padding: 0;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-password:hover {
+            color: #0575E6;
+        }
+
+        /* Termos de uso */
+        .terms {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .terms input {
+            margin-right: 10px;
+            margin-top: 5px;
+            accent-color: #0575E6;
+        }
+
+        .terms label {
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .terms a {
+            color: #0575E6;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .terms a:hover {
+            text-decoration: underline;
+        }
+
+        /* Botão de cadastro */
+        .signup-button {
+            background: linear-gradient(to right, #0575E6, #021B79);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .signup-button i {
+            margin-right: 8px;
+        }
+
+        .signup-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(5, 117, 230, 0.3);
+        }
+
+        .signup-button:active {
+            transform: translateY(0);
+        }
+
+        /* Ou cadastre-se com */
+        .social-signup {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .social-signup p {
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .social-signup p::before,
+        .social-signup p::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 35%;
+            height: 1px;
+            background-color: #ddd;
+        }
+
+        .social-signup p::before {
+            left: 0;
+        }
+
+        .social-signup p::after {
+            right: 0;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-button {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-button.google {
+            color: #DB4437;
+        }
+
+        .social-button.facebook {
+            color: #4267B2;
+        }
+
+        .social-button.apple {
+            color: #000;
+        }
+
+        .social-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Já tem uma conta */
+        .login-link {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .login-link a {
+            color: #0575E6;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Toast notifications */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+
+        .toast {
+            background: white;
+            color: #333;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            min-width: 300px;
+            max-width: 400px;
+            transform: translateX(120%);
+            transition: transform 0.3s ease;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast-icon {
+            font-size: 24px;
+            margin-right: 12px;
+        }
+
+        .toast-content {
+            flex: 1;
+        }
+
+        .toast-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .toast-message {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .toast-close {
+            background: none;
+            border: none;
+            color: #777;
+            cursor: pointer;
+            padding: 4px;
+            margin-left: 10px;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .toast-close:hover {
+            opacity: 1;
+        }
+
+        .toast.success .toast-icon {
+            color: #4CAF50;
+        }
+
+        .toast.success .toast-title {
+            color: #4CAF50;
+        }
+
+        .toast.error .toast-icon {
+            color: #F44336;
+        }
+
+        .toast.error .toast-title {
+            color: #F44336;
+        }
+
+        /* Efeito shake para erro */
+        @keyframes shake {
+            0%, 100% {transform: translateX(0);}
+            10%, 30%, 50%, 70%, 90% {transform: translateX(-5px);}
+            20%, 40%, 60%, 80% {transform: translateX(5px);}
+        }
+
+        .shake {
+            animation: shake 0.8s;
+        }
+
+        /* Responsividade */
+        @media (max-width: 1024px) {
+            .main-container {
+                max-width: 900px;
+                height: auto;
+                min-height: 85vh;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+                height: auto;
+                width: 95%;
+                max-height: 85vh;
+            }
+
+            .info-side {
+                padding: 30px;
+                flex: 0 0 auto;
+            }
+
+            .form-side {
+                padding: 30px;
+                flex: 1;
+            }
+
+            .info-text h1 {
+                font-size: 1.8rem;
+            }
+
+            .info-text p {
+                font-size: 0.9rem;
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-container {
+                width: 100%;
+                border-radius: 0;
+                height: 100vh;
+                max-height: none;
+            }
+
+            .info-side {
+                padding: 20px;
+                flex: 0 0 auto;
+            }
+
+            .form-side {
+                padding: 20px;
+            }
+
+            .form-title {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+            }
+
+            .social-signup p::before,
+            .social-signup p::after {
+                width: 30%;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="main-login">
-        <div class="left-login">
+    <!-- Círculos decorativos -->
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+
+    <div class="main-container">
+        <!-- Lado esquerdo - Informações -->
+        <div class="info-side">
             <a href="login.html" class="back-button">
                 <i class="fas fa-arrow-left"></i> Voltar para o login
             </a>
-            <img src="img/logosite.png" alt="WebCars Logo" class="logo-img">
-            <h1>Crie sua conta<br>E junte-se à nossa comunidade</h1>
-            <p class="login-description">Cadastre-se para anunciar seus veículos, fazer negócios e aproveitar toda a plataforma WebCars!</p>
-            <div class="animation-container">
-                <img src="img/teladeloginanim.svg" alt="Animação de login" class="car-animation">
+            <div style="text-align: center;">
+                <img src="img/logosite.png" alt="WebCars Logo" class="logo">
+                <div class="info-text">
+                    <h1>Crie sua conta<br>na WebCars</h1>
+                    <p>Junte-se à nossa comunidade e desfrute de uma experiência completa. Anuncie seus veículos, encontre oportunidades e faça parte do maior marketplace automotivo do Brasil.</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <img src="img/teladeloginanim.svg" alt="Ilustração" style="max-width: 80%; max-height: 200px;">
             </div>
         </div>
-        <div class="right-login">
-            <div class="card-login card-cadastro">
-                <h1>CADASTRO</h1>
-                <div class="textfield">
-                    <label for="nome">
-                        <i class="fas fa-user"></i> Usuário
-                    </label>
-                    <input type="text" name="nome" id="nome" placeholder="Digite seu nome de usuário">
+
+        <!-- Lado direito - Formulário -->
+        <div class="form-side">
+            <h2 class="form-title">Criar uma nova conta</h2>
+            
+            <div class="form-group">
+                <label for="nome"><i class="fas fa-user"></i> Nome de usuário</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="nome" name="nome" placeholder="Digite seu nome de usuário">
                 </div>
-                <div class="textfield">
-                    <label for="email">
-                        <i class="fas fa-envelope"></i> Email
-                    </label>
-                    <input type="email" name="email" id="email" placeholder="Digite seu email">
+            </div>
+            
+            <div class="form-group">
+                <label for="email"><i class="fas fa-envelope"></i> Email</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email" name="email" placeholder="Digite seu email">
                 </div>
-                <div class="textfield">
-                    <label for="telefone">
-                        <i class="fas fa-phone"></i> Telefone
-                    </label>
-                    <input type="tel" name="telefone" id="telefone" placeholder="Digite seu telefone">
+            </div>
+            
+            <div class="form-group">
+                <label for="telefone"><i class="fas fa-phone"></i> Telefone</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-phone"></i>
+                    <input type="tel" id="telefone" name="telefone" placeholder="Digite seu telefone">
                 </div>
-                <div class="textfield">
-                    <label for="senha">
-                        <i class="fas fa-lock"></i> Senha
-                    </label>
-                    <input type="password" name="senha" id="senha" placeholder="Crie uma senha forte">
+            </div>
+            
+            <div class="form-group">
+                <label for="senha"><i class="fas fa-lock"></i> Senha</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="senha" name="senha" placeholder="Crie uma senha forte">
                     <button type="button" id="toggle-password" class="toggle-password" aria-label="Mostrar senha">
                         <i class="far fa-eye"></i>
                     </button>
                 </div>
-                <div class="textfield">
-                    <label for="confirmar-senha">
-                        <i class="fas fa-lock"></i> Confirmar Senha
-                    </label>
-                    <input type="password" name="confirmar-senha" id="confirmar-senha" placeholder="Confirme sua senha">
+            </div>
+            
+            <div class="form-group">
+                <label for="confirmar-senha"><i class="fas fa-lock"></i> Confirmar Senha</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="confirmar-senha" name="confirmar-senha" placeholder="Confirme sua senha">
                     <button type="button" id="toggle-password-confirm" class="toggle-password" aria-label="Mostrar senha">
                         <i class="far fa-eye"></i>
                     </button>
                 </div>
-                <div class="termos-uso">
-                    <input type="checkbox" id="termos" name="termos">
-                    <label for="termos">Li e concordo com os <a href="#" class="termos-link">Termos de Uso</a> e <a href="#" class="termos-link">Política de Privacidade</a></label>
+            </div>
+            
+            <div class="terms">
+                <input type="checkbox" id="termos" name="termos">
+                <label for="termos">Li e concordo com os <a href="#">Termos de Uso</a> e <a href="#">Política de Privacidade</a></label>
+            </div>
+            
+            <button class="signup-button" id="btn-cadastro">
+                <i class="fas fa-user-plus"></i> Criar Conta
+            </button>
+            
+            <div class="social-signup">
+                <p>Ou cadastre-se com</p>
+                <div class="social-buttons">
+                    <button class="social-button google">
+                        <i class="fab fa-google"></i>
+                    </button>
+                    <button class="social-button facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </button>
+                    <button class="social-button apple">
+                        <i class="fab fa-apple"></i>
+                    </button>
                 </div>
-                <button class="btn-login btn-cadastro">
-                    <i class="fas fa-user-plus"></i> Criar Conta
-                </button>
-                <div class="social-login">
-                    <p>Ou cadastre-se com</p>
-                    <div class="social-icons">
-                        <button class="social-btn google">
-                            <i class="fab fa-google"></i>
-                        </button>
-                        <button class="social-btn facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </button>
-                        <button class="social-btn apple">
-                            <i class="fab fa-apple"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="register-now">
-                    <p>Já tem uma conta? <a href="login.html">Faça login</a></p>
-                </div>
+            </div>
+            
+            <div class="login-link">
+                <p>Já tem uma conta? <a href="login.html">Faça login</a></p>
             </div>
         </div>
     </div>
 
-    <script src="js/cadastro.js"></script>
+    <div class="toast-container"></div>
+
+    <!-- Scripts do Firebase -->
+    <script type="module">
+        // Importar funções necessárias do Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
+        import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
+
+        // Configuração do Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyDNYQauTdDmnb_yvupaCi_W6RhwtMR-X2A",
+            authDomain: "webcars-b316f.firebaseapp.com",
+            projectId: "webcars-b316f",
+            storageBucket: "webcars-b316f.firebasestorage.app",
+            messagingSenderId: "229149363655",
+            appId: "1:229149363655:web:952f209aa2411a4d48dde2"
+        };
+
+        // Inicializar Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const googleProvider = new GoogleAuthProvider();
+
+        // Registrar usuário com email e senha
+        async function registrarUsuario(nome, email, senha, telefone) {
+            try {
+                // Criar conta no Authentication
+                const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
+                const user = userCredential.user;  
+
+                // Salvar no Firestore
+                await setDoc(doc(db, "usuarios", user.uid), {
+                    nome: nome,
+                    email: email,
+                    telefone: telefone,
+                    dataCriacao: serverTimestamp()
+                });
+
+                console.log("Usuário registrado:", user.uid);
+                return user;
+            } catch (error) {
+                console.error("Erro ao registrar usuário:", error.message);
+                throw error;
+            }
+        }
+
+        // Login com Google
+        async function loginComGoogle() {
+            try {
+                const result = await signInWithPopup(auth, googleProvider);
+                const user = result.user;
+
+                // Salvar no Firestore (se ainda não existir)
+                await setDoc(doc(db, "usuarios", user.uid), {
+                    nome: user.displayName,
+                    email: user.email,
+                    telefone: user.phoneNumber || "Não informado",
+                    dataCriacao: serverTimestamp()
+                }, { merge: true });
+
+                console.log("Login com Google bem-sucedido:", user.uid);
+                return user;
+            } catch (error) {
+                console.error("Erro ao logar com Google:", error.message);
+                throw error;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elementos
+            const nomeInput = document.getElementById('nome');
+            const emailInput = document.getElementById('email');
+            const telefoneInput = document.getElementById('telefone');
+            const senhaInput = document.getElementById('senha');
+            const confirmarSenhaInput = document.getElementById('confirmar-senha');
+            const termosCheckbox = document.getElementById('termos');
+            const cadastroButton = document.getElementById('btn-cadastro');
+            const togglePasswordButton = document.getElementById('toggle-password');
+            const togglePasswordConfirmButton = document.getElementById('toggle-password-confirm');
+            const googleButton = document.querySelector('.social-button.google');
+            
+            // Função para criar toast
+            function criarToast(titulo, mensagem, tipo = 'success') {
+                const container = document.querySelector('.toast-container');
+                const toast = document.createElement('div');
+                toast.className = 'toast ' + tipo;
+                
+                toast.innerHTML = `
+                    <div class="toast-icon">
+                        <i class="fas ${tipo === 'error' ? 'fa-exclamation-circle' : 'fa-check-circle'}"></i>
+                    </div>
+                    <div class="toast-content">
+                        <div class="toast-title">${titulo}</div>
+                        <div class="toast-message">${mensagem}</div>
+                    </div>
+                    <button class="toast-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                `;
+                
+                container.appendChild(toast);
+                setTimeout(() => toast.classList.add('show'), 10);
+                
+                const closeButton = toast.querySelector('.toast-close');
+                closeButton.addEventListener('click', () => {
+                    toast.classList.remove('show');
+                    setTimeout(() => toast.remove(), 300);
+                });
+                
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                    setTimeout(() => toast.remove(), 300);
+                }, 5000);
+            }
+            
+            // Toggle senha visibilidade
+            if (togglePasswordButton && senhaInput) {
+                togglePasswordButton.addEventListener('click', function() {
+                    const type = senhaInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                    senhaInput.setAttribute('type', type);
+                    
+                    const icon = this.querySelector('i');
+                    if (type === 'password') {
+                        icon.classList.remove('fa-eye-slash');
+                        icon.classList.add('fa-eye');
+                    } else {
+                        icon.classList.remove('fa-eye');
+                        icon.classList.add('fa-eye-slash');
+                    }
+                });
+            }
+            
+            // Toggle confirmar senha visibilidade
+            if (togglePasswordConfirmButton && confirmarSenhaInput) {
+                togglePasswordConfirmButton.addEventListener('click', function() {
+                    const type = confirmarSenhaInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                    confirmarSenhaInput.setAttribute('type', type);
+                    
+                    const icon = this.querySelector('i');
+                    if (type === 'password') {
+                        icon.classList.remove('fa-eye-slash');
+                        icon.classList.add('fa-eye');
+                    } else {
+                        icon.classList.remove('fa-eye');
+                        icon.classList.add('fa-eye-slash');
+                    }
+                });
+            }
+            
+            // Efeito de foco nos inputs
+            const inputs = document.querySelectorAll('.input-with-icon input');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.parentElement.classList.add('focused');
+                });
+                
+                input.addEventListener('blur', function() {
+                    if (this.value === '') {
+                        this.parentElement.parentElement.classList.remove('focused');
+                    }
+                });
+                
+                if (input.value !== '') {
+                    input.parentElement.parentElement.classList.add('focused');
+                }
+            });
+            
+            // Cadastro com Firebase
+            if (cadastroButton) {
+                cadastroButton.addEventListener('click', async function(e) {
+                    e.preventDefault();
+                    
+                    // Validação básica
+                    const nome = nomeInput.value.trim();
+                    const email = emailInput.value.trim();
+                    const telefone = telefoneInput.value.trim();
+                    const senha = senhaInput.value.trim();
+                    const confirmarSenha = confirmarSenhaInput.value.trim();
+                    
+                    // Verificações
+                    if (!nome || !email || !telefone || !senha || !confirmarSenha) {
+                        criarToast('Campos obrigatórios', 'Por favor, preencha todos os campos', 'error');
+                        cadastroButton.classList.add('shake');
+                        setTimeout(() => {
+                            cadastroButton.classList.remove('shake');
+                        }, 800);
+                        return;
+                    }
+                    
+                    if (senha !== confirmarSenha) {
+                        criarToast('Senhas diferentes', 'As senhas não coincidem', 'error');
+                        cadastroButton.classList.add('shake');
+                        setTimeout(() => {
+                            cadastroButton.classList.remove('shake');
+                        }, 800);
+                        return;
+                    }
+                    
+                    if (!termosCheckbox.checked) {
+                        criarToast('Termos de uso', 'Você precisa aceitar os termos de uso', 'error');
+                        cadastroButton.classList.add('shake');
+                        setTimeout(() => {
+                            cadastroButton.classList.remove('shake');
+                        }, 800);
+                        return;
+                    }
+                    
+                    // Mostrar loading
+                    cadastroButton.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Processando...';
+                    cadastroButton.disabled = true;
+                    
+                    try {
+                        // Registrar usuário com Firebase
+                        const user = await registrarUsuario(nome, email, senha, telefone);
+                        
+                        // Salvar informações básicas
+                        localStorage.setItem('usuario_cadastrado', nome);
+                        localStorage.setItem('usuario_uid', user.uid);
+                        
+                        // Redirecionar para a página de sucesso
+                        criarToast('Sucesso', 'Cadastro realizado com sucesso!', 'success');
+                        setTimeout(() => {
+                            window.location.href = 'cadastro-sucesso.html';
+                        }, 1500);
+                    } catch (error) {
+                        cadastroButton.innerHTML = '<i class="fas fa-user-plus"></i> Criar Conta';
+                        cadastroButton.disabled = false;
+                        
+                        let mensagemErro = 'Ocorreu um erro durante o cadastro. Tente novamente.';
+                        if (error.code === 'auth/email-already-in-use') {
+                            mensagemErro = 'Este email já está sendo usado.';
+                        } else if (error.code === 'auth/invalid-email') {
+                            mensagemErro = 'O email informado é inválido.';
+                        } else if (error.code === 'auth/weak-password') {
+                            mensagemErro = 'A senha é muito fraca. Use pelo menos 6 caracteres.';
+                        }
+                        
+                        criarToast('Erro no cadastro', mensagemErro, 'error');
+                    }
+                });
+            }
+            
+            // Login com Google
+            if (googleButton) {
+                googleButton.addEventListener('click', async function() {
+                    this.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i>';
+                    
+                    try {
+                        // Login com Google via Firebase
+                        const user = await loginComGoogle();
+                        
+                        // Salvar informações básicas
+                        localStorage.setItem('usuario_cadastrado', user.displayName || 'Usuário');
+                        localStorage.setItem('usuario_uid', user.uid);
+                        
+                        // Redirecionar para o site principal
+                        criarToast('Sucesso', 'Login com Google realizado com sucesso!', 'success');
+                        setTimeout(() => {
+                            window.location.href = 'index.html';
+                        }, 1500);
+                    } catch (error) {
+                        this.innerHTML = '<i class="fab fa-google"></i>';
+                        
+                        // Se o usuário cancelou o popup
+                        if (error.code === 'auth/popup-closed-by-user') {
+                            criarToast('Login cancelado', 'Você fechou a janela de login.', 'error');
+                            return;
+                        }
+                        
+                        criarToast('Erro no login', 'Ocorreu um erro ao fazer login com Google.', 'error');
+                    }
+                });
+            }
+            
+            // Efeito nos outros botões sociais
+            const otherSocialButtons = [
+                document.querySelector('.social-button.facebook'),
+                document.querySelector('.social-button.apple')
+            ];
+            
+            otherSocialButtons.forEach(button => {
+                if (button) {
+                    button.addEventListener('click', function() {
+                        this.classList.add('clicked');
+                        setTimeout(() => this.classList.remove('clicked'), 300);
+                        
+                        // Simulação de login social (em desenvolvimento)
+                        this.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i>';
+                        setTimeout(() => {
+                            this.innerHTML = this.classList.contains('facebook') ? 
+                                            '<i class="fab fa-facebook-f"></i>' : 
+                                            '<i class="fab fa-apple"></i>';
+                            
+                            criarToast('Em desenvolvimento', 'Esta opção de login ainda não está disponível.', 'error');
+                        }, 1500);
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html> 

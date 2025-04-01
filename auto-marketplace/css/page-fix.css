@@ -1,0 +1,29 @@
+/* Correções para problemas de página em branco */
+
+/* Garantir que o corpo da página seja visível imediatamente */
+body {
+    opacity: 1 !important;
+    visibility: visible !important;
+    min-height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Adicionar classe loaded ao body para garantir visibilidade */
+body.loaded {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Corrigir problemas de animação */
+@keyframes fadeIn {
+    0% { opacity: 1; }
+    100% { opacity: 1; }
+}
+
+/* Garantir que formulários e conteúdo sejam visíveis */
+.form-container, .card-login, .main-login {
+    opacity: 1 !important;
+    visibility: visible !important;
+} 
